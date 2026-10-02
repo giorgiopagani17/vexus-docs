@@ -37,6 +37,7 @@
 
             <VxSelect
             v-model="selectExamples.simple"
+            color="#44C88E"
             :options="['Italia', 'Francia', 'Spagna']"
             placeholder="Nazione"
             />

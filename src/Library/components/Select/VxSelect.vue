@@ -1,5 +1,5 @@
 <template>
-  <VxFieldWrapper ref="fieldWrapperRef" v-bind="wrapperProps" :style="{ '--vx-select-accent': color }">
+  <VxFieldWrapper ref="fieldWrapperRef" v-bind="wrapperProps" :style="accentStyle">
     <template v-if="$slots['icon-left']" #icon-left>
       <slot name="icon-left" />
     </template>
@@ -87,7 +87,11 @@
   </VxFieldWrapper>
 
   <Teleport to="body">
-    <div v-if="isOpen" ref="panelRef" class="vx-select__panel" :style="panelStyle">
+    <!--
+      Il pannello vive nel body e non eredita le CSS vars del wrapper:
+      accentStyle ri-applica --vx-select-accent anche qui (bordo, evidenziazione, selezione).
+    -->
+    <div v-if="isOpen" ref="panelRef" class="vx-select__panel" :style="[panelStyle, accentStyle]">
       <ul class="vx-select__list" role="listbox">
         <!-- stato di loading iniziale: nasconde lista/empty-state finché la prima pagina non risponde -->
         <template v-if="isLoading">
@@ -171,6 +175,10 @@ const props = defineProps({
   variant: { type: String, default: 'outline' },
   pill: { type: Boolean, default: false },
   radius: { type: [Number, String], default: null },
+  /**
+   * Colore d'accento della select (bordo del pannello, opzione evidenziata/selezionata, chip).
+   * Accetta un token della palette ('primary', 'secondary', ...) oppure un valore CSS custom.
+   */
   color: { type: String, default: null },
   colors: { type: Object, default: null },
   focusEffect: { type: String, default: 'ring' },
@@ -231,6 +239,18 @@ const hasTyped = ref(false)
 let fetchId = 0
 let searchTimeout = null
 let intersectionObserver = null
+
+// ===== colore d'accento =====
+// Token palette ('primary', ...) → var(--vx-<token>), altrimenti il valore CSS così com'è
+// ('#7c3aed', 'rgb(...)', 'var(--mio-colore)'). Il pannello è teletrasportato nel body e non
+// eredita le CSS vars del wrapper, quindi lo stesso stile viene applicato anche a lui.
+const paletteTokens = ['primary', 'secondary', 'positive', 'negative', 'warning', 'info']
+
+const accentStyle = computed(() => {
+  if (!props.color) return {}
+  const c = props.color.trim()
+  return { '--vx-select-accent': paletteTokens.includes(c) ? `var(--vx-${c})` : c }
+})
 
 // ===== passthrough al wrapper =====
 const wrapperProps = computed(() => ({
@@ -784,7 +804,11 @@ onBeforeUnmount(() => {
   z-index: 2000;
   overflow-y: auto;
   border-radius: 10px;
-  border: 1px solid var(--vx-select-panel-border, rgba(0, 0, 0, 0.08));
+  /* bordo basato sul colore della select; --vx-select-panel-border permette un override fisso */
+  border: 1px solid var(
+    --vx-select-panel-border,
+    color-mix(in srgb, var(--vx-select-accent, $primary) 45%, transparent)
+  );
   background: var(--vx-select-panel-bg, #ffffff);
   color: var(--vx-select-panel-color, #1f1f24);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
