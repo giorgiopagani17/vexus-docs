@@ -54,7 +54,7 @@
       </div>
 
       <div class="example-grid">
-        <VxInput v-model="typeExamples.file" type="file" />
+        <VxInput v-model="typeExamples.file" type="file" clearable />
       </div>
 
       <p class="section-note">

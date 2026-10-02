@@ -16,7 +16,7 @@
 
     <aside
       class="sidebar"
-      :class="{ 'sidebar--mini': miniState, 'sidebar--hidden': !drawerOpen }"
+      :class="{ 'sidebar--mini': isMini, 'sidebar--hidden': !drawerOpen }"
     >
       <nav class="menu">
         <template v-for="item in menuStructure" :key="item.label">
@@ -28,8 +28,8 @@
             active-class="menu-item--active"
           >
             <component :is="item.icon" :size="20" />
-            <span v-if="!miniState" class="menu-label">{{ item.label }}</span>
-            <span v-if="miniState" class="tooltip">{{ item.label }}</span>
+            <span v-if="!isMini" class="menu-label">{{ item.label }}</span>
+            <span v-if="isMini" class="tooltip">{{ item.label }}</span>
           </RouterLink>
 
           <!-- Voce con sottomenu -->
@@ -40,21 +40,24 @@
           >
             <button
               class="menu-item menu-item--group"
-              :class="{ 'menu-item--active': isChildActive(item) }"
-              @click="toggleGroup(item.label)"
+              :class="{
+                'menu-item--active': isChildActive(item) || flyoutGroup === item.label,
+              }"
+              :aria-expanded="isMini ? flyoutGroup === item.label : isGroupOpen(item.label)"
+              @click="onGroupClick(item.label)"
             >
               <component :is="item.icon" :size="20" />
-              <span v-if="!miniState" class="menu-label">{{ item.label }}</span>
-              <ChevronDown
-                v-if="!miniState"
-                :size="16"
-                class="group-chevron"
-              />
-              <!-- Niente tooltip qui in mini: ci pensa il flyout -->
+              <span v-if="!isMini" class="menu-label">{{ item.label }}</span>
+              <ChevronDown v-if="!isMini" :size="16" class="group-chevron" />
+              <!-- Tooltip in mini, nascosto quando il flyout è aperto -->
+              <span
+                v-if="isMini && flyoutGroup !== item.label"
+                class="tooltip"
+              >{{ item.label }}</span>
             </button>
 
             <!-- Sottomenu ad accordion (sidebar espansa) -->
-            <div v-if="!miniState && isGroupOpen(item.label)" class="submenu-wrapper">
+            <div v-if="!isMini && isGroupOpen(item.label)" class="submenu-wrapper">
               <RouterLink
                 v-for="child in item.children"
                 :key="child.label"
@@ -67,8 +70,11 @@
               </RouterLink>
             </div>
 
-            <!-- Sottomenu a flyout (sidebar mini) -->
-            <div v-else class="submenu-flyout">
+            <!-- Sottomenu a flyout (sidebar mini), aperto al click -->
+            <div
+              v-else-if="isMini && flyoutGroup === item.label"
+              class="submenu-flyout"
+            >
               <div class="submenu-flyout__title">{{ item.label }}</div>
               <RouterLink
                 v-for="child in item.children"
@@ -76,6 +82,7 @@
                 :to="child.to"
                 class="submenu-item"
                 active-class="submenu-item--active"
+                @click="flyoutGroup = null"
               >
                 <component :is="child.icon" :size="16" />
                 <span class="menu-label">{{ child.label }}</span>
@@ -90,18 +97,17 @@
       </button>
     </aside>
 
-    <main class="content" :class="{ 'content--mini': miniState }">
+    <main class="content" :class="{ 'content--mini': isMini }">
       <RouterView />
     </main>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import DesignLanguageSwitcher from '@/Docs/components/Utils/DesignLanguageSwitcher.vue'
 import { useRoute } from 'vue-router'
 import VexusLogo from '/vexus_logo.png'
-import { useClickOutside } from '@/Library/core/composables/useClickOutside'
 import {
   Menu,
   MousePointerClick,
@@ -113,16 +119,26 @@ import {
   Blocks,
   Puzzle,
   BookOpen,
-  Settings,
   ChevronLeft,
   ChevronRight,
   ChevronDown,
   IdCard,
 } from 'lucide-vue-next'
 
+const MOBILE_QUERY = '(max-width: 768px)'
+
 const route = useRoute()
-const drawerOpen = ref(true)
+
+// Breakpoint mobile: sotto i 768px la sidebar è sempre espansa (il CSS nasconde tooltip e flyout)
+const mql = typeof window !== 'undefined' ? window.matchMedia(MOBILE_QUERY) : null
+const isMobile = ref(mql ? mql.matches : false)
+
+const drawerOpen = ref(!isMobile.value)
 const miniState = ref(false)
+const flyoutGroup = ref(null)
+
+// Stato mini effettivo: mai attivo su mobile
+const isMini = computed(() => miniState.value && !isMobile.value)
 
 const menuStructure = [
   { label: 'Home', icon: Home, to: '/' },
@@ -167,6 +183,15 @@ function isChildActive(item) {
   return item.children?.some((child) => child.to === route.path) ?? false
 }
 
+// Click su un gruppo: in mini apre/chiude il flyout, altrimenti l'accordion
+function onGroupClick(label) {
+  if (isMini.value) {
+    flyoutGroup.value = flyoutGroup.value === label ? null : label
+  } else {
+    toggleGroup(label)
+  }
+}
+
 menuStructure.forEach((item) => {
   if (item.children && isChildActive(item)) {
     openGroups.value.add(item.label)
@@ -176,6 +201,48 @@ menuStructure.forEach((item) => {
 const toggleDrawer = () => {
   drawerOpen.value = !drawerOpen.value
 }
+
+// Chiusura flyout: click fuori, Esc, cambio rotta, cambio stato sidebar
+function onDocClick(e) {
+  if (flyoutGroup.value && !e.target.closest('.menu-group')) {
+    flyoutGroup.value = null
+  }
+}
+
+function onKeydown(e) {
+  if (e.key === 'Escape') flyoutGroup.value = null
+}
+
+function onMobileChange(e) {
+  isMobile.value = e.matches
+  flyoutGroup.value = null
+  // Entrando in mobile il drawer parte chiuso, tornando a desktop la sidebar è visibile
+  drawerOpen.value = !e.matches
+}
+
+onMounted(() => {
+  document.addEventListener('click', onDocClick)
+  document.addEventListener('keydown', onKeydown)
+  mql?.addEventListener('change', onMobileChange)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', onDocClick)
+  document.removeEventListener('keydown', onKeydown)
+  mql?.removeEventListener('change', onMobileChange)
+})
+
+watch(
+  () => route.path,
+  () => {
+    flyoutGroup.value = null
+    if (isMobile.value) drawerOpen.value = false
+  }
+)
+
+watch(isMini, () => {
+  flyoutGroup.value = null
+})
 </script>
 
 <style lang="scss" scoped>
@@ -308,7 +375,7 @@ const toggleDrawer = () => {
   border: none;
   background: transparent;
   width: 100%;
-  box-sizing: border-box; // <-- fix overflow-x: senza questo i <a> sforavano di 28px (padding in content-box)
+  box-sizing: border-box; // fix overflow-x: senza questo i <a> sforavano di 28px (padding in content-box)
   font: inherit;
   cursor: pointer;
   text-align: left;
@@ -419,6 +486,7 @@ const toggleDrawer = () => {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
+// Il flyout è montato solo quando serve (v-else-if), quindi è visibile di default
 .submenu-flyout {
   position: absolute;
   left: 100%;
@@ -432,13 +500,9 @@ const toggleDrawer = () => {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(4px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-  pointer-events: none;
   z-index: 110;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  animation: flyout-in 0.15s ease;
 
   &__title {
     font-size: 12px;
@@ -452,6 +516,17 @@ const toggleDrawer = () => {
   .submenu-item {
     border-left: none;
     padding: 8px 10px;
+  }
+}
+
+@keyframes flyout-in {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -491,7 +566,7 @@ const toggleDrawer = () => {
   }
 }
 
-// Mobile breakpoint
+// Mobile breakpoint (tenere allineato a MOBILE_QUERY nello script)
 @media (max-width: 768px) {
   .icon-btn--mobile-only {
     display: inline-flex;
@@ -513,6 +588,10 @@ const toggleDrawer = () => {
   .content,
   .content--mini {
     margin-left: 0;
+  }
+
+  .collapse-btn {
+    display: none;
   }
 
   .tooltip,
