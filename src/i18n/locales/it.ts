@@ -229,8 +229,62 @@ export default {
         '@open / @close': 'Il menu si apre o si chiude',
         '#default': 'Contenuto dello slot default',
         '#item': 'Contenuto personalizzato della voce'
-      }
-    }
+      },
+    },
+  },
+  selectDocs: {
+        intro: 'Componente select flessibile con varianti, colori custom, effetti focus, icone, loading, clearable e supporto per hint ed errori.',
+        importComponent: 'Importa il componente Select nel File.vue:',
+        basicDescription: 'VxSelect permette di selezionare un’opzione da una lista. Le opzioni possono essere valori semplici oppure oggetti con label e value personalizzabili tramite optionLabel e optionValue.',
+        optionMappingDescription: 'Quando usi oggetti puoi controllare quale proprietà viene mostrata e quale valore viene salvato tramite optionLabel e optionValue.',
+        searchDescription: 'Di default il campo supporta la ricerca testuale. Digitando nel campo vengono filtrate le opzioni disponibili.',
+        multipleDescription: 'Con multiple il valore del v-model diventa un array. Le selezioni vengono mostrate come chip tramite useChips.',
+        chipsDescription: 'Le chip della selezione multipla possono essere disabilitate con useChips. In quel caso le etichette selezionate vengono mostrate come testo separato da virgola.',
+        clearableDescription: 'Mostra una X per cancellare rapidamente il valore selezionato.',
+        remoteDescription: 'Passando url il componente carica automaticamente le opzioni da remoto. Supporta ricerca remota, paginazione e caricamento infinito tramite scroll.',
+        remoteNote: 'Se l’array di opzioni non si trova direttamente in res.data o res.data.content, usa dataPath per indicare il percorso nella risposta. L’API Rick and Morty restituisce info e results, quindi serve dataPath="results". Se l’endpoint richiede autenticazione, passa il bearer token con token.',
+        loadingDescription: 'loading mostra lo spinner e blocca l’interazione. Durante il caricamento remoto viene gestito automaticamente anche isLoading.',
+        slotDescription: 'Puoi personalizzare il rendering delle opzioni tramite lo slot option.',
+        styleDescription: 'Condivide lo stesso wrapper di VxInput: label, hint, error, colori, varianti, effetti focus, icone, radius e dimensioni.',
+        iconsDescription: 'Supporta icone tramite la prop icon oppure gli slot icon-left e icon-right.',
+        eventsDescription: 'Il componente emette update:modelValue, focus, blur, clear, open, close e filter.',
+        labels: {
+          selectFruit: 'Seleziona un frutto', country: 'Nazione', user: 'Utente',
+          searchFramework: 'Cerca framework', technologies: 'Tecnologie', clear: 'Clear',
+          searchCharacters: 'Cerca personaggi', loading: 'Caricamento...',
+          category: 'Categoria', chooseCategory: 'Scegli una categoria',
+          requiredField: 'Campo obbligatorio'
+        },
+        options: {
+          apple: 'Mela', banana: 'Banana', orange: 'Arancia',
+          italy: 'Italia', france: 'Francia', spain: 'Spagna',
+          admin: 'Admin', user: 'Utente', one: 'Uno', two: 'Due', three: 'Tre'
+        },
+        sections: {
+          setup: 'Setup', basic: 'Base', optionMapping: 'Option label e value',
+          searchable: 'Ricerca', multiple: 'Selezione multipla', chips: 'Chip',
+          clearable: 'Clearable', remote: 'Opzioni remote', loading: 'Loading',
+          slot: 'Slot custom per le opzioni', style: 'Chrome e stile',
+          icons: 'Icone', events: 'Eventi', available: 'Opzioni disponibili (VxSelect)'
+        },
+        codeLabels: {
+          category: 'Categoria', description: 'Descrizione', importComponent: 'Importa il componente Select',
+          apple: 'Mela', banana: 'Banana', orange: 'Arancia'
+        },
+        propsColumns: { name: 'Prop', type: 'Tipo', default: 'Default', description: 'Descrizione' },
+        props: {
+          modelValue: 'Valore selezionato usato con v-model', options: 'Lista delle opzioni locali',
+          optionLabel: 'Proprietà o funzione per ricavare la label', optionValue: 'Proprietà o funzione per ricavare il valore',
+          emitValue: 'Emette il valore risolto invece dell’intero oggetto', multiple: 'Permette selezioni multiple',
+          useChips: 'Mostra le selezioni multiple come chip', searchable: 'Abilita la ricerca interna',
+          clearable: 'Mostra il pulsante per cancellare', url: 'Endpoint remoto per caricare le opzioni',
+          searchParam: 'Parametro query usato per la ricerca remota', rowsPerPage: 'Numero di elementi caricati per pagina',
+          extraParams: 'Parametri extra per le richieste remote', transformOption: 'Trasforma ogni elemento remoto prima del rendering',
+          label: 'Label sopra il campo', hint: 'Testo di supporto', error: 'Stato di errore',
+          errorMessage: 'Messaggio di errore', variant: 'Variante visiva', size: 'Dimensione',
+          color: 'Colore accent e focus', colors: 'Override dei colori custom', focusEffect: 'Effetto focus',
+          disabled: 'Disabilita il campo', loading: 'Mostra lo spinner', block: 'Occupa tutta la larghezza'
+        }
   },
   inputDocs: {
         intro: 'Componente input flessibile con varianti, colori custom, effetti focus, icone, loading, clearable, textarea e supporto per hint ed errori. Le varianti dedicate coprono anche date, range, ora, data+ora, colore e slider.',

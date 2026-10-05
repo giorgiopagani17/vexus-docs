@@ -229,8 +229,62 @@ export default {
         '@open / @close': 'Menu opened or closed',
         '#default': 'Default slot content',
         '#item': 'Custom item content'
-      }
-    }
+      },
+    },
+  },
+  selectDocs: {
+        intro: 'Flexible select component with custom variants, colors, focus effects, icons, loading, clearable support, hints, and errors.',
+        importComponent: 'Import the Select component in File.vue:',
+        basicDescription: 'VxSelect lets you choose an option from a list. Options can be primitive values or objects with label and value mapped through optionLabel and optionValue.',
+        optionMappingDescription: 'When using objects, optionLabel and optionValue control which property is displayed and which value is stored.',
+        searchDescription: 'Text search is enabled by default. Typing in the field filters the available options.',
+        multipleDescription: 'With multiple, the v-model value becomes an array. Selections are displayed as chips through useChips.',
+        chipsDescription: 'Multiple-selection chips can be disabled with useChips. Selected labels are then shown as comma-separated text.',
+        clearableDescription: 'Shows an X to quickly clear the selected value.',
+        remoteDescription: 'When url is provided, the component loads options remotely. It supports remote search, pagination, and infinite scrolling.',
+        remoteNote: 'If the options array is not directly in res.data or res.data.content, use dataPath to point to its path in the response. The Rick and Morty API returns info and results, so use dataPath="results". If authentication is required, pass the bearer token through token.',
+        loadingDescription: 'loading shows a spinner and blocks interaction. During remote loading, isLoading is also managed automatically.',
+        slotDescription: 'Customize option rendering through the option slot.',
+        styleDescription: 'It shares the VxInput wrapper: label, hint, error, colors, variants, focus effects, icons, radius, and sizes.',
+        iconsDescription: 'Supports icons through the icon prop or the icon-left and icon-right slots.',
+        eventsDescription: 'The component emits update:modelValue, focus, blur, clear, open, close, and filter.',
+        labels: {
+          selectFruit: 'Select a fruit', country: 'Country', user: 'User',
+          searchFramework: 'Search frameworks', technologies: 'Technologies', clear: 'Clear',
+          searchCharacters: 'Search characters', loading: 'Loading...',
+          category: 'Category', chooseCategory: 'Choose a category',
+          requiredField: 'Required field'
+        },
+        options: {
+          apple: 'Apple', banana: 'Banana', orange: 'Orange',
+          italy: 'Italy', france: 'France', spain: 'Spain',
+          admin: 'Admin', user: 'User', one: 'One', two: 'Two', three: 'Three'
+        },
+        sections: {
+          setup: 'Setup', basic: 'Basic', optionMapping: 'Option label and value',
+          searchable: 'Searchable', multiple: 'Multiple selection', chips: 'Chips',
+          clearable: 'Clearable', remote: 'Remote options', loading: 'Loading',
+          slot: 'Custom option slot', style: 'Chrome and style',
+          icons: 'Icons', events: 'Events', available: 'Available options (VxSelect)'
+        },
+        codeLabels: {
+          category: 'Category', description: 'Description', importComponent: 'Import the Select component',
+          apple: 'Apple', banana: 'Banana', orange: 'Orange'
+        },
+        propsColumns: { name: 'Prop', type: 'Type', default: 'Default', description: 'Description' },
+        props: {
+          modelValue: 'Selected value used with v-model', options: 'Local options list',
+          optionLabel: 'Property or function used to derive the label', optionValue: 'Property or function used to derive the value',
+          emitValue: 'Emits the resolved value instead of the entire object', multiple: 'Allows multiple selections',
+          useChips: 'Displays multiple selections as chips', searchable: 'Enables internal search',
+          clearable: 'Shows a clear button', url: 'Remote endpoint for loading options',
+          searchParam: 'Query parameter used for remote search', rowsPerPage: 'Number of items loaded per page',
+          extraParams: 'Extra parameters for remote requests', transformOption: 'Transforms each remote item before rendering',
+          label: 'Label displayed above the field', hint: 'Supporting text', error: 'Error state',
+          errorMessage: 'Error message', variant: 'Visual variant', size: 'Size',
+          color: 'Accent and focus color', colors: 'Custom color overrides', focusEffect: 'Focus effect',
+          disabled: 'Disables the field', loading: 'Shows the spinner', block: 'Uses the full width'
+        }
   },
   inputDocs: {
         intro: 'Flexible input component with custom variants and colors, focus effects, icons, loading, clearable, textarea, hints, and errors. Dedicated variants also cover dates, ranges, time, date-time, color, and sliders.',

@@ -2,58 +2,55 @@
   <div class="docs-page">
     <div class="docs-header">
       <h1>VxSelect</h1>
-      <p class="subtitle">
-        Componente select flessibile con varianti, colori custom, focus effect,
-        icone, stato loading, clearable e supporto a hint ed errori.
-      </p>
+      <p class="subtitle">{{ $t('selectDocs.intro') }}</p>
     </div>
 
     <!-- Setup -->
     <section class="docs-section">
-        <h2>Setup</h2>
-        <p>Importa il componente Select nel <code>File.vue</code>:</p>
-        <DesignCodeBlock :code="setupCode" />
+        <h2>{{ $t('selectDocs.sections.setup') }}</h2>
+        <p>{{ $t('selectDocs.importComponent') }}</p>
+        <DesignCodeBlock :code="codeExamples.setupCode" />
         </section>
 
         <!-- Basic -->
         <section class="docs-section">
-        <h2>Basic</h2>
+        <h2>{{ $t('selectDocs.sections.basic') }}</h2>
         <p>
-            <code>VxSelect</code> permette di selezionare un'opzione da una lista.
-            Le opzioni possono essere semplici valori oppure oggetti con label/value
-            personalizzabili tramite <code>optionLabel</code> e <code>optionValue</code>.
+            {{ $t('selectDocs.basicDescription') }}
         </p>
 
         <div class="example-grid">
             <VxSelect
             v-model="selectExamples.basic"
             :options="[
-                { label: 'Apple', value: 'apple' },
-                { label: 'Banana', value: 'banana' },
-                { label: 'Orange', value: 'orange' }
+                { label: $t('selectDocs.options.apple'), value: 'apple' },
+                { label: $t('selectDocs.options.banana'), value: 'banana' },
+                { label: $t('selectDocs.options.orange'), value: 'orange' }
             ]"
-            placeholder="Seleziona un frutto"
+            :placeholder="$t('selectDocs.labels.selectFruit')"
             />
 
             <VxSelect
             v-model="selectExamples.simple"
             color="#44C88E"
-            :options="['Italia', 'Francia', 'Spagna']"
-            placeholder="Nazione"
+            :options="[
+              $t('selectDocs.options.italy'),
+              $t('selectDocs.options.france'),
+              $t('selectDocs.options.spain')
+            ]"
+            :placeholder="$t('selectDocs.labels.country')"
             />
         </div>
 
-        <DesignCodeBlock :code="basicCode" />
+        <DesignCodeBlock :code="codeExamples.basicCode" />
         </section>
 
         <!-- Option mapping -->
         <section class="docs-section">
-        <h2>Option label e value</h2>
+        <h2>{{ $t('selectDocs.sections.optionMapping') }}</h2>
 
         <p>
-            Quando usi oggetti puoi controllare quale proprietà viene mostrata e quale
-            valore viene salvato tramite <code>optionLabel</code> e
-            <code>optionValue</code>.
+            {{ $t('selectDocs.optionMappingDescription') }}
         </p>
 
         <div class="example-grid">
@@ -66,20 +63,19 @@
             optionLabel="name"
             optionValue="id"
             emitValue
-            placeholder="Utente"
+            :placeholder="$t('selectDocs.labels.user')"
             />
         </div>
 
-        <DesignCodeBlock :code="optionCode" />
+        <DesignCodeBlock :code="codeExamples.optionCode" />
         </section>
 
         <!-- Search -->
         <section class="docs-section">
-        <h2>Searchable</h2>
+        <h2>{{ $t('selectDocs.sections.searchable') }}</h2>
 
         <p>
-            Di default il campo supporta la ricerca testuale. Digitando nel campo
-            vengono filtrate le opzioni disponibili.
+            {{ $t('selectDocs.searchDescription') }}
         </p>
 
         <div class="example-grid">
@@ -92,21 +88,19 @@
                 'Svelte'
             ]"
             searchable
-            placeholder="Cerca framework"
+            :placeholder="$t('selectDocs.labels.searchFramework')"
             />
         </div>
 
-        <DesignCodeBlock :code="searchCode" />
+        <DesignCodeBlock :code="codeExamples.searchCode" />
         </section>
 
         <!-- Multiple -->
         <section class="docs-section">
-        <h2>Multiple</h2>
+        <h2>{{ $t('selectDocs.sections.multiple') }}</h2>
 
         <p>
-            Con <code>multiple</code> il valore del <code>v-model</code> diventa un
-            array. Le selezioni vengono mostrate come chip tramite
-            <code>useChips</code>.
+            {{ $t('selectDocs.multipleDescription') }}
         </p>
 
         <div class="example-col">
@@ -119,21 +113,19 @@
                 { label:'Angular', value:'angular' }
             ]"
             emitValue
-            placeholder="Tecnologie"
+            :placeholder="$t('selectDocs.labels.technologies')"
             />
         </div>
 
-        <DesignCodeBlock :code="multipleCode" />
+        <DesignCodeBlock :code="codeExamples.multipleCode" />
         </section>
 
         <!-- Chips -->
         <section class="docs-section">
-        <h2>Chips</h2>
+        <h2>{{ $t('selectDocs.sections.chips') }}</h2>
 
         <p>
-            Le chip della selezione multipla possono essere disabilitate con
-            <code>useChips</code>. In quel caso le etichette selezionate vengono
-            mostrate come semplice testo separato da virgola.
+            {{ $t('selectDocs.chipsDescription') }}
         </p>
 
         <div class="example-grid">
@@ -145,46 +137,43 @@
             />
         </div>
 
-        <DesignCodeBlock :code="chipsCode" />
+        <DesignCodeBlock :code="codeExamples.chipsCode" />
         </section>
 
         <!-- Clear -->
         <section class="docs-section">
-        <h2>Clearable</h2>
+        <h2>{{ $t('selectDocs.sections.clearable') }}</h2>
 
         <p>
-            Mostra una X per cancellare rapidamente il valore selezionato.
+            {{ $t('selectDocs.clearableDescription') }}
         </p>
 
         <div class="example-grid">
             <VxSelect
             v-model="selectExamples.clearable"
             clearable
-            :options="['Uno','Due','Tre']"
-            placeholder="Clear"
+            :options="[
+              $t('selectDocs.options.one'),
+              $t('selectDocs.options.two'),
+              $t('selectDocs.options.three')
+            ]"
+            :placeholder="$t('selectDocs.labels.clear')"
             />
         </div>
 
-        <DesignCodeBlock :code="clearCode" />
+        <DesignCodeBlock :code="codeExamples.clearCode" />
         </section>
 
         <!-- Remote -->
         <section class="docs-section">
-        <h2>Remote options</h2>
+        <h2>{{ $t('selectDocs.sections.remote') }}</h2>
 
         <p>
-            Passando <code>url</code> il componente carica automaticamente le opzioni
-            da remoto. Supporta ricerca remota, paginazione e caricamento infinito
-            tramite scroll.
+            {{ $t('selectDocs.remoteDescription') }}
         </p>
 
         <p class="section-note">
-            Se l'array di opzioni non si trova direttamente in <code>res.data</code>
-            o <code>res.data.content</code>, usa <code>dataPath</code> per indicare
-            il percorso (dot notation) all'interno della risposta. Ad esempio l'API
-            Rick and Morty restituisce <code>{ info: {...}, results: [...] }</code>,
-            quindi serve <code>dataPath="results"</code>. Se l'endpoint richiede
-            autenticazione, passa il bearer token con la prop <code>token</code>.
+            {{ $t('selectDocs.remoteNote') }}
         </p>
 
         <div class="example-grid">
@@ -196,21 +185,19 @@
               optionValue="id"
               searchParam="name"
               emitValue
-              placeholder="Cerca personaggi"
+              :placeholder="$t('selectDocs.labels.searchCharacters')"
             />
         </div>
 
-        <DesignCodeBlock :code="remoteCode" />
+        <DesignCodeBlock :code="codeExamples.remoteCode" />
         </section>
 
         <!-- Loading -->
         <section class="docs-section">
-        <h2>Loading</h2>
+        <h2>{{ $t('selectDocs.sections.loading') }}</h2>
 
         <p>
-            <code>loading</code> mostra lo spinner e blocca l'interazione.
-            Durante il caricamento remoto viene gestito automaticamente anche
-            <code>isLoading</code>.
+            {{ $t('selectDocs.loadingDescription') }}
         </p>
 
         <div class="example-grid">
@@ -218,28 +205,27 @@
             v-model="selectExamples.loading"
             loading
             :options="[]"
-            placeholder="Caricamento..."
+            :placeholder="$t('selectDocs.labels.loading')"
             />
         </div>
 
-        <DesignCodeBlock :code="loadingCode" />
+        <DesignCodeBlock :code="codeExamples.loadingCode" />
         </section>
 
         <!-- Slots -->
         <section class="docs-section">
-        <h2>Custom option slot</h2>
+        <h2>{{ $t('selectDocs.sections.slot') }}</h2>
 
         <p>
-            Puoi personalizzare il rendering delle opzioni tramite lo slot
-            <code>option</code>.
+            {{ $t('selectDocs.slotDescription') }}
         </p>
 
         <div class="example-col">
             <VxSelect
             v-model="selectExamples.slot"
             :options="[
-                { label:'Admin', value:'admin' },
-                { label:'User', value:'user' }
+                { label: $t('selectDocs.options.admin'), value:'admin' },
+                { label: $t('selectDocs.options.user'), value:'user' }
             ]"
             >
             <template #option="{ option, selected }">
@@ -249,72 +235,63 @@
             </VxSelect>
         </div>
 
-        <DesignCodeBlock :code="slotCode" />
+        <DesignCodeBlock :code="codeExamples.slotCode" />
         </section>
 
         <!-- Chrome -->
         <section class="docs-section">
-        <h2>Chrome e stile</h2>
+        <h2>{{ $t('selectDocs.sections.style') }}</h2>
 
         <p>
-            Condivide lo stesso wrapper di <code>VxInput</code>: label, hint,
-            error, colori, varianti, focus effect, icone, radius e dimensioni.
+            {{ $t('selectDocs.styleDescription') }}
         </p>
 
         <div class="example-grid">
             <VxSelect
             v-model="selectExamples.style"
-            label="Categoria"
-            hint="Scegli una categoria"
+            :label="$t('selectDocs.labels.category')"
+            :hint="$t('selectDocs.labels.chooseCategory')"
             color="#7c3aed"
-            :options="['A','B','C']"
+            :options="['A', 'B', 'C']"
             />
 
             <VxSelect
             v-model="selectExamples.error"
             error
-            errorMessage="Campo obbligatorio"
+            :errorMessage="$t('selectDocs.labels.requiredField')"
             :options="['A','B']"
             />
         </div>
 
-        <DesignCodeBlock :code="styleCode" />
+        <DesignCodeBlock :code="codeExamples.styleCode" />
         </section>
 
         <!-- Icons -->
         <section class="docs-section">
-        <h2>Icone</h2>
+        <h2>{{ $t('selectDocs.sections.icons') }}</h2>
 
         <p>
-            Supporta icone tramite prop <code>icon</code> oppure tramite gli slot
-            <code>icon-left</code> e <code>icon-right</code>.
+            {{ $t('selectDocs.iconsDescription') }}
         </p>
 
-        <DesignCodeBlock :code="iconCode" />
+        <DesignCodeBlock :code="codeExamples.iconCode" />
         </section>
 
         <!-- Events -->
         <section class="docs-section">
-        <h2>Events</h2>
+        <h2>{{ $t('selectDocs.sections.events') }}</h2>
 
         <p>
-            Il componente emette:
-            <code>update:modelValue</code>,
-            <code>focus</code>,
-            <code>blur</code>,
-            <code>clear</code>,
-            <code>open</code>,
-            <code>close</code>,
-            <code>filter</code>.
+            {{ $t('selectDocs.eventsDescription') }}
         </p>
 
-        <DesignCodeBlock :code="eventsCode" />
+        <DesignCodeBlock :code="codeExamples.eventsCode" />
         </section>
 
 
         <!-- Props -->
         <section class="docs-section">
-        <h2>Opzioni disponibili (VxSelect)</h2>
+        <h2>{{ $t('selectDocs.sections.available') }}</h2>
 
         <DesignPropsTable
         :columns="propsColumns"
@@ -327,11 +304,12 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
 import VxSelect from '@/Library/components/Select/VxSelect.vue'
 import DesignCodeBlock from '@/Docs/components/Utils/DesignCodeBlock.vue'
 import DesignPropsTable from '@/Docs/components/Utils/DesignPropsTable.vue'
-import { propsColumns, propsRows } from '@/Docs/metadata/props/Select/selectGeneralProps'
+import { getSelectMetadata } from '@/Docs/metadata/props/Select/selectGeneralProps'
 import {
   setupCode,
   iconCode,
@@ -345,9 +323,15 @@ import {
   remoteCode,
   loadingCode,
   slotCode,
-  styleCode
+  styleCode,
+  getSelectCodeExamples
 } from '@/Docs/metadata/code/Select/selectCodeExamples'
 
+const { t, tm } = useI18n()
+const metadata = computed(() => getSelectMetadata(t))
+const propsColumns = computed(() => metadata.value.columns)
+const propsRows = computed(() => metadata.value.rows)
+const codeExamples = computed(() => getSelectCodeExamples(tm))
 const selectExamples = reactive({
   basic: '',
   simple: '',

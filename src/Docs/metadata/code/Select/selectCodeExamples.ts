@@ -88,3 +88,24 @@ export const eventsCode = `<VxSelect
   @close="onClose"
   @filter="onFilter"
 />`
+
+export const getSelectCodeExamples = (tm) => {
+  const labels = tm('selectDocs.codeLabels')
+  const source = {
+    setupCode, basicCode, optionCode, searchCode, multipleCode, chipsCode,
+    clearCode, remoteCode, loadingCode, slotCode, styleCode, iconCode, eventsCode
+  }
+  const replacements = {
+    Apple: labels.apple,
+    Banana: labels.banana,
+    Orange: labels.orange,
+    Categoria: labels.category,
+    Descrizione: labels.description,
+    'Importa il componente Select': labels.importComponent
+  }
+  return Object.fromEntries(Object.entries(source).map(([key, value]) => {
+    let localized = value
+    for (const [from, to] of Object.entries(replacements)) localized = localized.split(from).join(to)
+    return [key, localized]
+  }))
+}

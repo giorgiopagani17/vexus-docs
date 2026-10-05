@@ -163,3 +163,16 @@ export const propsRows = [
         desc:'Occupa tutta la larghezza'
     }
 ]
+
+export const getSelectMetadata = (t) => ({
+  columns: [
+    { key: 'name', label: t('selectDocs.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('selectDocs.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('selectDocs.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('selectDocs.propsColumns.description'), class: 'prop-desc' },
+  ],
+  rows: propsRows.map(row => ({
+    ...row,
+    desc: t(`selectDocs.props.${row.name}`, row.desc),
+  })),
+})
