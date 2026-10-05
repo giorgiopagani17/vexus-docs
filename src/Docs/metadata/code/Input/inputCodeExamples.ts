@@ -39,13 +39,15 @@ export const labelHintCode = `<VxInput
   block
 />`
 
-export const getInputCodeExamples = (tm: (key: string) => unknown) => {
-  const labels = tm('inputDocs.codeLabels') as Record<string, string>
+export const getInputCodeExamples = (
+  tm: (key: string) => unknown,
+  namespace = 'inputDocs',
+) => {
+  const labels = tm(`${namespace}.codeLabels`) as Record<string, string>
   const source = {
     setupCode, variantCode, typeCode, colorCode, sizeCode, labelHintCode, iconCode,
     stateCode, accessCode, layoutCode, focusEffectCode, textareaCode, colorsOverrideCode,
-    eventsCode, datePickerCode, dateRangeCode, dateTimeCode, dateTimeRangeCode,
-    timePickerCode, colorPickerCode, rangeCode, checkboxCode, radioCode
+    eventsCode
   }
   const replacements: Record<string, string> = {
     'Outline (default)': labels.outlineDefault, Outline: labels.outline, Ghost: labels.ghost,
@@ -163,175 +165,4 @@ export const eventsCode = `<VxInput
   @blur="onBlur"
   @clear="onClear"
   @input="onInput"
-/>`
-
-export const datePickerCode = `import VxDate from '@vexus'
-
-<VxDate v-model="date" placeholder="Seleziona una data" />
-
-<VxDate
-  v-model="date"
-  clearable
-  color="#22c55e"
-  placeholder="Con clear"
-/>
-
-<VxDate
-  v-model="date"
-  min="2026-01-01"
-  max="2026-12-31"
-  placeholder="Solo 2026"
-/>
-
-<VxDate
-  v-model="birthDate"
-  label="Data di nascita"
-  hint="Formato gg/mm/aaaa"
-  block
-/>`
-
-export const dateRangeCode = `import VxDateRange from '@vexus'
-
-<VxDateRange v-model="range" placeholder="Seleziona un intervallo" />
-
-<VxDateRange
-  v-model="range"
-  clearable
-  min="2026-01-01"
-  max="2026-12-31"
-/>
-
-<VxDateRange v-model="range" rangeSeparator="→" />
-`
-
-export const dateTimeCode = `import VxDateTime from '@vexus'
-
-<VxDateTime v-model="value" />
-
-<VxDateTime
-  v-model="value"
-  clearable
-  :minuteStep="15"
-/>
-
-<VxDateTime
-  v-model="value"
-  separator=" - "
-  timeFormat="HH.mm"
-/>
-`
-
-export const dateTimeRangeCode = `import VxDateTimeRange from '@vexus'
-
-<VxDateTimeRange v-model="range" placeholder="Seleziona data e ora di inizio/fine" />
-
-<VxDateTimeRange
-  v-model="range"
-  clearable
-  :minuteStep="15"
-/>
-
-<VxDateTimeRange
-  v-model="range"
-  startLabel="Check-in"
-  endLabel="Check-out"
-/>
-`
-
-export const timePickerCode = `import VxTime from '@vexus'
-
-<VxTime v-model="time" placeholder="Seleziona un orario" />
-
-<VxTime v-model="time" clearable color="#f97316" />
-
-<VxTime
-  v-model="time"
-  :minuteStep="15"
-  placeholder="Step 15 min"
-/>`
-
-export const colorPickerCode = `import VxColorPicker from '@vexus'
-
-<VxColorPicker v-model="color" />
-
-<VxColorPicker v-model="color" clearable />
-
-<VxColorPicker v-model="color" :showHex="false" />`
-
-export const rangeCode = `import VxRange from '@vexus'
-
-<VxRange v-model="value" block />
-
-<VxRange
-  v-model="value"
-  :min="0"
-  :max="10"
-  :step="1"
-  color="#22c55e"
-  block
-/>
-
-<VxRange v-model="value" :showValue="false" color="#f97316" block />`
-
-export const checkboxCode = `import VxCheckbox from '@vexus'
-
-<VxCheckbox
-  v-model="accepted"
-  label="Accetto i termini e condizioni"
-/>
-
-<VxCheckbox
-  v-model="selected"
-  value="a"
-  label="Opzione A"
-/>
-
-<VxCheckbox
-  v-model="selected"
-  value="b"
-  label="Opzione B"
-/>
-
-<VxCheckbox
-  v-model="accepted"
-  error
-  errorMessage="Devi accettare per continuare"
-  label="Checkbox con errore"
-/>
-
-<VxCheckbox
-  :modelValue="false"
-  indeterminate
-  label="Stato indeterminato"
-/>
-
-<VxCheckbox
-  v-model="loading"
-  loading
-  label="Salvataggio in corso..."
-/>`
-
-export const radioCode = `import VxRadio from '@vexus'
-
-<VxRadio
-  v-model="plan"
-  name="plan"
-  value="monthly"
-  label="Mensile"
-/>
-
-<VxRadio
-  v-model="plan"
-  name="plan"
-  value="yearly"
-  label="Annuale"
-/>
-
-<VxRadio
-  v-model="choice"
-  name="choice"
-  value="yes"
-  label="Radio con errore"
-  error
-  errorMessage="Seleziona un'opzione per continuare"
 />`

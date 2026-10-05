@@ -52,6 +52,26 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/input/others',
+    children: [
+      {
+        path: '',
+        component: () => import('@/Docs/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/Docs/pages/components/Input/VxInputOthersDocs.vue') }],
+      }
+    ]
+  },
+  {
+    path: '/input/pickers',
+    children: [
+      {
+        path: '',
+        component: () => import('@/Docs/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/Docs/pages/components/Input/VxInputPickersDocs.vue') }],
+      }
+    ]
+  },
+  {
     path: '/select',
     children: [
       {

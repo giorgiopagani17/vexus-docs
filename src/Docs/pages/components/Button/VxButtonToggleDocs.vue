@@ -116,16 +116,3 @@ const formatOptions = computed(() => [
 ])
 const abcOptions = ['A', 'B', 'C']
 </script>
-
-<style lang="scss" scoped>
-.docs-page { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
-.docs-header { margin-bottom: 48px; }
-.docs-header h1 { font-size: 36px; font-weight: 800; margin: 0 0 12px; color: $primary; }
-.subtitle { font-size: 15px; line-height: 1.6; opacity: 0.65; margin: 0; }
-.docs-section { margin-bottom: 56px; }
-.docs-section h2 { font-size: 20px; font-weight: 700; margin: 0 0 8px; }
-.docs-section > p { font-size: 14px; line-height: 1.6; opacity: 0.65; margin: 0 0 20px; }
-.example-row { display: flex; flex-wrap: wrap; gap: 10px; padding: 24px; border-radius: 16px; border: 1px solid rgba($primary, 0.12); background: rgba(255, 255, 255, 0.02); margin-bottom: 16px; }
-.example-value { align-self: center; font-family: monospace; font-size: 13px; opacity: 0.65; }
-@media (max-width: 600px) { .docs-page { padding: 0; } }
-</style>
