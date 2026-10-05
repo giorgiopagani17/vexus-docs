@@ -86,3 +86,21 @@ export const hookRequireAdultCode = `const invalidFields = await validate({
 // invalidFields === ['cf']
 // error.value === 'minorUserNotAllowed'
 // minor.value === true`
+
+export const getFiscalCodeCodeExamples = (tm) => {
+  const labels = tm('apiDocs.cfDocs.codeLabels')
+  const source = { setupCode, generateCode, validateFormatCode, decodeCode, hookBasicCode, hookExistsCode, hookRequireAdultCode }
+  const replacements = {
+    'caratteri': labels.characters, 'pattern corretto': labels.pattern,
+    'il 16° carattere torna': labels.checksum, 'entrambe le verifiche insieme': labels.bothChecks,
+    'checksum sbagliato': labels.badChecksum, 'Su un CF con formato non valido, ritorna null': labels.invalidReturnsNull,
+    'nessun errore': labels.noError, 'L’hook non fa ipotesi sul networking del progetto: la verifica di': labels.hookComment,
+    'esistenza è iniettata da chi lo usa.': labels.existsComment,
+    'minorenne': labels.minor, 'se il CF risulta già registrato': labels.existsResult,
+  }
+  return Object.fromEntries(Object.entries(source).map(([key, value]) => {
+    let localized = value
+    for (const [from, to] of Object.entries(replacements)) localized = localized.split(from).join(to)
+    return [key, localized]
+  }))
+}

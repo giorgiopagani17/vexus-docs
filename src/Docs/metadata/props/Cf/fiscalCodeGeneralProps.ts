@@ -138,3 +138,18 @@ export const validateReturnRows = [
     desc: 'true se il CF/data di nascita validati corrispondono a un minorenne (calcolato anche quando la validazione ha successo)',
   },
 ]
+
+export const getFiscalCodeMetadata = (t) => ({
+  columns: [
+    { key: 'name', label: t('apiDocs.cfDocs.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('apiDocs.cfDocs.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('apiDocs.cfDocs.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('apiDocs.cfDocs.propsColumns.description'), class: 'prop-desc' },
+  ],
+  generateInputRows: generateInputRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
+  decodeOutputRows: decodeOutputRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
+  functionsRows: functionsRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
+  hookOptionsRows: hookOptionsRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
+  validateInputRows: validateInputRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
+  validateReturnRows: validateReturnRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
+})

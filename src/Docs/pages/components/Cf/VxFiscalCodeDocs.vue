@@ -2,42 +2,25 @@
   <div class="docs-page">
     <div class="docs-header">
       <h1>VxFiscalCode</h1>
-      <p class="subtitle">
-        Libreria a zero dipendenze per generare e validare il Codice Fiscale
-        italiano (algoritmo implementato internamente, nessuna libreria
-        esterna), più un hook Vue riutilizzabile tra progetti diversi per
-        validare CF contro dati anagrafici.
-      </p>
+      <p class="subtitle">{{ $t('apiDocs.cfDocs.intro') }}</p>
     </div>
 
     <!-- Setup -->
     <section class="docs-section">
-      <h2>Setup</h2>
-      <p>
-        Un unico modulo, <code>useVxFiscalCode.ts</code>, contiene sia
-        l'implementazione dell'algoritmo del Codice Fiscale italiano (generazione,
-        validazione formale, controllo del carattere di controllo e decodifica),
-        sia l'hook Vue <code>VxUseFiscalCodeValidation</code> che utilizza queste
-        funzioni per validare un Codice Fiscale rispetto ai dati anagrafici forniti.
-      </p>
-      <DesignCodeBlock :code="setupCode" />
+      <h2>{{ $t('apiDocs.cfDocs.sections.setup') }}</h2>
+      <p>{{ $t('apiDocs.cfDocs.setupDescription') }}</p>
+      <DesignCodeBlock :code="codeExamples.setupCode" />
     </section>
 
     <!-- Generate -->
     <section class="docs-section">
-      <h2>Generare un Codice Fiscale</h2>
-      <p>
-        <code>VxGenerateFiscalCode(input)</code> calcola il CF completo
-        (16 caratteri, checksum incluso) da nome, cognome, sesso, data di
-        nascita e codice catastale del comune di nascita.
-        <code>birthplaceCode</code> va sempre fornito da chi chiama: la
-        libreria non include il database dei comuni italiani.
-      </p>
+      <h2>{{ $t('apiDocs.cfDocs.sections.generate') }}</h2>
+      <p>{{ $t('apiDocs.cfDocs.generateDescription') }}</p>
 
       <div class="example-col">
         <div class="example-row">
-          <VxInput v-model="generateForm.name" label="Nome" placeholder="Mario" block />
-          <VxInput v-model="generateForm.surname" label="Cognome" placeholder="Rossi" block />
+          <VxInput v-model="generateForm.name" :label="$t('apiDocs.cfDocs.labels.name')" :placeholder="$t('apiDocs.cfDocs.labels.mario')" block />
+          <VxInput v-model="generateForm.surname" :label="$t('apiDocs.cfDocs.labels.surname')" :placeholder="$t('apiDocs.cfDocs.labels.rossi')" block />
         </div>
 
         <div class="example-row">
@@ -46,23 +29,23 @@
         </div>
 
         <div class="example-row">
-          <VxDate v-model="generateForm.birthdayDate" label="Data di nascita" block />
+          <VxDate v-model="generateForm.birthdayDate" :label="$t('apiDocs.cfDocs.labels.birthDate')" block />
           <VxInput
             v-model="generateForm.birthplaceCode"
-            label="Codice catastale"
-            hint="es. H501 per Roma"
+            :label="$t('apiDocs.cfDocs.labels.birthplaceCode')"
+            :hint="$t('apiDocs.cfDocs.labels.birthplaceHint')"
             placeholder="H501"
             block
           />
         </div>
 
         <div class="docs-result" :class="{ 'docs-result--error': !generatedCF }">
-          <span class="docs-result-label">Codice Fiscale generato</span>
+          <span class="docs-result-label">{{ $t('apiDocs.cfDocs.labels.generated') }}</span>
           <span class="docs-result-value">{{ generatedCF || '—' }}</span>
         </div>
       </div>
 
-      <DesignCodeBlock :code="generateCode" />
+      <DesignCodeBlock :code="codeExamples.generateCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -74,29 +57,23 @@
 
     <!-- Validate -->
     <section class="docs-section">
-      <h2>Validare formato e checksum</h2>
-      <p>
-        Tre funzioni indipendenti: <code>VxIsValidFiscalCodeFormat</code>
-        verifica solo la forma (pattern lettere/cifre),
-        <code>VxIsValidFiscalCodeChecksum</code> verifica il 16° carattere
-        di controllo, <code>VxIsValidFiscalCode</code> fa entrambe le cose
-        — equivalente al vecchio <code>CodiceFiscale.check()</code>.
-      </p>
+      <h2>{{ $t('apiDocs.cfDocs.sections.validate') }}</h2>
+      <p>{{ $t('apiDocs.cfDocs.validateDescription') }}</p>
 
       <div class="example-col">
-        <VxInput v-model="validateInput" label="Codice Fiscale" placeholder="RSSMRA90D15H501U" block />
+        <VxInput v-model="validateInput" :label="$t('apiDocs.cfDocs.labels.fiscalCode')" placeholder="RSSMRA90D15H501U" block />
 
         <div class="example-row docs-badges">
           <span class="docs-badge" :class="formatValid ? 'docs-badge--ok' : 'docs-badge--ko'">
-            Formato {{ formatValid ? 'valido' : 'non valido' }}
+            {{ $t('apiDocs.cfDocs.labels.format') }} {{ formatValid ? $t('apiDocs.cfDocs.labels.valid') : $t('apiDocs.cfDocs.labels.invalid') }}
           </span>
           <span class="docs-badge" :class="checksumValid ? 'docs-badge--ok' : 'docs-badge--ko'">
-            Checksum {{ checksumValid ? 'valido' : 'non valido' }}
+            {{ $t('apiDocs.cfDocs.labels.checksum') }} {{ checksumValid ? $t('apiDocs.cfDocs.labels.valid') : $t('apiDocs.cfDocs.labels.invalid') }}
           </span>
         </div>
       </div>
 
-      <DesignCodeBlock :code="validateFormatCode" />
+      <DesignCodeBlock :code="codeExamples.validateFormatCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -108,30 +85,25 @@
 
     <!-- Decode -->
     <section class="docs-section">
-      <h2>Decodificare un Codice Fiscale</h2>
-      <p>
-        <code>VxDecodeFiscalCode(cf)</code> estrae sesso, data di nascita e
-        codice catastale da un CF sintatticamente valido. La scelta del
-        secolo (1900 vs 2000) per l'anno è euristica: il CF codifica solo le
-        ultime 2 cifre, quindi su date molto vecchie può essere ambigua.
-      </p>
+      <h2>{{ $t('apiDocs.cfDocs.sections.decode') }}</h2>
+      <p>{{ $t('apiDocs.cfDocs.decodeDescription') }}</p>
 
       <div class="example-col">
-        <VxInput v-model="decodeInput" label="Codice Fiscale" placeholder="RSSMRA90D15H501U" block />
+        <VxInput v-model="decodeInput" :label="$t('apiDocs.cfDocs.labels.fiscalCode')" placeholder="RSSMRA90D15H501U" block />
 
         <div v-if="decoded" class="docs-result">
-          <span class="docs-result-label">Decodificato</span>
+          <span class="docs-result-label">{{ $t('apiDocs.cfDocs.labels.decoded') }}</span>
           <span class="docs-result-value">
             {{ decoded.gender }} · {{ String(decoded.day).padStart(2, '0') }}/{{ String(decoded.month).padStart(2, '0') }}/{{ decoded.year }} · {{ decoded.birthplaceCode }}
           </span>
         </div>
         <div v-else class="docs-result docs-result--error">
-          <span class="docs-result-label">Decodificato</span>
-          <span class="docs-result-value">null (formato non valido)</span>
+          <span class="docs-result-label">{{ $t('apiDocs.cfDocs.labels.decoded') }}</span>
+          <span class="docs-result-value">null ({{ $t('apiDocs.cfDocs.labels.invalidFormat') }})</span>
         </div>
       </div>
 
-      <DesignCodeBlock :code="decodeCode" />
+      <DesignCodeBlock :code="codeExamples.decodeCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -143,20 +115,13 @@
 
     <!-- Hook -->
     <section class="docs-section">
-      <h2>Hook VxUseFiscalCodeValidation</h2>
-      <p>
-        Valida un CF contro dati anagrafici completi (non solo formato e
-        checksum): confronta cognome/nome/data/luogo con quelli ricalcolati
-        dal CF stesso, e riporta quali campi sono incoerenti. L'hook non fa
-        ipotesi sul networking del progetto: il controllo duplicati
-        (<code>checkExists</code>) è opzionale e iniettato da chi lo usa
-        tramite <code>checkExistsFn</code>.
-      </p>
+      <h2>{{ $t('apiDocs.cfDocs.sections.hook') }}</h2>
+      <p>{{ $t('apiDocs.cfDocs.hookDescription') }}</p>
 
       <div class="example-col">
         <div class="example-row">
-          <VxInput v-model="hookForm.name" label="Nome" block />
-          <VxInput v-model="hookForm.surname" label="Cognome" block />
+          <VxInput v-model="hookForm.name" :label="$t('apiDocs.cfDocs.labels.name')" block />
+          <VxInput v-model="hookForm.surname" :label="$t('apiDocs.cfDocs.labels.surname')" block />
         </div>
 
         <div class="example-row">
@@ -165,47 +130,37 @@
         </div>
 
         <div class="example-row">
-          <VxDate v-model="hookForm.birthdayDate" label="Data di nascita" block />
-          <VxInput v-model="hookForm.birthplaceCode" label="Codice catastale" block />
+          <VxDate v-model="hookForm.birthdayDate" :label="$t('apiDocs.cfDocs.labels.birthDate')" block />
+          <VxInput v-model="hookForm.birthplaceCode" :label="$t('apiDocs.cfDocs.labels.birthplaceCode')" block />
         </div>
 
-        <VxInput v-model="hookForm.codiceFiscale" label="Codice Fiscale da validare" block />
+        <VxInput v-model="hookForm.codiceFiscale" :label="$t('apiDocs.cfDocs.labels.fiscalCodeToValidate')" block />
 
-        <VxCheckbox v-model="hookForm.requireAdult" label="Richiedi maggiorenne (requireAdult)" />
+        <VxCheckbox v-model="hookForm.requireAdult" :label="$t('apiDocs.cfDocs.labels.requireAdult')" />
 
         <button type="button" class="docs-button" @click="runHookValidation">
-          Valida
+          {{ $t('apiDocs.cfDocs.labels.validate') }}
         </button>
 
         <div v-if="hookResult" class="docs-result" :class="{ 'docs-result--error': hookResult.invalidFields.length }">
-          <span class="docs-result-label">Risultato</span>
+          <span class="docs-result-label">{{ $t('apiDocs.cfDocs.labels.result') }}</span>
           <span class="docs-result-value">
-            invalidFields: [{{ hookResult.invalidFields.join(', ') }}] · error: {{ hookResult.error ?? 'null' }} · minor: {{ hookResult.minor }}
+            {{ $t('apiDocs.cfDocs.labels.invalidFields') }}: [{{ hookResult.invalidFields.join(', ') }}] · {{ $t('apiDocs.cfDocs.labels.error') }}: {{ hookResult.error ?? $t('apiDocs.cfDocs.labels.none') }} · {{ $t('apiDocs.cfDocs.labels.minor') }}: {{ hookResult.minor }}
           </span>
         </div>
       </div>
 
-      <DesignCodeBlock :code="hookBasicCode" />
+      <DesignCodeBlock :code="codeExamples.hookBasicCode" />
 
-      <h3 class="docs-subheading">Con controllo duplicati</h3>
-      <p>
-        Passa <code>checkExistsFn</code> in fase di creazione dell'hook per
-        collegare il tuo client HTTP (fetch, axios, il tuo <code>useApi</code>
-        interno, qualsiasi cosa): la libreria resta agnostica rispetto a
-        come il progetto chiama le API.
-      </p>
-      <DesignCodeBlock :code="hookExistsCode" />
+      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.exists') }}</h3>
+      <p>{{ $t('apiDocs.cfDocs.existsDescription') }}</p>
+      <DesignCodeBlock :code="codeExamples.hookExistsCode" />
 
-      <h3 class="docs-subheading">Con requireAdult</h3>
-      <p>
-        Se <code>requireAdult</code> è true, un CF che corrisponde a un
-        minorenne viene respinto subito (solo errore <code>'cf'</code>,
-        <code>error.value === 'minorUserNotAllowed'</code>) prima di
-        qualunque altra validazione anagrafica.
-      </p>
-      <DesignCodeBlock :code="hookRequireAdultCode" />
+      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.requireAdult') }}</h3>
+      <p>{{ $t('apiDocs.cfDocs.requireAdultDescription') }}</p>
+      <DesignCodeBlock :code="codeExamples.hookRequireAdultCode" />
 
-      <h3 class="docs-subheading">Opzioni dell'hook</h3>
+      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.hookOptions') }}</h3>
       <DesignPropsTable
         class="docs-props-table"
         :columns="propsColumns"
@@ -213,7 +168,7 @@
         :widths="['160px', '260px', '110px', '1fr']"
       />
 
-      <h3 class="docs-subheading">Input di validate()</h3>
+      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.validateInput') }}</h3>
       <DesignPropsTable
         class="docs-props-table"
         :columns="propsColumns"
@@ -221,7 +176,7 @@
         :widths="['160px', '200px', '110px', '1fr']"
       />
 
-      <h3 class="docs-subheading">Output</h3>
+      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.output') }}</h3>
       <DesignPropsTable
         class="docs-props-table"
         :columns="propsColumns"
@@ -232,29 +187,17 @@
 
     <!-- Limiti noti -->
     <section class="docs-section">
-      <h2>Limiti noti</h2>
-      <p>
-        Documentati apertamente, non nascosti:
-      </p>
+      <h2>{{ $t('apiDocs.cfDocs.sections.limitations') }}</h2>
+      <p>{{ $t('apiDocs.cfDocs.limitationsIntro') }}</p>
       <ul class="docs-list">
         <li>
-          <strong>Omocodia non gestita</strong>: i CF "duplicati" (dove alcune
-          cifre numeriche vengono sostituite da lettere per evitare collisioni
-          tra persone con lo stesso CF calcolato) non sono generati né
-          riconosciuti come varianti valide dello stesso CF base.
+          <strong>{{ $t('apiDocs.cfDocs.limitations.omocodyTitle') }}</strong>: {{ $t('apiDocs.cfDocs.limitations.omocody') }}
         </li>
         <li>
-          <strong>Nessun database comuni</strong>: <code>birthplaceCode</code>
-          va sempre fornito da chi chiama. Generarlo da un nome di comune
-          richiederebbe l'intero database ISTAT/Agenzia Entrate (~8000 voci,
-          inclusi i comuni soppressi/accorpati), fuori scopo per una libreria
-          a zero dipendenze — è un modulo dati separato, non un algoritmo.
+          <strong>{{ $t('apiDocs.cfDocs.limitations.databaseTitle') }}</strong>: {{ $t('apiDocs.cfDocs.limitations.database') }}
         </li>
         <li>
-          <strong>Secolo dell'anno euristico</strong>: <code>VxDecodeFiscalCode</code>
-          sceglie tra 1900 e 2000 in base a "non nel futuro" + "età
-          plausibile (≤120 anni)". Due persone nate esattamente 100 anni una
-          dall'altra, stesso giorno/mese, sono indistinguibili dal solo CF.
+          <strong>{{ $t('apiDocs.cfDocs.limitations.centuryTitle') }}</strong>: {{ $t('apiDocs.cfDocs.limitations.century') }}
         </li>
       </ul>
     </section>
@@ -263,6 +206,7 @@
 
 <script setup>
 import { computed, reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import VxInput from '@/Library/components/Input/VxInput.vue'
 import VxDate from '@/Library/components/Input/VxDate.vue'
 import VxCheckbox from '@/Library/components/Input/VxCheckbox.vue'
@@ -277,23 +221,22 @@ import {
   VxUseFiscalCodeValidation
 } from '@/Library/composables/Cf/useVxFiscalCode'
 import {
-  propsColumns,
-  generateInputRows,
-  decodeOutputRows,
-  functionsRows,
-  hookOptionsRows,
-  validateInputRows,
-  validateReturnRows,
+  getFiscalCodeMetadata,
 } from '@/Docs/metadata/props/Cf/fiscalCodeGeneralProps'
 import {
-  setupCode,
-  generateCode,
-  validateFormatCode,
-  decodeCode,
-  hookBasicCode,
-  hookExistsCode,
-  hookRequireAdultCode,
+  getFiscalCodeCodeExamples,
 } from '@/Docs/metadata/code/Cf/fiscalCodeCodeExample'
+
+const { t, tm } = useI18n()
+const metadata = computed(() => getFiscalCodeMetadata(t))
+const propsColumns = computed(() => metadata.value.columns)
+const generateInputRows = computed(() => metadata.value.generateInputRows)
+const decodeOutputRows = computed(() => metadata.value.decodeOutputRows)
+const functionsRows = computed(() => metadata.value.functionsRows)
+const hookOptionsRows = computed(() => metadata.value.hookOptionsRows)
+const validateInputRows = computed(() => metadata.value.validateInputRows)
+const validateReturnRows = computed(() => metadata.value.validateReturnRows)
+const codeExamples = computed(() => getFiscalCodeCodeExamples(tm))
 
 // ===== Generate demo =====
 const generateForm = reactive({
