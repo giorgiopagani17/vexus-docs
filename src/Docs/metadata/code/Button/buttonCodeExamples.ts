@@ -322,3 +322,81 @@ const dropdown = ref(null)
 // Metodi esposti: open(), close(), toggle()
 const openMenu = () => dropdown.value.open()
 </script>`
+
+const codeExampleKeys = [
+  'setupCode', 'variantCode', 'colorCode', 'colorCustomCode', 'sizeCode', 'iconCode',
+  'loadingCode', 'disabledCode', 'blockCode', 'radiusCode', 'hoverEffectCode',
+  'iconOnlyCode', 'colorsOverrideCode', 'eventsCode', 'toggleSetupCode',
+  'toggleBasicCode', 'toggleMultipleCode', 'toggleIconOnlyCode', 'toggleStyleCode',
+  'toggleClearableCode', 'toggleBlockCode', 'dropdownSetupCode', 'dropdownBasicCode',
+  'dropdownVariantCode', 'dropdownSplitCode', 'dropdownPlacementCode', 'dropdownSlotCode',
+  'dropdownBlockCode', 'dropdownExposeCode'
+]
+
+export const getButtonCodeExamples = (tm: (key: string) => unknown) => {
+  const labels = tm('buttonDocs.codeLabels') as Record<string, string>
+  const source = {
+    setupCode, variantCode, colorCode, colorCustomCode, sizeCode, iconCode,
+    loadingCode, disabledCode, blockCode, radiusCode, hoverEffectCode,
+    iconOnlyCode, colorsOverrideCode, eventsCode, toggleSetupCode,
+    toggleBasicCode, toggleMultipleCode, toggleIconOnlyCode, toggleStyleCode,
+    toggleClearableCode, toggleBlockCode, dropdownSetupCode, dropdownBasicCode,
+    dropdownVariantCode, dropdownSplitCode, dropdownPlacementCode, dropdownSlotCode,
+    dropdownBlockCode, dropdownExposeCode
+  }
+
+  const replacements = {
+    'Solid (default)': labels.solid, Outline: labels.outline, Ghost: labels.ghost, Text: labels.text,
+    Primary: labels.primary, Secondary: labels.secondary, Positive: labels.positive,
+    Negative: labels.negative, Warning: labels.warning, Info: labels.info,
+    Small: labels.small, Medium: labels.medium, Large: labels.large,
+    'Left icon': labels.leftIcon, 'Right icon': labels.rightIcon,
+    'Slot left': labels.slotLeft, 'Slot right': labels.slotRight,
+    Loading: labels.loading, 'Async action': labels.asyncAction, Disabled: labels.disabled,
+    'Full width': labels.fullWidth, Default: labels.default, 'Custom radius': labels.customRadius,
+    'Pill button': labels.pillButton, 'Custom button': labels.customButton,
+    'Token override': labels.tokenOverride, 'Click me': labels.clickMe,
+    Brightness: labels.brightness, Scale: labels.scale, Lift: labels.lift, Glow: labels.glow,
+    Underline: labels.underline, None: labels.none, Lista: labels.list, Griglia: labels.grid,
+    Grassetto: labels.bold, Corsivo: labels.italic, Sottolineato: labels.underlineText,
+    Documento: labels.document, Modifica: labels.edit, Duplica: labels.duplicate,
+    Archivia: labels.archive, Elimina: labels.delete, Azioni: labels.actions,
+    Esporta: labels.export, Condividi: labels.share, Altro: labels.more, Salva: labels.save,
+    Utenti: labels.users, 'Salva come bozza': labels.saveDraft, 'Salva e chiudi': labels.saveClose,
+    'Salva e duplica': labels.saveDuplicate,
+    'Color palette': labels.colorPalette, 'Color custom: hex, rgb o CSS custom property': labels.customColorComment,
+    'Hover effect': labels.hoverComment, 'Icon only': labels.iconOnlyComment,
+    'Custom colors override': labels.customColorsComment, 'Click event': labels.clickComment,
+    'Block full width': labels.blockComment, 'Metodi esposti: open(), close(), toggle()': labels.exposedComment,
+    Variant: labels.variantComment,
+    'Color custom: hex, rgb, o CSS custom property': labels.customColorComment,
+    Size: labels.sizeComment, 'Icon via prop': labels.iconPropComment, 'Icon via slot': labels.iconSlotComment,
+    'Le variabili SCSS ($primary, ecc.) NON sono utilizzabili a runtime:': labels.scssComment,
+    '     usa il nome token (\'primary\') oppure var(--vx-primary), entrambi': labels.scssTokenComment,
+    '     derivati dalla stessa palette ed esposti come CSS custom property': labels.scssPropertyComment,
+    'Custom: nessun effetto integrato, lo gestisci tu': labels.customHoverComment,
+    'Con "multiple" il v-model è un array (sempre nell\'ordine delle opzioni)': labels.multipleComment,
+    'Le opzioni possono essere anche semplici primitivi': labels.primitiveComment,
+    'Senza label l\'opzione diventa quadrata: aggiungi ariaLabel per l\'accessibilità': labels.accessibilityComment,
+    'variant: stile delle opzioni NON attive (l\'attiva usa activeVariant, default solid)': labels.inactiveVariantComment,
+    'colore diverso per l\'opzione attiva': labels.activeColorComment,
+    dimensioni: labels.sizeComment, 'estremi completamente arrotondati': labels.pillComment,
+    'disabilita tutto il gruppo (o una singola opzione con { disabled: true })': labels.disableGroupComment,
+    'Cliccando l\'opzione già attiva, il valore torna a null': labels.clearableComment,
+    'Il gruppo occupa tutta la larghezza, le opzioni si dividono lo spazio in parti uguali': labels.toggleBlockComment,
+    'intestazione di sezione': labels.sectionHeaderComment, 'linea di separazione': labels.separatorComment,
+    'Riceve la voce scelta e l\'evento originale': labels.selectComment,
+    'variant, color, size, colors, hoverEffect... sono le stesse prop di VxButton': labels.forwardedPropsComment,
+    "'bottom-start' (default) | 'bottom-end' | 'top-start' | 'top-end'": labels.placementComment,
+    "Se sotto (o sopra) non c'è abbastanza spazio, il pannello si ribalta da solo": labels.flipComment,
+    '#item sostituisce il contenuto della voce, #default quello del bottone': labels.slotComment
+  }
+
+  return Object.fromEntries(Object.entries(source).map(([key, value]) => {
+    let localized = value
+    for (const [from, to] of Object.entries(replacements)) {
+      localized = localized.split(from).join(to)
+    }
+    return [key, localized]
+  }))
+}
