@@ -88,8 +88,8 @@ import { List, LayoutGrid, Bold, Italic, Underline } from 'lucide-vue-next'
 import VxButtonToggle from '@/Library/components/Button/VxButtonToggle.vue'
 import DesignCodeBlock from '@/Docs/components/Utils/DesignCodeBlock.vue'
 import DesignPropsTable from '@/Docs/components/Utils/DesignPropsTable.vue'
-import { getButtonToggleMetadata } from '@/Docs/metadata/props/ButtonToggle/buttonToggleProps'
-import { getButtonToggleCodeExamples } from '@/Docs/metadata/code/ButtonToggle/ButtonToggleCodeExamples'
+import { getButtonToggleMetadata } from '@/Docs/metadata/props/Button/buttonToggleProps'
+import { getButtonToggleCodeExamples } from '@/Docs/metadata/code/Button/ButtonToggleCodeExamples'
 
 const { t, tm } = useI18n()
 const metadata = computed(() => getButtonToggleMetadata(t))

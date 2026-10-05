@@ -150,8 +150,8 @@ import VxButtonDropdown from '@/Library/components/Button/VxButtonDropdown.vue'
 import DesignCodeBlock from '@/Docs/components/Utils/DesignCodeBlock.vue'
 import DesignPropsTable from '@/Docs/components/Utils/DesignPropsTable.vue'
 import { useVxNotify } from '@/Library/composables/Notify/useVxNotify'
-import { getButtonDropdownMetadata } from '@/Docs/metadata/props/ButtonDropdown/buttonDropdownProps'
-import { getButtonDropdownCodeExamples } from '@/Docs/metadata/code/ButtonDropdown/ButtonDropdownCodeExamples'
+import { getButtonDropdownMetadata } from '@/Docs/metadata/props/Button/buttonDropdownProps'
+import { getButtonDropdownCodeExamples } from '@/Docs/metadata/code/Button/ButtonDropdownCodeExamples'
 
 const { VxNotify } = useVxNotify()
 const { t, tm } = useI18n()
