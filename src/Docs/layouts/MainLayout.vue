@@ -10,6 +10,11 @@
       </div>
 
       <div class="header-actions">
+        <button class="spotlight-trigger" type="button" @click="openSpotlight">
+          <Search :size="16" />
+          <span>{{ t('layout.search.open') }}</span>
+          <kbd>⌘K</kbd>
+        </button>
         <DesignLanguageSwitcher />
       </div>
     </header>
@@ -19,7 +24,7 @@
       :class="{ 'sidebar--mini': isMini, 'sidebar--hidden': !drawerOpen }"
     >
       <nav class="menu">
-        <template v-for="item in menuStructure" :key="item.id">
+        <template v-for="item in menu" :key="item.id">
           <!-- Voce semplice, senza sottomenu -->
           <RouterLink
             v-if="!item.children"
@@ -100,15 +105,61 @@
     <main class="content" :class="{ 'content--mini': isMini }">
       <RouterView />
     </main>
+
+    <Teleport to="body">
+      <div v-if="spotlightOpen" class="spotlight-backdrop" @mousedown.self="closeSpotlight">
+        <section class="spotlight" role="dialog" aria-modal="true" :aria-label="t('layout.search.title')">
+          <div class="spotlight-input">
+            <Search :size="20" />
+            <input
+              ref="spotlightInput"
+              v-model="spotlightQuery"
+              type="search"
+              :placeholder="t('layout.search.placeholder')"
+              @keydown="onSpotlightKeydown"
+            />
+            <kbd>ESC</kbd>
+          </div>
+          <div
+            v-if="spotlightResults.length"
+            ref="spotlightList"
+            class="spotlight-results"
+            role="listbox"
+          >
+            <button
+              v-for="(result, index) in spotlightResults"
+              :key="result.to"
+              type="button"
+              class="spotlight-result"
+              :class="{ 'spotlight-result--active': index === spotlightIndex }"
+              role="option"
+              :aria-selected="index === spotlightIndex"
+              @mouseenter="spotlightIndex = index"
+              @click="goToResult(result.to)"
+            >
+              <component :is="result.icon" :size="18" />
+              <span>
+                <strong>{{ result.label }}</strong>
+                <small>{{ result.category }}</small>
+              </span>
+              <ChevronRight :size="16" />
+            </button>
+          </div>
+          <p v-else class="spotlight-empty">{{ t('layout.search.empty') }}</p>
+        </section>
+      </div>
+    </Teleport>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import DesignLanguageSwitcher from '@/Docs/components/Utils/DesignLanguageSwitcher.vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import VexusLogo from '/vexus_logo.png'
+import { getMenu } from '@/Docs/metadata/documentation/menu'
+import { getSpotlightItems } from '@/Docs/metadata/documentation/spotlightItems'
 import {
   Menu,
   MousePointerClick,
@@ -127,12 +178,16 @@ import {
   ChevronRight,
   ChevronDown,
   IdCard,
+  Search,
 } from 'lucide-vue-next'
 
 const MOBILE_QUERY = '(max-width: 768px)'
 
 const route = useRoute()
 const { t } = useI18n()
+const router = useRouter()
+const menu = computed(() => getMenu(t))
+const spotlightItems = computed(() => getSpotlightItems(t))
 
 // Breakpoint mobile: sotto i 768px la sidebar è sempre espansa (il CSS nasconde tooltip e flyout)
 const mql = typeof window !== 'undefined' ? window.matchMedia(MOBILE_QUERY) : null
@@ -141,38 +196,57 @@ const isMobile = ref(mql ? mql.matches : false)
 const drawerOpen = ref(!isMobile.value)
 const miniState = ref(false)
 const flyoutGroup = ref(null)
+const spotlightOpen = ref(false)
+const spotlightQuery = ref('')
+const spotlightIndex = ref(0)
+const spotlightInput = ref(null)
+const spotlightList = ref(null)
 
 // Stato mini effettivo: mai attivo su mobile
 const isMini = computed(() => miniState.value && !isMobile.value)
 
-const menuStructure = computed(() => [
-  { id: 'home', label: t('layout.menu.home'), icon: Home, to: '/' },
-  { id: 'versions', label: t('layout.menu.versions'), icon: BookOpen, to: '/versions' },
-  {
-    id: 'uiComponents',
-    label: t('layout.menu.uiComponents'),
-    icon: Blocks,
-    children: [
-      { id: 'button', label: 'VxButton', icon: MousePointerClick, to: '/button' },
-      { id: 'buttonToggle', label: 'VxButtonToggle', icon: ToggleLeft, to: '/button-toggle' },
-      { id: 'buttonDropdown', label: 'VxButtonDropdown', icon: ChevronsUpDown, to: '/button-dropdown' },
-      { id: 'input', label: 'VxInput', icon: TextCursorInput, to: '/input' },
-      { id: 'inputOthers', label: 'VxInput Others', icon: Blocks, to: '/input/others' },
-      { id: 'inputPickers', label: 'VxInput Pickers', icon: CalendarDays, to: '/input/pickers' },
-      { id: 'select', label: 'VxSelect', icon: SquareMenu, to: '/select' },
-    ],
-  },
-  {
-    id: 'composables',
-    label: t('layout.menu.composables'),
-    icon: Puzzle,
-    children: [
-      { id: 'notify', label: 'VxNotify', icon: Bell, to: '/notify' },
-      { id: 'api', label: 'VxApi', icon: Phone, to: '/use-api' },
-      { id: 'fiscalCode', label: 'VxFiscalCode', icon: IdCard, to: '/use-fiscal-code' },
-    ],
-  },
-])
+const spotlightResults = computed(() => {
+  const query = spotlightQuery.value.trim().toLocaleLowerCase()
+  if (!query) return spotlightItems.value
+  return spotlightItems.value.filter((item) =>
+    `${item.label} ${item.category}`.toLocaleLowerCase().includes(query),
+  )
+})
+
+function openSpotlight() {
+  spotlightOpen.value = true
+  spotlightQuery.value = ''
+  spotlightIndex.value = 0
+  nextTick(() => spotlightInput.value?.focus())
+}
+
+function closeSpotlight() {
+  spotlightOpen.value = false
+}
+
+function goToResult(path) {
+  closeSpotlight()
+  router.push(path)
+}
+
+function onSpotlightKeydown(e) {
+  if (e.key === 'Escape') return closeSpotlight()
+  if (e.key === 'ArrowDown') {
+    e.preventDefault()
+    if (spotlightResults.value.length) {
+      spotlightIndex.value = (spotlightIndex.value + 1) % spotlightResults.value.length
+    }
+  }
+  if (e.key === 'ArrowUp') {
+    e.preventDefault()
+    if (spotlightResults.value.length) {
+      spotlightIndex.value = (spotlightIndex.value - 1 + spotlightResults.value.length) % spotlightResults.value.length
+    }
+  }
+  if (e.key === 'Enter' && spotlightResults.value[spotlightIndex.value]) {
+    goToResult(spotlightResults.value[spotlightIndex.value].to)
+  }
+}
 
 const openGroups = ref(new Set())
 
@@ -203,7 +277,7 @@ function onGroupClick(label) {
   }
 }
 
-menuStructure.value.forEach((item) => {
+menu.value.forEach((item) => {
   if (item.children && isChildActive(item)) {
     openGroups.value.add(item.id)
   }
@@ -222,6 +296,10 @@ function onDocClick(e) {
 
 function onKeydown(e) {
   if (e.key === 'Escape') flyoutGroup.value = null
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault()
+    spotlightOpen.value ? closeSpotlight() : openSpotlight()
+  }
 }
 
 function onMobileChange(e) {
@@ -241,6 +319,14 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', onDocClick)
   document.removeEventListener('keydown', onKeydown)
   mql?.removeEventListener('change', onMobileChange)
+})
+
+watch(spotlightIndex, () => {
+  nextTick(() => {
+    spotlightList.value
+      ?.querySelector('.spotlight-result--active')
+      ?.scrollIntoView({ block: 'nearest' })
+  })
 })
 
 watch(
@@ -290,6 +376,142 @@ watch(isMini, () => {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.spotlight-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid rgba($primary, 0.2);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.72);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba($primary, 0.45);
+    background: rgba($primary, 0.1);
+    color: white;
+  }
+
+  kbd {
+    padding: 2px 5px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 4px;
+    font-size: 10px;
+    opacity: 0.7;
+  }
+}
+
+.spotlight-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  justify-content: center;
+  padding: 12vh 20px 20px;
+  background: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(8px);
+}
+
+.spotlight {
+  width: min(640px, 100%);
+  align-self: flex-start;
+  overflow: hidden;
+  border: 1px solid rgba($primary, 0.28);
+  border-radius: 16px;
+  background: rgba($tertiary, 0.98);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.spotlight-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba($primary, 0.14);
+  color: $primary;
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: white;
+    font: inherit;
+    font-size: 17px;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  kbd {
+    padding: 4px 6px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+  }
+}
+
+.spotlight-results {
+  max-height: min(60vh, 480px);
+  padding: 8px;
+  overflow-y: auto;
+}
+
+.spotlight-result {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  padding: 11px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  > svg {
+    flex: 0 0 auto;
+    color: $primary;
+  }
+
+  > span {
+    display: grid;
+    flex: 1;
+    gap: 2px;
+  }
+
+  small {
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 11px;
+  }
+
+  > svg:last-child {
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.spotlight-result:hover,
+.spotlight-result--active {
+  background: rgba($primary, 0.14);
+  color: white;
+}
+
+.spotlight-empty {
+  margin: 0;
+  padding: 28px 20px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
 }
 
 .icon-btn {
@@ -603,6 +825,17 @@ watch(isMini, () => {
 
   .collapse-btn {
     display: none;
+  }
+
+  .spotlight-trigger span,
+  .spotlight-trigger kbd {
+    display: none;
+  }
+
+  .spotlight-trigger {
+    width: 34px;
+    justify-content: center;
+    padding: 0;
   }
 
   .tooltip,

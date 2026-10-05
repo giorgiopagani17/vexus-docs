@@ -1,7 +1,16 @@
 export default {
   layout: {
     menu: { home: 'Home', documentation: 'Documentazione', versions: 'Versioni', uiComponents: 'Componenti UI', composables: 'Composables' },
-    language: { select: 'Seleziona lingua', switchTo: 'Passa a {language}' }
+    language: { select: 'Seleziona lingua', switchTo: 'Passa a {language}' },
+    search: {
+      open: 'Cerca',
+      title: 'Cerca nella documentazione',
+      placeholder: 'Cerca pagine e componenti...',
+      empty: 'Nessun risultato trovato',
+      pages: 'Pagine',
+      components: 'Componenti',
+      composables: 'Composables',
+    }
   },
   errorNotFound: {
     title: 'Pagina non trovata',
