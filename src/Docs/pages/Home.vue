@@ -16,7 +16,7 @@
 
       <div class="cta">
         <DesignButton :text="$t('buttons.startNow')" :icon-left="Plus" variant="primary" @click="doSomething" />
-        <DesignButton :text="$t('buttons.documentation')" :icon-left="Plus" variant="primary" @click="doSomething" />
+        <DesignButton :text="$t('buttons.versions')" :icon-left="Plus" variant="primary" @click="goToVersions" />
       </div>
     </div>
 
@@ -56,7 +56,14 @@
 <script setup>
 import DesignCard from '@/Docs/components/Cards/DesignCard.vue'
 import DesignButton from '@/Docs/components/Buttons/DesignButton.vue'
+import { useRouter } from 'vue-router'
 
 const version = __APP_VERSION__ || '0.1.0'
 const libraryName = __APP_NAME__ || 'Vexus'
+
+const router = useRouter()
+
+const goToVersions = () => {
+  router.push('/versions')
+}
 </script>

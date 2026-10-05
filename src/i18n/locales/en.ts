@@ -1,6 +1,6 @@
 export default {
   layout: {
-    menu: { home: 'Home', documentation: 'Documentation', uiComponents: 'UI components', composables: 'Composables' },
+    menu: { home: 'Home', documentation: 'Documentation', versions: 'Versions', uiComponents: 'UI components', composables: 'Composables' },
     language: { select: 'Select language', switchTo: 'Switch to {language}' }
   },
   errorNotFound: {
@@ -24,8 +24,18 @@ export default {
   },
   buttons: {
     startNow: 'Start now',
+    versions: 'Versions',
     documentation: 'Documentation',
     backToHome: 'Back to Home'
+  },
+  versions: {
+    title: 'Versions',
+    subtitle: 'Release history and main changes.',
+    release: 'Release',
+    v010: {
+      title: 'First release',
+      description: 'Initial release of the Vexus component library, including the first UI components and their documentation.',
+    },
   },
   buttonDocs: {
     setup: 'Setup',
