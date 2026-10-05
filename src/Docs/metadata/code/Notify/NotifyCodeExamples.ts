@@ -126,3 +126,24 @@ setTimeout(() => dismiss(id), 2000)
 
 // oppure chiudi tutte le notifiche attive
 dismissAll()`
+
+export const getNotifyCodeExamples = (tm) => {
+  const labels = tm('notifyDocs.codeLabels')
+  const source = { setupCode, typesCode, colorsCode, titleCode, htmlCode, loadingCode, progressCode, positionCode, durationCode, actionsCode, iconCode, sizeCode, dismissCode }
+  const replacements = {
+    'Notifica generica': labels.generic, 'Operazione completata!': labels.success,
+    'Qualcosa è andato storto.': labels.error, 'Attenzione, controlla i dati.': labels.warning,
+    'Nuovo aggiornamento disponibile.': labels.info, 'Caricamento file in corso...': labels.uploading,
+    'File caricato con successo!': labels.uploaded, 'Mi chiudo tra poco...': labels.closingSoon,
+    'Nessuna barra qui': labels.noProgress, 'Mi chiuderò tra 2 secondi...': labels.dismissAfter,
+    'Stai per eliminare questo elemento.': labels.deleteWarning,
+    Annulla: labels.cancel, Elimina: labels.delete, 'Elemento eliminato.': labels.deleted,
+    'Nuova funzionalità disponibile!': labels.newFeature, 'Titolo grande': labels.largeTitle,
+    'Testo ingrandito per dare più risalto.': labels.largeText,
+  }
+  return Object.fromEntries(Object.entries(source).map(([key, value]) => {
+    let localized = value
+    for (const [from, to] of Object.entries(replacements)) localized = localized.split(from).join(to)
+    return [key, localized]
+  }))
+}

@@ -26,3 +26,13 @@ export const generalProps = [
   { name: 'closable', type: 'boolean', default: 'true', desc: 'Mostra/nasconde il pulsante di chiusura manuale' },
   { name: 'onClose', type: '() => void | null', default: 'null', desc: 'Callback eseguita alla chiusura' }
 ]
+
+export const getNotifyGeneralMetadata = (t) => ({
+  columns: [
+    { key: 'name', label: t('notifyDocs.propsColumns.prop'), class: 'prop-name' },
+    { key: 'type', label: t('notifyDocs.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('notifyDocs.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('notifyDocs.propsColumns.description'), class: 'prop-desc' },
+  ],
+  rows: generalProps.map(row => ({ ...row, desc: t(`notifyDocs.props.${row.name}`, row.desc) })),
+})

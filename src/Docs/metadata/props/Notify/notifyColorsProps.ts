@@ -17,3 +17,11 @@ export const colorKeys = [
   { name: 'progress', desc: 'Colore della barra di progresso' },
   { name: 'progressTrack', desc: 'Colore del binario sotto la barra di progresso' },
 ]
+
+export const getNotifyColorMetadata = (t) => ({
+  columns: [
+    { key: 'name', label: t('notifyDocs.colorColumns.key'), class: 'prop-name' },
+    { key: 'desc', label: t('notifyDocs.colorColumns.description'), class: 'prop-desc' },
+  ],
+  rows: colorKeys.map(row => ({ ...row, desc: t(`notifyDocs.colors.${row.name}`, row.desc) })),
+})

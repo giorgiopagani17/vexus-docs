@@ -434,6 +434,30 @@ export default {
           optionC: 'Option C', monthly: 'Monthly', yearly: 'Yearly'
         }
   },
+  notifyDocs: {
+    intro: 'Customizable toast notification system with types, colors, positions, HTML content, loading states, and configurable duration.',
+    setupDescription: 'Use useVxNotify() in the component; the container mounts automatically on first use.',
+    typesDescription: 'Five predefined variants, each with an automatic icon and color.',
+    colorsDescription: 'Every notification can be recolored through colors. Unspecified keys keep the defaults of the selected type.',
+    titleDescription: 'Add title to give the message more emphasis.',
+    htmlDescription: 'Set html: true to render markup inside the message. Always sanitize user-provided HTML to prevent XSS.',
+    loadingDescription: 'Set loading: true to show a spinner. Use update(id, patch) to update the notification when the operation completes.',
+    progressDescription: 'Notifications with a positive duration show a remaining-time bar. Disable it with progress: false; hover pauses the countdown.',
+    positionDescription: 'Each notification can appear in one of nine screen positions.',
+    durationDescription: 'Notifications close after 4000 ms by default. duration: 0 makes them persistent.',
+    actionsDescription: 'Add interactive buttons with custom handlers for confirmations or undo actions.',
+    iconDescription: 'Replace the automatic icon with any icon component, such as Lucide.',
+    sizeDescription: 'Independently control icon, text, and title sizes through iconSize, textSize, and titleSize.',
+    dismissDescription: 'VxNotify() returns an id that can be used to close the notification programmatically.',
+    sections: { setup: 'Setup', types: 'Types', colors: 'Custom colors', title: 'With title', html: 'HTML content', loading: 'Loading state', progress: 'Progress bar', position: 'Position', duration: 'Duration', actions: 'Custom actions', icon: 'Custom icon', size: 'Custom sizes', dismiss: 'Programmatic dismissal', available: 'Available options' },
+    labels: { default: 'Default', success: 'Success', error: 'Error', warning: 'Warning', info: 'Info', customColor: 'Custom color', partialOverride: 'Partial type override', showTitle: 'Show with title', html: 'HTML notification', simulateUpload: 'Simulate upload', withProgress: 'With progress bar', withoutProgress: 'Without progress bar', fast: 'Fast (1.5s)', slow: 'Slow (8s)', persistent: 'Persistent', showActions: 'Show with actions', cancel: 'Cancel', delete: 'Delete', customIcon: 'Custom icon', largeNotification: 'Large notification', dismissAfter: 'Open and close after 2s', dismissAll: 'Dismiss all' },
+    positions: { 'top-left': 'top-left', 'top-center': 'top-center', 'top-right': 'top-right', 'center-left': 'center-left', 'center-center': 'center-center', 'center-right': 'center-right', 'bottom-left': 'bottom-left', 'bottom-center': 'bottom-center', 'bottom-right': 'bottom-right' },
+    messages: { generic: 'Generic notification', success: 'Operation completed!', error: 'Something went wrong.', warning: 'Warning, check the data.', info: 'New update available.', customColor: 'I have my own color!', override: 'Success with a different background', savedTitle: 'Saved!', saved: 'The changes were saved successfully.', html: 'The <b>Pro</b> plan is about to expire. <a href="/billing">Renew now</a>.', closingSoon: 'I will close soon...', noProgress: 'No progress bar here', from: 'Notification from', fast: 'Disappears quickly', slow: 'Stays longer', manualClose: 'Close me manually', deleteWarning: 'You are about to delete this item.', deleted: 'Item deleted.', newFeature: 'New feature available!', largeTitle: 'Large title', largeText: 'Enlarged text for emphasis.', dismissAfter: 'I will close in 2 seconds...', uploading: 'Uploading file...', uploaded: 'File uploaded successfully!' },
+    propsColumns: { prop: 'Prop', type: 'Type', default: 'Default', description: 'Description', key: 'Colors key' },
+    colors: { background: 'Toast background color', border: 'Border color', text: 'Message text color', title: 'Title color', icon: 'Icon color', accent: 'Link and action color', badgeBackground: 'Duplicate count badge background', badgeText: 'Badge text color', closeColor: 'Close icon color', shadow: 'Shadow color', progress: 'Progress bar color', progressTrack: 'Progress track color' },
+    props: { message: 'Main notification text', html: 'Renders message as HTML when true', title: 'Optional title above the message', type: 'Visual variant with automatic icon and color', colors: 'Individual color overrides', loading: 'Shows a spinner instead of the icon', progress: 'Shows the countdown bar', duration: 'Milliseconds before automatic close; 0 = persistent', position: 'Screen position', icon: 'Custom icon', iconSize: 'Icon or spinner size', textSize: 'Text size', titleSize: 'Title size', radius: 'Border radius', closeButtonSize: 'Close button size', actions: 'Interactive notification buttons', alignItems: 'Vertical content alignment', closable: 'Shows or hides the close button', onClose: 'Callback invoked on close' },
+    codeLabels: { generic: 'Generic notification', success: 'Operation completed!', error: 'Something went wrong.', warning: 'Warning, check the data.', info: 'New update available.', uploading: 'Uploading file...', uploaded: 'File uploaded successfully!', closingSoon: 'I will close soon...', noProgress: 'No progress bar here', dismissAfter: 'I will close in 2 seconds...', deleteWarning: 'You are about to delete this item.', cancel: 'Cancel', delete: 'Delete', deleted: 'Item deleted.', newFeature: 'New feature available!', largeTitle: 'Large title', largeText: 'Enlarged text for emphasis.' }
+  },
   apiDocs: {
     intro: 'Shared HTTP client with automatic authentication, token refresh, notifications, and binary response handling. Configure it once at app level with no setup in individual components.',
     setupDescription: 'Register the plugin once in the project main.ts, connecting the library to the authentication store and local environment variables.',

@@ -2,49 +2,43 @@
   <div class="docs-page">
     <div class="docs-header">
       <h1>VxNotify</h1>
-      <p class="subtitle">
-        Sistema di notifiche toast completamente personalizzabile: tipi, colori,
-        posizioni, contenuto HTML, stati di caricamento e durata configurabile.
-      </p>
+      <p class="subtitle">{{ $t('notifyDocs.intro') }}</p>
     </div>
 
     <!-- Installazione -->
     <section class="docs-section">
-      <h2>Setup</h2>
-      <p>Nel componente usa <code>useVxNotify()</code>: il container viene montato automaticamente al primo utilizzo.</p>
-      <DesignCodeBlock :code="setupCode" />
+      <h2>{{ $t('notifyDocs.sections.setup') }}</h2>
+      <p>{{ $t('notifyDocs.setupDescription') }}</p>
+      <DesignCodeBlock :code="codeExamples.setupCode" />
     </section>
 
     <!-- Tipi -->
     <section class="docs-section">
-      <h2>Tipi</h2>
-      <p>Cinque varianti predefinite, ognuna con icona e colore automatico (background pieno del colore del tipo, testo bianco).</p>
+      <h2>{{ $t('notifyDocs.sections.types') }}</h2>
+      <p>{{ $t('notifyDocs.typesDescription') }}</p>
 
       <div class="example-row">
-        <DesignButton text="Default" @click="VxNotify({ message: 'Notifica generica' })" />
-        <DesignButton text="Success" variant="primary" @click="VxNotify({ type: 'success', message: 'Operazione completata!' })" />
-        <DesignButton text="Error" @click="VxNotify({ type: 'error', message: 'Qualcosa è andato storto.' })" />
-        <DesignButton text="Warning" @click="VxNotify({ type: 'warning', message: 'Attenzione, controlla i dati.' })" />
-        <DesignButton text="Info" @click="VxNotify({ type: 'info', message: 'Nuovo aggiornamento disponibile.' })" />
+        <DesignButton :text="$t('notifyDocs.labels.default')" @click="VxNotify({ message: t('notifyDocs.messages.generic') })" />
+        <DesignButton :text="$t('notifyDocs.labels.success')" variant="primary" @click="VxNotify({ type: 'success', message: t('notifyDocs.messages.success') })" />
+        <DesignButton :text="$t('notifyDocs.labels.error')" @click="VxNotify({ type: 'error', message: t('notifyDocs.messages.error') })" />
+        <DesignButton :text="$t('notifyDocs.labels.warning')" @click="VxNotify({ type: 'warning', message: t('notifyDocs.messages.warning') })" />
+        <DesignButton :text="$t('notifyDocs.labels.info')" @click="VxNotify({ type: 'info', message: t('notifyDocs.messages.info') })" />
       </div>
 
-      <DesignCodeBlock :code="typesCode" />
+      <DesignCodeBlock :code="codeExamples.typesCode" />
     </section>
 
     <!-- Colori custom -->
     <section class="docs-section">
-      <h2>Colori custom</h2>
-      <p>
-        Ogni notifica è completamente ricolorabile tramite l'oggetto <code>colors</code>.
-        Le chiavi non specificate mantengono il default del <code>type</code> scelto.
-      </p>
+      <h2>{{ $t('notifyDocs.sections.colors') }}</h2>
+      <p>{{ $t('notifyDocs.colorsDescription') }}</p>
 
       <div class="example-row">
         <DesignButton
-          text="Colore custom"
+          :text="$t('notifyDocs.labels.customColor')"
           variant="ghost"
           @click="VxNotify({
-            message: 'Ho un colore tutto mio!',
+            message: t('notifyDocs.messages.customColor'),
             colors: {
               background: '#7c3aed',
               text: 'rgba(255,255,255,0.85)',
@@ -57,17 +51,17 @@
           })"
         />
         <DesignButton
-          text="Override parziale su type"
+          :text="$t('notifyDocs.labels.partialOverride')"
           variant="ghost"
           @click="VxNotify({
             type: 'success',
-            message: 'Success ma con sfondo diverso',
+            message: t('notifyDocs.messages.override'),
             colors: { background: '#0f766e', shadow: 'rgba(15,118,110,0.35)' }
           })"
         />
       </div>
 
-      <DesignCodeBlock :code="colorsCode" />
+      <DesignCodeBlock :code="codeExamples.colorsCode" />
 
       <DesignPropsTable
         :columns="colorColumns"
@@ -79,173 +73,155 @@
 
     <!-- Titolo -->
     <section class="docs-section">
-      <h2>Con titolo</h2>
-      <p>Aggiungi un <code>title</code> per dare più peso al messaggio.</p>
+      <h2>{{ $t('notifyDocs.sections.title') }}</h2>
+      <p>{{ $t('notifyDocs.titleDescription') }}</p>
 
       <div class="example-row">
         <DesignButton
-          text="Mostra con titolo"
+          :text="$t('notifyDocs.labels.showTitle')"
           variant="primary"
           @click="VxNotify({
             type: 'success',
-            title: 'Salvato!',
-            message: 'Le modifiche sono state salvate correttamente.'
+            title: t('notifyDocs.messages.savedTitle'),
+            message: t('notifyDocs.messages.saved')
           })"
         />
       </div>
 
-      <DesignCodeBlock :code="titleCode" />
+      <DesignCodeBlock :code="codeExamples.titleCode" />
     </section>
 
     <!-- Contenuto HTML -->
     <section class="docs-section">
-      <h2>Contenuto HTML</h2>
-      <p>
-        Imposta <code>html: true</code> per renderizzare markup dentro il messaggio
-        (link, grassetto, liste...). <strong>Attenzione:</strong> sanitizza sempre
-        l'HTML se contiene input proveniente dall'utente, per evitare XSS.
-      </p>
+      <h2>{{ $t('notifyDocs.sections.html') }}</h2>
+      <p>{{ $t('notifyDocs.htmlDescription') }}</p>
 
       <div class="example-row">
         <DesignButton
-          text="Notifica con HTML"
+          :text="$t('notifyDocs.labels.html')"
           variant="ghost"
           @click="VxNotify({
             type: 'info',
             html: true,
-            message: 'Il piano <b>Pro</b> sta per scadere. <a href=\'/billing\'>Rinnova ora</a>.',
+            message: t('notifyDocs.messages.html'),
             duration: 6000
           })"
         />
       </div>
 
-      <DesignCodeBlock :code="htmlCode" />
+      <DesignCodeBlock :code="codeExamples.htmlCode" />
     </section>
 
     <!-- Loading / Spinner -->
     <section class="docs-section">
-      <h2>Stato di caricamento</h2>
-      <p>
-        Imposta <code>loading: true</code> per mostrare uno spinner al posto dell'icona,
-        utile per operazioni asincrone. Usa <code>update(id, patch)</code> per aggiornare
-        la notifica una volta completata l'operazione.
-      </p>
+      <h2>{{ $t('notifyDocs.sections.loading') }}</h2>
+      <p>{{ $t('notifyDocs.loadingDescription') }}</p>
 
       <div class="example-row">
-        <DesignButton text="Simula upload" variant="primary" @click="simulateLoading" />
+        <DesignButton :text="$t('notifyDocs.labels.simulateUpload')" variant="primary" @click="simulateLoading" />
       </div>
 
-      <DesignCodeBlock :code="loadingCode" />
+      <DesignCodeBlock :code="codeExamples.loadingCode" />
     </section>
 
     <!-- Progress bar -->
     <section class="docs-section">
-      <h2>Barra di progresso</h2>
-      <p>
-        Le notifiche con <code>duration &gt; 0</code> mostrano automaticamente una barra
-        che indica il tempo rimanente prima della chiusura. Disattivabile con
-        <code>progress: false</code>. Passa il mouse sopra la notifica per mettere in pausa il countdown.
-      </p>
+      <h2>{{ $t('notifyDocs.sections.progress') }}</h2>
+      <p>{{ $t('notifyDocs.progressDescription') }}</p>
 
       <div class="example-row">
-        <DesignButton text="Con progress bar" variant="ghost" @click="VxNotify({ message: 'Mi chiudo tra poco...', duration: 5000, progress: true })" />
-        <DesignButton text="Senza progress bar" variant="ghost" @click="VxNotify({ message: 'Nessuna barra qui', duration: 5000 })" />
+        <DesignButton :text="$t('notifyDocs.labels.withProgress')" variant="ghost" @click="VxNotify({ message: t('notifyDocs.messages.closingSoon'), duration: 5000, progress: true })" />
+        <DesignButton :text="$t('notifyDocs.labels.withoutProgress')" variant="ghost" @click="VxNotify({ message: t('notifyDocs.messages.noProgress'), duration: 5000 })" />
       </div>
 
-      <DesignCodeBlock :code="progressCode" />
+      <DesignCodeBlock :code="codeExamples.progressCode" />
     </section>
 
     <!-- Posizione -->
     <section class="docs-section">
-      <h2>Posizione</h2>
-      <p>Ogni notifica può apparire in una delle 9 posizioni dello schermo.</p>
+      <h2>{{ $t('notifyDocs.sections.position') }}</h2>
+      <p>{{ $t('notifyDocs.positionDescription') }}</p>
 
       <div class="example-grid">
         <DesignButton
           v-for="pos in positions"
           :key="pos"
-          :text="pos"
+          :text="$t(`notifyDocs.positions.${pos}`)"
           variant="ghost"
-          @click="VxNotify({ message: `Notifica da ${pos}`, position: pos })"
+          @click="VxNotify({ message: `${t('notifyDocs.messages.from')} ${pos}`, position: pos })"
         />
       </div>
 
-      <DesignCodeBlock :code="positionCode" />
+      <DesignCodeBlock :code="codeExamples.positionCode" />
     </section>
 
     <!-- Durata -->
     <section class="docs-section">
-      <h2>Durata</h2>
-      <p>
-        Di default le notifiche si chiudono dopo <code>4000ms</code>.
-        Imposta <code>duration: 0</code> per renderle persistenti (richiede chiusura manuale).
-      </p>
+      <h2>{{ $t('notifyDocs.sections.duration') }}</h2>
+      <p>{{ $t('notifyDocs.durationDescription') }}</p>
 
       <div class="example-row">
-        <DesignButton text="Veloce (1.5s)" variant="ghost" @click="notify({ message: 'Scompare in fretta', duration: 1500 })" />
-        <DesignButton text="Lenta (8s)" variant="ghost" @click="notify({ message: 'Resta più a lungo', duration: 8000 })" />
-        <DesignButton text="Persistente" variant="primary" @click="notify({ message: 'Chiudimi manualmente', duration: 0 })" />
+        <DesignButton :text="$t('notifyDocs.labels.fast')" variant="ghost" @click="VxNotify({ message: t('notifyDocs.messages.fast'), duration: 1500 })" />
+        <DesignButton :text="$t('notifyDocs.labels.slow')" variant="ghost" @click="VxNotify({ message: t('notifyDocs.messages.slow'), duration: 8000 })" />
+        <DesignButton :text="$t('notifyDocs.labels.persistent')" variant="primary" @click="VxNotify({ message: t('notifyDocs.messages.manualClose'), duration: 0 })" />
       </div>
 
-      <DesignCodeBlock :code="durationCode" />
+      <DesignCodeBlock :code="codeExamples.durationCode" />
     </section>
 
     <!-- Azioni -->
     <section class="docs-section">
-      <h2>Azioni custom</h2>
-      <p>Aggiungi bottoni interattivi con handler personalizzati, utili per conferme o undo.</p>
+      <h2>{{ $t('notifyDocs.sections.actions') }}</h2>
+      <p>{{ $t('notifyDocs.actionsDescription') }}</p>
 
       <div class="example-row">
         <DesignButton
-          text="Mostra con azioni"
+          :text="$t('notifyDocs.labels.showActions')"
           variant="primary"
           @click="VxNotify({
             type: 'warning',
-            message: 'Stai per eliminare questo elemento.',
+            message: t('notifyDocs.messages.deleteWarning'),
             duration: 0,
             actions: [
-              { label: 'Annulla', action: () => {} },
-              { label: 'Elimina', color: '#ffffff', action: () => VxNotify({ type: 'success', message: 'Elemento eliminato.' }) }
+              { label: t('notifyDocs.labels.cancel'), action: () => {} },
+              { label: t('notifyDocs.labels.delete'), color: '#ffffff', action: () => VxNotify({ type: 'success', message: t('notifyDocs.messages.deleted') }) }
             ]
           })"
         />
       </div>
 
-      <DesignCodeBlock :code="actionsCode" />
+      <DesignCodeBlock :code="codeExamples.actionsCode" />
     </section>
 
     <!-- Icona custom -->
     <section class="docs-section">
-      <h2>Icona custom</h2>
-      <p>Sostituisci l'icona automatica con qualsiasi componente icona (es. Lucide).</p>
+      <h2>{{ $t('notifyDocs.sections.icon') }}</h2>
+      <p>{{ $t('notifyDocs.iconDescription') }}</p>
 
       <div class="example-row">
         <DesignButton
-          text="Icona personalizzata"
+          :text="$t('notifyDocs.labels.customIcon')"
           variant="ghost"
-          @click="VxNotify({ message: 'Nuova funzionalità disponibile!', icon: Sparkles, position: 'top-center' })"
+          @click="VxNotify({ message: t('notifyDocs.messages.newFeature'), icon: Sparkles, position: 'top-center' })"
         />
       </div>
 
-      <DesignCodeBlock :code="iconCode" />
+      <DesignCodeBlock :code="codeExamples.iconCode" />
     </section>
 
     <!-- Size custom -->
     <section class="docs-section">
-      <h2>Dimensioni custom</h2>
-      <p>
-        Regola indipendentemente la dimensione di icona, testo e titolo tramite
-        <code>iconSize</code>, <code>textSize</code> e <code>titleSize</code> (in px).
-      </p>
+      <h2>{{ $t('notifyDocs.sections.size') }}</h2>
+      <p>{{ $t('notifyDocs.sizeDescription') }}</p>
 
       <div class="example-row">
         <DesignButton
-          text="Notifica grande"
+          :text="$t('notifyDocs.labels.largeNotification')"
           variant="ghost"
           @click="VxNotify({
             type: 'info',
-            title: 'Titolo grande',
-            message: 'Testo ingrandito per dare più risalto.',
+            title: t('notifyDocs.messages.largeTitle'),
+            message: t('notifyDocs.messages.largeText'),
             iconSize: 32,
             titleSize: 18,
             textSize: 15,
@@ -257,25 +233,25 @@
         />
       </div>
 
-      <DesignCodeBlock :code="sizeCode" />
+      <DesignCodeBlock :code="codeExamples.sizeCode" />
     </section>
 
     <!-- Dismiss -->
     <section class="docs-section">
-      <h2>Chiusura programmatica</h2>
-      <p><code>VxNotify()</code> ritorna un <code>id</code> che puoi usare per chiudere la notifica via codice.</p>
+      <h2>{{ $t('notifyDocs.sections.dismiss') }}</h2>
+      <p>{{ $t('notifyDocs.dismissDescription') }}</p>
 
       <div class="example-row">
-        <DesignButton text="Apri e chiudi dopo 2s" variant="ghost" @click="programmaticDismiss" />
-        <DesignButton text="Chiudi tutte" variant="ghost" @click="dismissAll" />
+        <DesignButton :text="$t('notifyDocs.labels.dismissAfter')" variant="ghost" @click="programmaticDismiss" />
+        <DesignButton :text="$t('notifyDocs.labels.dismissAll')" variant="ghost" @click="dismissAll" />
       </div>
 
-      <DesignCodeBlock :code="dismissCode" />
+      <DesignCodeBlock :code="codeExamples.dismissCode" />
     </section>
 
     <!-- Props table -->
     <section class="docs-section">
-      <h2>Opzioni disponibili</h2>
+      <h2>{{ $t('notifyDocs.sections.available') }}</h2>
       <DesignPropsTable
         :columns="generalPropsColumns"
         :rows="generalProps"
@@ -286,15 +262,25 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Sparkles } from 'lucide-vue-next'
 import { useVxNotify } from '@/Library/composables/Notify/useVxNotify'
 import DesignButton from '@/Docs/components/Buttons/DesignButton.vue'
 import DesignCodeBlock from '@/Docs/components/Utils/DesignCodeBlock.vue'
 import DesignPropsTable from '@/Docs/components/Utils/DesignPropsTable.vue'
-import { generalPropsColumns, generalProps } from '@/Docs/metadata/props/Notify/notifyGeneralProps'
-import { colorColumns, colorKeys } from '@/Docs/metadata/props/Notify/notifyColorsProps'
-import { setupCode, typesCode, colorsCode, titleCode, htmlCode, loadingCode, progressCode, positionCode, durationCode, actionsCode, iconCode, sizeCode, dismissCode } from '@/Docs/metadata/code/Notify/notifyCodeExamples'
+import { getNotifyGeneralMetadata } from '@/Docs/metadata/props/Notify/notifyGeneralProps'
+import { getNotifyColorMetadata } from '@/Docs/metadata/props/Notify/notifyColorsProps'
+import { getNotifyCodeExamples } from '@/Docs/metadata/code/Notify/notifyCodeExamples'
 
+const { t, tm } = useI18n()
+const metadata = computed(() => getNotifyGeneralMetadata(t))
+const colorMetadata = computed(() => getNotifyColorMetadata(t))
+const generalPropsColumns = computed(() => metadata.value.columns)
+const generalProps = computed(() => metadata.value.rows)
+const colorColumns = computed(() => colorMetadata.value.columns)
+const colorKeys = computed(() => colorMetadata.value.rows)
+const codeExamples = computed(() => getNotifyCodeExamples(tm))
 const { VxNotify, dismiss, dismissAll, update } = useVxNotify()
 
 const positions = [
@@ -304,14 +290,14 @@ const positions = [
 ]
 
 const programmaticDismiss = () => {
-  const id = VxNotify({ message: 'Mi chiuderò tra 2 secondi...', duration: 0 })
+  const id = VxNotify({ message: t('notifyDocs.messages.dismissAfter'), duration: 0 })
   setTimeout(() => dismiss(id), 2000)
 }
 
 const simulateLoading = () => {
   const id = VxNotify({
     type: 'default',
-    message: 'Caricamento file in corso...',
+    message: t('notifyDocs.messages.uploading'),
     loading: true,
     duration: 0,
     closable: false
@@ -321,7 +307,7 @@ const simulateLoading = () => {
     update(id, {
       type: 'success',
       loading: false,
-      message: 'File caricato con successo!',
+      message: t('notifyDocs.messages.uploaded'),
       duration: 3000,
       closable: true
     })
