@@ -399,5 +399,58 @@ export default {
           acceptTerms: 'Accetto i termini e condizioni', optionA: 'Opzione A', optionB: 'Opzione B',
           optionC: 'Opzione C', monthly: 'Mensile', yearly: 'Annuale'
         }
+  },
+  apiDocs: {
+    intro: 'Client HTTP condiviso con gestione automatica di autenticazione, refresh token, notifiche e risposte binarie. Un’unica configurazione a livello di app, senza setup nei singoli componenti.',
+    setupDescription: 'Registra il plugin una sola volta nel main.ts del progetto, collegando la libreria allo store di autenticazione e alle variabili env locali.',
+    usageDescription: 'In qualsiasi componente importa useVxApi e chiama VxRequest(endpoint, options) senza altro setup.',
+    paramsDescription: 'pathParams sostituisce i segnaposto :id nell’endpoint, mentre query costruisce la query string e supporta valori ripetuti tramite array.',
+    notificationsDescription: 'showNotify mostra automaticamente una notifica di successo o errore tramite il sistema Notify della libreria, senza try/catch manuale.',
+    messagePathsDescription: 'Se il backend usa una struttura custom, successMessagePath ed errorMessagePath indicano il messaggio con notazione a punti, inclusi gli indici degli array.',
+    loadingDescription: 'showNotifyLoading mantiene visibile una notifica per tutta la durata della richiesta e la converte automaticamente in successo o errore al termine.',
+    refreshDescription: 'Su una risposta 401 con refresh token presente, la richiesta fallita viene accodata, il token viene rinnovato una sola volta tra chiamate concorrenti e la richiesta originale riparte automaticamente.',
+    blobDescription: 'Con expectBlob attivo, o quando il Content-Type è un formato binario riconosciuto come zip, pdf o Excel, la risposta viene restituita come Blob invece che JSON.',
+    configDescription: 'Le impostazioni specifiche del progetto, come store auth, env e i18n, vivono qui e non nella libreria.',
+    sections: { setup: 'Setup', usage: 'Uso base', params: 'Query e path params', notifications: 'Notifiche automatiche', messagePaths: 'Messaggi da strutture custom', loading: 'Notifica di caricamento', refresh: 'Refresh automatico del token', blob: 'Risposte binarie', config: 'Configurazione del plugin', options: 'Opzioni di VxRequest()' },
+    labels: { getUser: 'GET /users/1', success: 'Successo', error: 'Errore', loadUsers: 'Carica lista utenti' },
+    notify: { userLoaded: 'Utente caricato con successo!', userLoadError: 'Impossibile caricare l’utente.', success: 'Operazione completata!', endpointError: 'Endpoint non trovato (demo errore).', loadingUsers: 'Carico la lista utenti...', usersLoaded: 'Utenti caricati!' },
+    propsColumns: { option: 'Opzione', type: 'Tipo', default: 'Default', required: 'Obbligatoria', description: 'Descrizione' },
+    required: { Yes: 'Sì', No: 'No' },
+    codeLabels: {
+      setupComment: 'una sola volta, a livello di app', usageComment: 'In qualsiasi componente, senza altro setup',
+      getQueryComment: 'GET con query params', getPathComment: 'GET con path params', postComment: 'POST',
+      notifyComment: 'Notify automatica di successo/errore', errorNotifyComment: 'Notify solo in caso di errore',
+      loadingMessage: 'Generazione report in corso...', reportReady: 'Report pronto!',
+      userCreated: 'Utente creato con successo!', userCreateError: 'Impossibile creare l’utente.',
+      userLoaded: 'Utente caricato con successo!', userLoadError: 'Impossibile caricare l’utente.',
+      customMessageComment: 'Se la struttura di errore/successo del backend',
+      customMessageDetail: 'non è quella di default (error.message / data.message),',
+      pathComment: 'indica dove trovarla con un path dot-notation',
+      arrayComment: 'Funziona anche con indici di array',
+      loadingComment: 'Notify persistente durante la chiamata, si trasforma',
+      loadingCommentEnd: 'automaticamente in success/error al termine',
+      refreshComment: 'Su 401: se doRefresh non è false, la libreria tenta',
+      refreshCommentEnd: 'automaticamente il refresh del token e ripete la richiesta',
+      disableRefreshComment: 'Disattiva il refresh automatico per questa chiamata',
+      forceLogoutComment: 'Forza il logout su 401 anche a refresh disattivato',
+      blobComment: 'Download di un file binario (excel, pdf, zip...)'
+    },
+    optionsProps: {
+      method: 'Metodo HTTP della richiesta.', pathParams: 'Sostituisce i segnaposto :id nell’endpoint.',
+      query: 'Query string con supporto ai valori multipli per chiave.', body: 'Payload della richiesta, JSON o FormData.',
+      headers: 'Header aggiuntivi che sovrascrivono quelli automatici.', showNotify: 'Mostra una notify automatica su successo o errore.',
+      showOnlyErroNotify: 'Mostra la notify solo in caso di errore.', showNotifyLoading: 'Mostra una notify persistente durante la richiesta.',
+      loadingMessage: 'Messaggio della notify di caricamento.', successMessage: 'Messaggio custom della notify di successo.',
+      errorMessage: 'Messaggio custom della notify di errore.', successMessagePath: 'Path dot-notation del messaggio di successo nella risposta.',
+      errorMessagePath: 'Path dot-notation del messaggio di errore nella risposta.', skipContentType: 'Non forza il Content-Type application/json.',
+      doRefresh: 'Disattiva il refresh automatico del token su 401 quando è false.', doLogout: 'Forza il logout su 401 anche con refresh disattivato.',
+      expectBlob: 'Tratta la risposta come Blob binario invece che JSON.'
+    },
+    configProps: {
+      baseUrl: 'URL base delle API, anteposto a ogni endpoint.', getAccessToken: 'Recupera il token corrente per l’header Authorization.',
+      getRefreshToken: 'Recupera il refresh token; senza di esso il refresh automatico viene saltato.', refreshAccessToken: 'Esegue il refresh e deve aggiornare lo store del progetto.',
+      onAuthLogout: 'Viene chiamata quando il refresh fallisce o non è disponibile.', getLocale: 'Valorizza l’header Accept-Language.',
+      translate: 'Traduce i messaggi predefiniti della libreria.', storageTokenKey: 'Chiave localStorage di fallback per il token.'
+    }
   }
 }

@@ -121,3 +121,42 @@ export const configCode = `interface ApiClientConfig {
   translate?: (key: string, fallback: string) => string
   storageTokenKey?: string
 }`
+
+export const getApiCodeExamples = (tm) => {
+  const labels = tm('apiDocs.codeLabels')
+  const source = {
+    setupCode, usageCode, getPostCode, notifyCode, messagePathCode,
+    loadingCode, refreshCode, blobCode, configCode,
+  }
+  const replacements = {
+    'una sola volta, a livello di app': labels.setupComment,
+    'In qualsiasi componente, senza altro setup': labels.usageComment,
+    'GET con query params': labels.getQueryComment,
+    'GET con path params': labels.getPathComment,
+    POST: labels.postComment,
+    'Notify automatica di successo/errore': labels.notifyComment,
+    'Notify solo in caso di errore': labels.errorNotifyComment,
+    'Caricamento in corso...': labels.loadingMessage,
+    'Report pronto!': labels.reportReady,
+    'Utente creato con successo!': labels.userCreated,
+    "Impossibile creare l'utente.": labels.userCreateError,
+    'Utente caricato con successo!': labels.userLoaded,
+    "Impossibile caricare l'utente.": labels.userLoadError,
+    'Se la struttura di errore/successo del backend': labels.customMessageComment,
+    'non è quella di default (error.message / data.message),': labels.customMessageDetail,
+    'indica dove trovarla con un path dot-notation': labels.pathComment,
+    'Funziona anche con indici di array': labels.arrayComment,
+    'Notify persistente durante la chiamata, si trasforma': labels.loadingComment,
+    'automaticamente in success/error al termine': labels.loadingCommentEnd,
+    'Su 401: se doRefresh non è false, la libreria tenta': labels.refreshComment,
+    'automaticamente il refresh del token e ripete la richiesta': labels.refreshCommentEnd,
+    'Disattiva il refresh automatico per questa chiamata': labels.disableRefreshComment,
+    'Forza il logout su 401 anche a refresh disattivato': labels.forceLogoutComment,
+    'Download di un file binario (excel, pdf, zip...)': labels.blobComment,
+  }
+  return Object.fromEntries(Object.entries(source).map(([key, value]) => {
+    let localized = value
+    for (const [from, to] of Object.entries(replacements)) localized = localized.split(from).join(to)
+    return [key, localized]
+  }))
+}

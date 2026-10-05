@@ -42,3 +42,27 @@ export const configRows = [
   { name: 'translate', type: '(key, fallback) => string', required: 'No', description: 'Traduce i messaggi di default della libreria.' },
   { name: 'storageTokenKey', type: 'string', required: 'No', description: 'Chiave localStorage di fallback per il token (es. reset password).' },
 ]
+
+export const getApiMetadata = (t) => ({
+  optionsColumns: [
+    { key: 'name', label: t('apiDocs.propsColumns.option'), class: 'prop-name' },
+    { key: 'type', label: t('apiDocs.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('apiDocs.propsColumns.default'), class: 'prop-default' },
+    { key: 'description', label: t('apiDocs.propsColumns.description'), class: 'prop-desc' },
+  ],
+  optionsRows: optionsRows.map(row => ({
+    ...row,
+    description: t(`apiDocs.optionsProps.${row.name}`, row.description),
+  })),
+  configColumns: [
+    { key: 'name', label: t('apiDocs.propsColumns.option'), class: 'prop-name' },
+    { key: 'type', label: t('apiDocs.propsColumns.type'), class: 'prop-type' },
+    { key: 'required', label: t('apiDocs.propsColumns.required'), class: 'prop-default' },
+    { key: 'description', label: t('apiDocs.propsColumns.description'), class: 'prop-desc' },
+  ],
+  configRows: configRows.map(row => ({
+    ...row,
+    required: t(`apiDocs.required.${row.required}`, row.required),
+    description: t(`apiDocs.configProps.${row.name}`, row.description),
+  })),
+})

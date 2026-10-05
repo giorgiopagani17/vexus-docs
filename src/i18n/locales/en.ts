@@ -433,5 +433,58 @@ export default {
           acceptTerms: 'I accept the terms and conditions', optionA: 'Option A', optionB: 'Option B',
           optionC: 'Option C', monthly: 'Monthly', yearly: 'Yearly'
         }
+  },
+  apiDocs: {
+    intro: 'Shared HTTP client with automatic authentication, token refresh, notifications, and binary response handling. Configure it once at app level with no setup in individual components.',
+    setupDescription: 'Register the plugin once in the project main.ts, connecting the library to the authentication store and local environment variables.',
+    usageDescription: 'In any component, import useVxApi and call VxRequest(endpoint, options) without additional setup.',
+    paramsDescription: 'pathParams replaces :id placeholders in the endpoint, while query builds the query string and supports repeated array values.',
+    notificationsDescription: 'showNotify automatically displays a success or error notification through the library Notify system, with no manual try/catch required.',
+    messagePathsDescription: 'If the backend uses a custom response structure, successMessagePath and errorMessagePath identify the message using dot notation, including array indexes.',
+    loadingDescription: 'showNotifyLoading keeps a notification visible for the entire request and automatically changes it to success or error when the request ends.',
+    refreshDescription: 'On a 401 response with a refresh token, the failed request is queued, the token is refreshed only once across concurrent calls, and the original request restarts automatically.',
+    blobDescription: 'With expectBlob enabled, or when the response Content-Type is a recognized binary format such as zip, pdf, or Excel, the response is returned as a Blob instead of JSON.',
+    configDescription: 'Project-specific settings such as the auth store, environment, and i18n belong here rather than inside the library.',
+    sections: { setup: 'Setup', usage: 'Basic usage', params: 'Query and path params', notifications: 'Automatic notifications', messagePaths: 'Messages from custom structures', loading: 'Loading notification', refresh: 'Automatic token refresh', blob: 'Binary responses', config: 'Plugin configuration', options: 'VxRequest() options' },
+    labels: { getUser: 'GET /users/1', success: 'Success', error: 'Error', loadUsers: 'Load user list' },
+    notify: { userLoaded: 'User loaded successfully!', userLoadError: 'Unable to load the user.', success: 'Operation completed!', endpointError: 'Endpoint not found (error demo).', loadingUsers: 'Loading user list...', usersLoaded: 'Users loaded!' },
+    propsColumns: { option: 'Option', type: 'Type', default: 'Default', required: 'Required', description: 'Description' },
+    required: { Yes: 'Yes', No: 'No' },
+    codeLabels: {
+      setupComment: 'once at app level', usageComment: 'In any component, without additional setup',
+      getQueryComment: 'GET with query params', getPathComment: 'GET with path params', postComment: 'POST',
+      notifyComment: 'Automatic success/error notification', errorNotifyComment: 'Notification only on error',
+      loadingMessage: 'Generating report...', reportReady: 'Report ready!',
+      userCreated: 'User created successfully!', userCreateError: "Unable to create the user.",
+      userLoaded: 'User loaded successfully!', userLoadError: 'Unable to load the user.',
+      customMessageComment: 'If the backend success/error structure',
+      customMessageDetail: 'is not the default one (error.message / data.message),',
+      pathComment: 'specify where to find it using a dot-notation path',
+      arrayComment: 'This also works with array indexes',
+      loadingComment: 'Persistent notification during the request, changes',
+      loadingCommentEnd: 'automatically to success/error when it ends',
+      refreshComment: 'On 401: if doRefresh is not false, the library attempts',
+      refreshCommentEnd: 'to refresh the token automatically and retries the request',
+      disableRefreshComment: 'Disable automatic refresh for this request',
+      forceLogoutComment: 'Force logout on 401 even when refresh is disabled',
+      blobComment: 'Download a binary file (Excel, PDF, ZIP...)'
+    },
+    optionsProps: {
+      method: 'HTTP method for the request.', pathParams: 'Replaces :id placeholders in the endpoint.',
+      query: 'Query string with support for repeated values per key.', body: 'Request payload, JSON or FormData.',
+      headers: 'Additional headers that override automatic headers.', showNotify: 'Shows an automatic success or error notification.',
+      showOnlyErroNotify: 'Shows the notification only on error.', showNotifyLoading: 'Shows a persistent notification during the request.',
+      loadingMessage: 'Loading notification message.', successMessage: 'Custom success notification message.',
+      errorMessage: 'Custom error notification message.', successMessagePath: 'Dot-notation path for the success message in the response.',
+      errorMessagePath: 'Dot-notation path for the error message in the response.', skipContentType: 'Does not force application/json Content-Type.',
+      doRefresh: 'Disables automatic token refresh on 401 when false.', doLogout: 'Forces logout on 401 even when refresh is disabled.',
+      expectBlob: 'Treats the response as a binary Blob instead of JSON.'
+    },
+    configProps: {
+      baseUrl: 'Base API URL prefixed to every endpoint.', getAccessToken: 'Gets the current token for the Authorization header.',
+      getRefreshToken: 'Gets the refresh token; without it, auto-refresh is skipped.', refreshAccessToken: 'Runs the refresh and must update the project store.',
+      onAuthLogout: 'Called when refresh fails or is unavailable.', getLocale: 'Sets the Accept-Language header.',
+      translate: 'Translates the library default messages.', storageTokenKey: 'Fallback localStorage key for the token.'
+    }
   }
 }
