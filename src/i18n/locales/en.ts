@@ -709,7 +709,7 @@ export default {
         }
   },
   inputDocs: {
-        intro: 'Flexible input component with custom variants and colors, focus effects, icons, loading, clearable, textarea, hints, and errors. Dedicated variants also cover dates, ranges, time, date-time, color, and sliders.',
+        intro: 'Flexible input component with custom variants and colors, focus effects, icons, loading, clearable, textarea, hints, and errors.',
         props: {
           modelValue: 'Bound field value.',
           type: 'Native input type.',
@@ -952,7 +952,7 @@ export default {
     }
   },
   inputPickersDocs: {
-    typePickerNote: 'date, datetime-local, month, week, time, color, and range use dedicated components for consistent rendering.',
+    info: 'Custom input components for date, time, range, color, and numeric sliders. All pickers share the same visual chrome as VxInput.',
     sections: {
       datePicker: 'Date picker',
       dateRange: 'Date range',
@@ -1016,6 +1016,7 @@ export default {
     },
   },
   inputOthersDocs: {
+    intro: 'Custom input components for color, range, checkbox, and radio with consistent design and behavior.',
     sections: {
       colorPicker: 'Color picker',
       range: 'Range',

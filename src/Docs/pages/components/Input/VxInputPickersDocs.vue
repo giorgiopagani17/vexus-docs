@@ -2,7 +2,7 @@
   <div class="docs-page">
     <div class="docs-header">
       <h1>VxInput Pickers</h1>
-      <p class="subtitle">{{ $t('inputPickersDocs.typePickerNote') }}</p>
+      <p class="subtitle">{{ $t('inputPickersDocs.info') }}</p>
     </div>
     <section v-for="picker in pickers" :key="picker.title" class="docs-section">
       <section class="docs-section">

@@ -709,7 +709,7 @@ export default {
         }
   },
   inputDocs: {
-        intro: 'Componente input flessibile con varianti, colori custom, effetti focus, icone, loading, clearable, textarea e supporto per hint ed errori. Le varianti dedicate coprono anche date, range, ora, data+ora, colore e slider.',
+        intro: 'Componente input flessibile con varianti, colori custom, effetti focus, icone, loading, clearable, textarea e supporto per hint ed errori.',
         props: {
           modelValue: 'Valore collegato del campo.', type: 'Tipo di input nativo.', variant: 'Variante visiva del campo.',
           color: 'Token colore o valore CSS del campo.', colors: 'Override custom dei colori.', size: 'Dimensione del campo.',
@@ -918,7 +918,7 @@ export default {
     }
   },
   inputPickersDocs: {
-    typePickerNote: 'date, datetime-local, month, week, time, color e range usano componenti dedicati per un rendering coerente.',
+    info: 'Campi di input con selettori custom per date, orari, intervalli, colori e range numerici. Tutti i picker condividono lo stesso chrome visivo di VxInput.',
     sections: {
       datePicker: 'Selettore data',
       dateRange: 'Intervallo date',
@@ -980,6 +980,7 @@ export default {
     },
   },
   inputOthersDocs: {
+    intro: 'Campi di input avanzati per selezione colore, range, checkbox e radio, con supporto a v-model, swatch, valori e validazione.',
     sections: {
       colorPicker: 'Selettore colore',
       range: 'Range',

@@ -2,6 +2,7 @@
   <div class="docs-page">
     <div class="docs-header">
       <h1>VxInput Others</h1>
+      <p class="subtitle">{{ $t('inputOthersDocs.intro') }}</p>
     </div>
     <section v-for="item in items" :key="item.title" class="docs-section">
       <h2>{{ item.title }}</h2>
