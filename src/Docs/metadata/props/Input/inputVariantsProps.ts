@@ -744,3 +744,27 @@ export const radioPropsRows = [
     desc: 'Effetto visivo applicato al focus.',
   },
 ]
+
+export const getInputVariantMetadata = (t) => {
+  const rows = {
+    datePickerPropsRows,
+    dateRangePropsRows,
+    dateTimePickerPropsRows,
+    dateTimeRangePropsRows,
+    timePickerPropsRows,
+    colorPickerPropsRows,
+    rangePropsRows,
+    checkboxPropsRows,
+    radioPropsRows,
+  }
+  const columns = [
+    { key: 'name', label: t('inputDocs.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('inputDocs.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('inputDocs.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('inputDocs.propsColumns.description'), class: 'prop-desc' },
+  ]
+  return Object.fromEntries(Object.entries(rows).map(([key, value]) => [
+    key,
+    value.map(row => ({ ...row, desc: t(`inputDocs.props.${row.name}`, row.desc) })),
+  ]).concat([['columns', columns]]))
+}

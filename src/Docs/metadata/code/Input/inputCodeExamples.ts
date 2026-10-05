@@ -39,6 +39,39 @@ export const labelHintCode = `<VxInput
   block
 />`
 
+export const getInputCodeExamples = (tm: (key: string) => unknown) => {
+  const labels = tm('inputDocs.codeLabels') as Record<string, string>
+  const source = {
+    setupCode, variantCode, typeCode, colorCode, sizeCode, labelHintCode, iconCode,
+    stateCode, accessCode, layoutCode, focusEffectCode, textareaCode, colorsOverrideCode,
+    eventsCode, datePickerCode, dateRangeCode, dateTimeCode, dateTimeRangeCode,
+    timePickerCode, colorPickerCode, rangeCode, checkboxCode, radioCode
+  }
+  const replacements: Record<string, string> = {
+    'Outline (default)': labels.outlineDefault, Outline: labels.outline, Ghost: labels.ghost,
+    Text: labels.text, Password: labels.password, Email: labels.email, Numero: labels.number,
+    Telefono: labels.phone, Cerca: labels.search, Hex: labels.hex, 'Nome CSS': labels.cssName,
+    'CSS variable': labels.cssVariable, Small: labels.small, Medium: labels.medium, Large: labels.large,
+    'Inserisci l\'indirizzo associato al tuo account': labels.emailHint,
+    'Questo username non è disponibile': labels.usernameError, 'Scegli uno username': labels.chooseUsername,
+    'Search...': labels.searchPlaceholder, 'Slot left': labels.slotLeft, 'Slot right': labels.slotRight,
+    'Loading...': labels.loading, 'Campo svuotabile': labels.clearable, Disabled: labels.disabled,
+    Readonly: labels.readonly, 'Full width': labels.fullWidth, 'Custom radius': labels.customRadius,
+    Pill: labels.pill, Ring: labels.ring, Lift: labels.lift, Glow: labels.glow, None: labels.none,
+    Custom: labels.custom, Messaggio: labels.message, 'Scrivi qui il tuo messaggio...': labels.messagePlaceholder,
+    'Colori misti': labels.mixedColors, 'Full custom colors': labels.fullCustomColors,
+    'Event demo': labels.eventDemo, 'Interagisci con questo campo': labels.eventPlaceholder,
+    'Accetto i termini e condizioni': labels.acceptTerms, 'Opzione A': labels.optionA,
+    'Opzione B': labels.optionB, 'Opzione C': labels.optionC, Mensile: labels.monthly,
+    Annuale: labels.yearly
+  }
+  return Object.fromEntries(Object.entries(source).map(([key, value]) => {
+    let localized = value
+    for (const [from, to] of Object.entries(replacements)) localized = localized.split(from).join(to)
+    return [key, localized]
+  }))
+}
+
 export const iconCode = `<VxInput
   v-model="value"
   :icon="Search"

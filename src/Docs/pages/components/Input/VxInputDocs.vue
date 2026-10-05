@@ -2,129 +2,85 @@
   <div class="docs-page">
     <div class="docs-header">
       <h1>VxInput</h1>
-      <p class="subtitle">
-        Componente input flessibile con varianti, colori custom, focus effect,
-        icone, stato loading, clearable, textarea e supporto a hint ed errori.
-        Le varianti dedicate coprono anche date, range, ora, data+ora, colore e slider.
-      </p>
+      <p class="subtitle">{{ $t('inputDocs.intro') }}</p>
     </div>
 
     <!-- Setup -->
     <section class="docs-section">
-      <h2>Setup</h2>
-      <p>Importa il componente Input nel <code>File.vue</code>:</p>
-      <DesignCodeBlock :code="setupCode" />
+      <h2>{{ $t('inputDocs.sections.setup') }}</h2>
+      <p>{{ $t('inputDocs.importComponent') }}</p>
+      <DesignCodeBlock :code="codeExamples.setupCode" />
     </section>
 
     <!-- Variant -->
     <section class="docs-section">
-      <h2>Variant</h2>
-      <p>
-        Definisce lo stile visivo del campo: <code>outline</code>,
-        <code>ghost</code> o <code>text</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.variant') }}</h2>
+      <p>{{ $t('inputDocs.variantDescription') }}</p>
 
       <div class="example-grid">
-        <VxInput v-model="variantExamples.outline" placeholder="Outline (default)" />
-        <VxInput v-model="variantExamples.ghost" variant="ghost" placeholder="Ghost" />
-        <VxInput v-model="variantExamples.text" variant="text" placeholder="Text" />
+        <VxInput v-model="variantExamples.outline" :placeholder="$t('inputDocs.labels.outlineDefault')" />
+        <VxInput v-model="variantExamples.ghost" variant="ghost" :placeholder="$t('inputDocs.labels.ghost')" />
+        <VxInput v-model="variantExamples.text" variant="text" :placeholder="$t('inputDocs.labels.text')" />
       </div>
 
-      <DesignCodeBlock :code="variantCode" />
+      <DesignCodeBlock :code="codeExamples.variantCode" />
     </section>
 
     <!-- Type -->
     <section class="docs-section">
-      <h2>Type</h2>
-      <p>
-        La prop <code>type</code> accetta i tipi nativi di
-        <code>&lt;input&gt;</code> pensati per un campo di testo:
-        <code>text</code>, <code>password</code>, <code>email</code>,
-        <code>number</code>, <code>tel</code>, <code>url</code>,
-        oltre a <code>file</code>. Viene
-        ignorata se <code>tag="textarea"</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.type') }}</h2>
+      <p>{{ $t('inputDocs.typeDescription') }}</p>
 
       <div class="example-grid">
-        <VxInput v-model="typeExamples.password" type="password" placeholder="Password" />
-        <VxInput v-model="typeExamples.email" type="email" placeholder="Email" />
-        <VxInput v-model="typeExamples.number" type="number" placeholder="Numero" />
-        <VxInput v-model="typeExamples.tel" type="tel" placeholder="Telefono" />
-        <VxInput v-model="typeExamples.url" type="url" placeholder="URL" />
+        <VxInput v-model="typeExamples.password" type="password" :placeholder="$t('inputDocs.labels.password')" />
+        <VxInput v-model="typeExamples.email" type="email" :placeholder="$t('inputDocs.labels.email')" />
+        <VxInput v-model="typeExamples.number" type="number" :placeholder="$t('inputDocs.labels.number')" />
+        <VxInput v-model="typeExamples.tel" type="tel" :placeholder="$t('inputDocs.labels.phone')" />
+        <VxInput v-model="typeExamples.url" type="url" :placeholder="$t('inputDocs.labels.url')" />
       </div>
 
       <div class="example-grid">
         <VxInput v-model="typeExamples.file" type="file" clearable />
       </div>
 
-      <p class="section-note">
-        <code>checkbox</code>, <code>radio</code> non sono supportati allo stesso modo tramite
-        <code>type</code>, ma vengono usati i componenti dedicati
-        <code>VxCheckbox</code> e <code>VxRadio</code>, che condividono le
-        stesse prop <code>color</code>/<code>size</code>/<code>disabled</code>/
-        <code>loading</code>/<code>focusEffect</code>/<code>label</code>/
-        <code>hint</code>/<code>error</code>/<code>errorMessage</code> ma con
-        un markup pensato per checkbox e radio (nessun bordo "a campo",
-        supporto a gruppi tramite v-model array per i checkbox e
-        <code>name</code> condiviso per i radio).
-      </p>
+      <p class="section-note">{{ $t('inputDocs.typeCheckboxNote') }}</p>
 
-      <p class="section-note">
-        <code>date</code>, <code>datetime-local</code>, <code>month</code>,
-        <code>week</code>, <code>time</code>, <code>color</code> e
-        <code>range</code> non sono gestiti da questa prop: il rendering
-        nativo del browser per questi tipi non è restylizzabile in modo
-        coerente col resto del design system. Sono gestiti da componenti
-        dedicati che condividono lo stesso "chrome" visivo — vedi le sezioni
-        <strong>Date picker</strong>, <strong>Date range</strong>,
-        <strong>DateTime picker</strong>, <strong>DateTime range</strong>,
-        <strong>Time picker</strong>, <strong>Color picker</strong> e
-        <strong>Range</strong> qui sotto.
-      </p>
+      <p class="section-note">{{ $t('inputDocs.typePickerNote') }}</p>
 
-      <DesignCodeBlock :code="typeCode" />
+      <DesignCodeBlock :code="codeExamples.typeCode" />
     </section>
 
     <!-- Date picker -->
     <section class="docs-section">
-      <h2>Date picker</h2>
-      <p>
-        <code>VxDate</code> sostituisce <code>type="date"</code>: stesso
-        chrome di <code>Input</code>, ma con un pannello calendario custom al
-        posto del rendering nativo del browser. Il valore è una stringa ISO
-        <code>'YYYY-MM-DD'</code>. Supporta <code>min</code>/<code>max</code>
-        per limitare l'intervallo selezionabile e <code>clearable</code> come
-        Input. Apertura, anchoring all'input e comportamento responsive
-        (popover su desktop, modal fullscreen su mobile) sono automatici,
-        nessuna prop da configurare.
-      </p>
+      <h2>{{ $t('inputDocs.sections.datePicker') }}</h2>
+      <p>{{ $t('inputDocs.dateDescription') }}</p>
 
       <div class="example-grid">
-        <VxDate v-model="dateExamples.basic" placeholder="Seleziona una data" />
+        <VxDate v-model="dateExamples.basic" :placeholder="$t('inputDocs.labels.date')" />
         <VxDate
           v-model="dateExamples.clearable"
           clearable
           color="#22c55e"
-          placeholder="Con clear"
+          :placeholder="$t('inputDocs.labels.clear')"
         />
         <VxDate
           v-model="dateExamples.ranged"
           min="2026-01-01"
           max="2026-12-31"
-          placeholder="Solo 2026"
+          :placeholder="$t('inputDocs.labels.year')"
         />
       </div>
 
       <div class="example-col">
         <VxDate
           v-model="dateExamples.labeled"
-          label="Data di nascita"
-          hint="Formato gg/mm/aaaa"
+          :label="$t('inputDocs.labels.birthDate')"
+          :hint="$t('inputDocs.labels.dateFormat')"
           block
         />
       </div>
 
-      <DesignCodeBlock :code="datePickerCode" />
+      <DesignCodeBlock :code="codeExamples.datePickerCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -136,23 +92,15 @@
 
     <!-- Date range -->
     <section class="docs-section">
-      <h2>Date range</h2>
-      <p>
-        <code>VxDateRange</code> copre l'uso di un intervallo di date con un
-        solo input testuale e un calendario dedicato. Il <code>v-model</code>
-        è un oggetto con <code>{ start, end }</code> in formato ISO
-        <code>'YYYY-MM-DD'</code>. Il campo mostra un placeholder combinato e
-        il pannello resta il punto principale per selezionare il range.
-        <code>rangeSeparator</code> controlla sia il separatore mostrato nel
-        campo sia quello riconosciuto in fase di digitazione libera.
-      </p>
+      <h2>{{ $t('inputDocs.sections.dateRange') }}</h2>
+      <p>{{ $t('inputDocs.dateRangeDescription') }}</p>
 
       <div class="example-col">
         <VxDateRange v-model="dateRangeExamples.basic" />
         <VxDateRange v-model="dateRangeExamples.clearable" clearable />
       </div>
 
-      <DesignCodeBlock :code="dateRangeCode" />
+      <DesignCodeBlock :code="codeExamples.dateRangeCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -164,14 +112,8 @@
 
     <!-- DateTime picker -->
     <section class="docs-section">
-      <h2>DateTime picker</h2>
-      <p>
-        <code>VxDateTime</code> sostituisce <code>type="datetime-local"</code>:
-        unisce selezione della data e dell'orario nello stesso componente. Il
-        <code>v-model</code> usa il formato canonico <code>'YYYY-MM-DD HH:MM'</code>
-        e l'ora si controlla con <code>minuteStep</code>, <code>timeFormat</code>
-        e <code>separator</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.dateTime') }}</h2>
+      <p>{{ $t('inputDocs.dateTimeDescription') }}</p>
 
       <div class="example-grid">
         <VxDateTime v-model="dateTimeExamples.basic" />
@@ -179,7 +121,7 @@
         <VxDateTime v-model="dateTimeExamples.custom" separator=" - " timeFormat="HH.mm" />
       </div>
 
-      <DesignCodeBlock :code="dateTimeCode" />
+      <DesignCodeBlock :code="codeExamples.dateTimeCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -191,20 +133,15 @@
 
     <!-- DateTime range -->
     <section class="docs-section">
-      <h2>DateTime range</h2>
-      <p>
-        <code>VxDateTimeRange</code> estende l'intervallo di date aggiungendo la
-        scelta dell'orario per inizio e fine, sempre con un solo input visibile.
-        Anche qui il <code>v-model</code> è un oggetto <code>{ start, end }</code>,
-        con valori canonici <code>'YYYY-MM-DD HH:MM'</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.dateTimeRange') }}</h2>
+      <p>{{ $t('inputDocs.dateTimeRangeDescription') }}</p>
 
       <div class="example-col">
         <VxDateTimeRange v-model="dateTimeRangeExamples.basic" />
         <VxDateTimeRange v-model="dateTimeRangeExamples.clearable" clearable :minuteStep="15" />
       </div>
 
-      <DesignCodeBlock :code="dateTimeRangeCode" />
+      <DesignCodeBlock :code="codeExamples.dateTimeRangeCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -216,22 +153,16 @@
 
     <!-- Time picker -->
     <section class="docs-section">
-      <h2>Time picker</h2>
-      <p>
-        <code>VxTime</code> sostituisce <code>type="time"</code>: due
-        colonne per ore e minuti (con scroll interno, dato che mostrano
-        rispettivamente 24 e fino a 60 valori). Il valore è una stringa
-        <code>'HH:MM'</code> (24h). L'intervallo tra un minuto e l'altro si
-        controlla con <code>minuteStep</code> (default 5).
-      </p>
+      <h2>{{ $t('inputDocs.sections.time') }}</h2>
+      <p>{{ $t('inputDocs.timeSectionDescription') }}</p>
 
       <div class="example-grid">
-        <VxTime v-model="timeExamples.basic" placeholder="Seleziona un orario" />
+        <VxTime v-model="timeExamples.basic" :placeholder="$t('inputDocs.labels.time')" />
         <VxTime v-model="timeExamples.clearable" clearable color="#f97316" />
-        <VxTime v-model="timeExamples.step" :minuteStep="15" placeholder="Step 15 min" />
+        <VxTime v-model="timeExamples.step" :minuteStep="15" :placeholder="$t('inputDocs.labels.timeStep')" />
       </div>
 
-      <DesignCodeBlock :code="timePickerCode" />
+      <DesignCodeBlock :code="codeExamples.timePickerCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -243,14 +174,8 @@
 
     <!-- Color picker -->
     <section class="docs-section">
-      <h2>Color picker</h2>
-      <p>
-        <code>VxColorPicker</code> sostituisce <code>type="color"</code>: uno
-        swatch cliccabile apre il selettore colore nativo del sistema
-        operativo/browser, con lo stesso chrome degli altri campi. Il valore
-        è una stringa hex (<code>'#rrggbb'</code>). Disattiva
-        <code>showHex</code> se vuoi solo lo swatch.
-      </p>
+      <h2>{{ $t('inputDocs.sections.colorPicker') }}</h2>
+      <p>{{ $t('inputDocs.colorPickerSectionDescription') }}</p>
 
       <div class="example-grid">
         <VxColorPicker v-model="colorPickerExamples.basic" />
@@ -258,7 +183,7 @@
         <VxColorPicker v-model="colorPickerExamples.noHex" :showHex="false" />
       </div>
 
-      <DesignCodeBlock :code="colorPickerCode" />
+      <DesignCodeBlock :code="codeExamples.colorPickerCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -270,14 +195,8 @@
 
     <!-- Range -->
     <section class="docs-section">
-      <h2>Range</h2>
-      <p>
-        <code>VxRange</code> sostituisce <code>type="range"</code>: slider
-        nativo restylizzato, con la porzione riempita e il thumb colorati
-        tramite la prop <code>color</code>. Supporta <code>min</code>,
-        <code>max</code>, <code>step</code> e mostra il valore corrente a
-        destra (disattivabile con <code>showValue</code>).
-      </p>
+      <h2>{{ $t('inputDocs.sections.range') }}</h2>
+      <p>{{ $t('inputDocs.rangeSectionDescription') }}</p>
 
       <div class="example-col">
         <VxRange v-model="rangeExamples.basic" block />
@@ -285,7 +204,7 @@
         <VxRange v-model="rangeExamples.noValue" :showValue="false" color="#f97316" block />
       </div>
 
-      <DesignCodeBlock :code="rangeCode" />
+      <DesignCodeBlock :code="codeExamples.rangeCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -297,39 +216,31 @@
 
     <!-- Checkbox -->
     <section class="docs-section">
-      <h2>Checkbox</h2>
-      <p>
-        <code>VxCheckbox</code> copre <code>type="checkbox"</code> con un
-        componente dedicato (niente <code>VxFieldWrapper</code>, markup
-        proprio). <code>v-model</code> booleano per l'uso singolo, oppure
-        <code>v-model</code> array + prop <code>value</code> per un gruppo di
-        checkbox che condividono lo stesso array — stesso pattern dei
-        checkbox nativi con lo stesso <code>name</code>. Supporta anche
-        <code>indeterminate</code> e stato <code>loading</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.checkbox') }}</h2>
+      <p>{{ $t('inputDocs.checkboxSectionDescription') }}</p>
 
       <div class="example-col">
-        <VxCheckbox v-model="checkboxExamples.single" label="Accetto i termini e condizioni" />
+        <VxCheckbox v-model="checkboxExamples.single" :label="$t('inputDocs.labels.acceptTerms')" />
 
         <div class="example-row">
-          <VxCheckbox v-model="checkboxExamples.group" value="a" label="Opzione A" />
-          <VxCheckbox v-model="checkboxExamples.group" value="b" label="Opzione B" />
-          <VxCheckbox v-model="checkboxExamples.group" value="c" label="Opzione C" />
+          <VxCheckbox v-model="checkboxExamples.group" value="a" :label="$t('inputDocs.labels.optionA')" />
+          <VxCheckbox v-model="checkboxExamples.group" value="b" :label="$t('inputDocs.labels.optionB')" />
+          <VxCheckbox v-model="checkboxExamples.group" value="c" :label="$t('inputDocs.labels.optionC')" />
         </div>
 
         <VxCheckbox
           v-model="checkboxExamples.error"
-          label="Checkbox con errore"
+          :label="$t('inputDocs.labels.checkboxError')"
           error
-          errorMessage="Devi accettare per continuare"
+          :errorMessage="$t('inputDocs.labels.acceptToContinue')"
         />
 
-        <VxCheckbox :modelValue="false" indeterminate label="Stato indeterminato" />
+        <VxCheckbox :modelValue="false" indeterminate :label="$t('inputDocs.labels.indeterminate')" />
 
-        <VxCheckbox v-model="checkboxExamples.loading" loading label="Salvataggio in corso..." />
+        <VxCheckbox v-model="checkboxExamples.loading" loading :label="$t('inputDocs.labels.saving')" />
       </div>
 
-      <DesignCodeBlock :code="checkboxCode" />
+      <DesignCodeBlock :code="codeExamples.checkboxCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -341,31 +252,26 @@
 
     <!-- Radio -->
     <section class="docs-section">
-      <h2>Radio</h2>
-      <p>
-        <code>VxRadio</code> copre <code>type="radio"</code>: più
-        <code>VxRadio</code> con lo stesso <code>name</code> (e idealmente lo
-        stesso <code>v-model</code>) formano un gruppo dove solo uno può
-        essere selezionato, esattamente come i radio nativi.
-      </p>
+      <h2>{{ $t('inputDocs.sections.radio') }}</h2>
+      <p>{{ $t('inputDocs.radioSectionDescription') }}</p>
 
       <div class="example-col">
         <div class="example-row">
-          <VxRadio v-model="radioExamples.plan" name="plan" value="monthly" label="Mensile" />
-          <VxRadio v-model="radioExamples.plan" name="plan" value="yearly" label="Annuale" />
+          <VxRadio v-model="radioExamples.plan" name="plan" value="monthly" :label="$t('inputDocs.labels.radioMonthly')" />
+          <VxRadio v-model="radioExamples.plan" name="plan" value="yearly" :label="$t('inputDocs.labels.radioYearly')" />
         </div>
 
         <VxRadio
           v-model="radioExamples.error"
           name="radio-error"
           value="yes"
-          label="Radio con errore"
+          :label="$t('inputDocs.labels.radioError')"
           error
-          errorMessage="Seleziona un'opzione per continuare"
+          :errorMessage="$t('inputDocs.labels.selectToContinue')"
         />
       </div>
 
-      <DesignCodeBlock :code="radioCode" />
+      <DesignCodeBlock :code="codeExamples.radioCode" />
 
       <DesignPropsTable
         class="docs-props-table"
@@ -377,81 +283,68 @@
 
     <!-- Color -->
     <section class="docs-section">
-      <h2>Color (bordo/focus)</h2>
-      <p>
-        Definisce il colore del bordo e del focus ring. Accetta qualsiasi
-        valore CSS valido: hex, <code>rgb()</code>/<code>rgba()</code>, nome
-        colore CSS o <code>var(--...)</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.color') }}</h2>
+      <p>{{ $t('inputDocs.colorDescription') }}</p>
 
       <div class="example-grid">
-        <VxInput v-model="colorExamples.hex" color="#7c3aed" placeholder="Hex" />
-        <VxInput v-model="colorExamples.rgb" color="rgb(34, 197, 94)" placeholder="rgb()" />
-        <VxInput v-model="colorExamples.named" color="crimson" placeholder="Nome CSS" />
+        <VxInput v-model="colorExamples.hex" color="#7c3aed" :placeholder="$t('inputDocs.labels.hex')" />
+        <VxInput v-model="colorExamples.rgb" color="rgb(34, 197, 94)" :placeholder="$t('inputDocs.labels.rgb')" />
+        <VxInput v-model="colorExamples.named" color="crimson" :placeholder="$t('inputDocs.labels.nameAtCss')" />
         <VxInput
           v-model="colorExamples.varColor"
           color="var(--vx-primary)"
-          placeholder="CSS variable"
+          :placeholder="$t('inputDocs.labels.cssVariable')"
         />
       </div>
 
-      <DesignCodeBlock :code="colorCode" />
+      <DesignCodeBlock :code="codeExamples.colorCode" />
     </section>
 
     <!-- Size -->
     <section class="docs-section">
-      <h2>Size</h2>
-      <p>
-        Tre dimensioni disponibili: <code>sm</code>, <code>md</code> (default) e
-        <code>lg</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.size') }}</h2>
+      <p>{{ $t('inputDocs.sizeDescription') }}</p>
 
       <div class="example-grid">
-        <VxInput v-model="sizeExamples.sm" size="sm" placeholder="Small" />
-        <VxInput v-model="sizeExamples.md" size="md" placeholder="Medium" />
-        <VxInput v-model="sizeExamples.lg" size="lg" placeholder="Large" />
+        <VxInput v-model="sizeExamples.sm" size="sm" :placeholder="$t('inputDocs.labels.small')" />
+        <VxInput v-model="sizeExamples.md" size="md" :placeholder="$t('inputDocs.labels.medium')" />
+        <VxInput v-model="sizeExamples.lg" size="lg" :placeholder="$t('inputDocs.labels.large')" />
       </div>
 
-      <DesignCodeBlock :code="sizeCode" />
+      <DesignCodeBlock :code="codeExamples.sizeCode" />
     </section>
 
     <!-- Label, hint, error -->
     <section class="docs-section">
-      <h2>Label e hint</h2>
-      <p>
-        Puoi mostrare una label sopra il campo e un testo di supporto sotto
-        tramite <code>label</code> e <code>hint</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.labelHint') }}</h2>
+      <p>{{ $t('inputDocs.labelHintDescription') }}</p>
 
       <div class="example-col">
         <VxInput
           v-model="metaExamples.email"
-          label="Email"
-          hint="Inserisci l'indirizzo associato al tuo account"
-          placeholder="nome@dominio.it"
+          :label="$t('inputDocs.labels.email')"
+          :hint="$t('inputDocs.codeLabels.emailHint')"
+          :placeholder="$t('inputDocs.labels.emailAddress')"
           block
         />
 
         <VxInput
           v-model="metaExamples.username"
-          label="Username"
+          :label="$t('inputDocs.labels.username')"
           error
-          errorMessage="Questo username non è disponibile"
-          placeholder="Scegli uno username"
+          :errorMessage="$t('inputDocs.codeLabels.usernameError')"
+          :placeholder="$t('inputDocs.labels.chooseUsername')"
           block
         />
       </div>
 
-      <DesignCodeBlock :code="labelHintCode" />
+      <DesignCodeBlock :code="codeExamples.labelHintCode" />
     </section>
 
     <!-- Icons -->
     <section class="docs-section">
-      <h2>Icone</h2>
-      <p>
-        Supporta icone tramite prop <code>icon</code> oppure tramite gli slot
-        <code>icon-left</code> e <code>icon-right</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.icons') }}</h2>
+      <p>{{ $t('inputDocs.iconsDescription') }}</p>
 
       <div class="example-col">
         <div class="example-row">
@@ -459,24 +352,24 @@
             v-model="iconExamples.left"
             :icon="Search"
             iconPosition="left"
-            placeholder="Search..."
+            :placeholder="$t('inputDocs.codeLabels.searchPlaceholder')"
           />
           <VxInput
             v-model="iconExamples.right"
             :icon="Mail"
             iconPosition="right"
-            placeholder="Email"
+            :placeholder="$t('inputDocs.labels.email')"
           />
         </div>
 
         <div class="example-row">
-          <VxInput v-model="iconExamples.slotLeft" placeholder="Slot left">
+          <VxInput v-model="iconExamples.slotLeft" :placeholder="$t('inputDocs.labels.slotLeft')">
             <template #icon-left>
               <Search />
             </template>
           </VxInput>
 
-          <VxInput v-model="iconExamples.slotRight" placeholder="Slot right">
+          <VxInput v-model="iconExamples.slotRight" :placeholder="$t('inputDocs.labels.slotRight')">
             <template #icon-right>
               <CircleAlert />
             </template>
@@ -484,116 +377,96 @@
         </div>
       </div>
 
-      <DesignCodeBlock :code="iconCode" />
+      <DesignCodeBlock :code="codeExamples.iconCode" />
     </section>
 
     <!-- Loading and clear -->
     <section class="docs-section">
-      <h2>Loading e clear</h2>
-      <p>
-        Con <code>loading</code> mostri uno spinner e disabiliti il campo; con
-        <code>clearable</code> compare una X per svuotare rapidamente il valore.
-      </p>
+      <h2>{{ $t('inputDocs.sections.loadingClear') }}</h2>
+      <p>{{ $t('inputDocs.loadingClearDescription') }}</p>
 
       <div class="example-grid">
-        <VxInput v-model="stateExamples.loading" loading placeholder="Loading..." />
-        <VxInput v-model="stateExamples.clearable" clearable placeholder="Campo svuotabile" />
+        <VxInput v-model="stateExamples.loading" loading :placeholder="$t('inputDocs.labels.loading')" />
+        <VxInput v-model="stateExamples.clearable" clearable :placeholder="$t('inputDocs.labels.clearable')" />
       </div>
 
-      <DesignCodeBlock :code="stateCode" />
+      <DesignCodeBlock :code="codeExamples.stateCode" />
     </section>
 
     <!-- Disabled / readonly -->
     <section class="docs-section">
-      <h2>Disabled e readonly</h2>
-      <p>
-        Usa <code>disabled</code> per bloccare completamente l'interazione e
-        <code>readonly</code> per mantenere il contenuto selezionabile ma non modificabile.
-      </p>
+      <h2>{{ $t('inputDocs.sections.access') }}</h2>
+      <p>{{ $t('inputDocs.accessDescription') }}</p>
 
       <div class="example-grid">
-        <VxInput v-model="accessExamples.disabled" disabled placeholder="Disabled" />
-        <VxInput v-model="accessExamples.readonly" readonly placeholder="Readonly" />
+        <VxInput v-model="accessExamples.disabled" disabled :placeholder="$t('inputDocs.labels.disabled')" />
+        <VxInput v-model="accessExamples.readonly" readonly :placeholder="$t('inputDocs.labels.readonly')" />
       </div>
 
-      <DesignCodeBlock :code="accessCode" />
+      <DesignCodeBlock :code="codeExamples.accessCode" />
     </section>
 
     <!-- Block, radius, pill -->
     <section class="docs-section">
-      <h2>Layout e radius</h2>
-      <p>
-        Il campo può occupare tutta la larghezza disponibile con <code>block</code>
-        e supporta <code>radius</code> custom oppure <code>pill</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.layout') }}</h2>
+      <p>{{ $t('inputDocs.layoutDescription') }}</p>
 
       <div class="example-col">
-        <VxInput v-model="layoutExamples.block" block placeholder="Full width" />
+        <VxInput v-model="layoutExamples.block" block :placeholder="$t('inputDocs.labels.fullWidth')" />
         <div class="example-row">
-          <VxInput v-model="layoutExamples.default" placeholder="Default radius" />
-          <VxInput v-model="layoutExamples.custom" :radius="20" placeholder="Custom radius" />
-          <VxInput v-model="layoutExamples.pill" pill placeholder="Pill" />
+          <VxInput v-model="layoutExamples.default" :placeholder="$t('inputDocs.labels.defaultRadius')" />
+          <VxInput v-model="layoutExamples.custom" :radius="20" :placeholder="$t('inputDocs.labels.customRadius')" />
+          <VxInput v-model="layoutExamples.pill" pill :placeholder="$t('inputDocs.labels.pill')" />
         </div>
       </div>
 
-      <DesignCodeBlock :code="layoutCode" />
+      <DesignCodeBlock :code="codeExamples.layoutCode" />
     </section>
 
     <!-- Focus effect -->
     <section class="docs-section">
-      <h2>Focus effect</h2>
-      <p>
-        Controlla il comportamento visivo al focus tramite <code>focusEffect</code>:
-        <code>ring</code>, <code>lift</code>, <code>glow</code>, <code>none</code>
-        o <code>custom</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.focus') }}</h2>
+      <p>{{ $t('inputDocs.focusDescription') }}</p>
 
       <div class="example-grid">
-        <VxInput v-model="focusExamples.ring" focusEffect="ring" placeholder="Ring" />
-        <VxInput v-model="focusExamples.lift" focusEffect="lift" placeholder="Lift" />
-        <VxInput v-model="focusExamples.glow" focusEffect="glow" placeholder="Glow" />
-        <VxInput v-model="focusExamples.none" focusEffect="none" placeholder="None" />
+        <VxInput v-model="focusExamples.ring" focusEffect="ring" :placeholder="$t('inputDocs.labels.ring')" />
+        <VxInput v-model="focusExamples.lift" focusEffect="lift" :placeholder="$t('inputDocs.labels.lift')" />
+        <VxInput v-model="focusExamples.glow" focusEffect="glow" :placeholder="$t('inputDocs.labels.glow')" />
+        <VxInput v-model="focusExamples.none" focusEffect="none" :placeholder="$t('inputDocs.labels.none')" />
         <VxInput
           v-model="focusExamples.custom"
           focusEffect="custom"
           class="docs-focus-custom"
-          placeholder="Custom"
+          :placeholder="$t('inputDocs.labels.custom')"
         />
       </div>
 
-      <DesignCodeBlock :code="focusEffectCode" />
+      <DesignCodeBlock :code="codeExamples.focusEffectCode" />
     </section>
 
     <!-- Textarea -->
     <section class="docs-section">
-      <h2>Textarea</h2>
-      <p>
-        Imposta <code>tag="textarea"</code> per usare lo stesso componente come
-        campo multilinea.
-      </p>
+      <h2>{{ $t('inputDocs.sections.textarea') }}</h2>
+      <p>{{ $t('inputDocs.textareaDescription') }}</p>
 
       <div class="example-col">
         <VxInput
           v-model="textareaExamples.default"
           tag="textarea"
-          label="Messaggio"
-          placeholder="Scrivi qui il tuo messaggio..."
-          hint="Puoi ridimensionare verticalmente il campo"
+          :label="$t('inputDocs.labels.message')"
+          :placeholder="$t('inputDocs.labels.messagePlaceholder')"
+          :hint="$t('inputDocs.labels.messageHint')"
           block
         />
       </div>
 
-      <DesignCodeBlock :code="textareaCode" />
+      <DesignCodeBlock :code="codeExamples.textareaCode" />
     </section>
 
     <!-- Custom colors -->
     <section class="docs-section">
-      <h2>Colori custom</h2>
-      <p>
-        Tramite la prop <code>colors</code> puoi ridefinire background, testo,
-        bordo, placeholder e colori del focus, passando qualsiasi valore CSS
-        valido.
-      </p>
+      <h2>{{ $t('inputDocs.sections.customColors') }}</h2>
+      <p>{{ $t('inputDocs.customColorsDescription') }}</p>
 
       <div class="example-col">
         <VxInput
@@ -608,7 +481,7 @@
             placeholder: '#a78bfa'
           }"
           :icon="Search"
-          placeholder="Full custom colors"
+          :placeholder="$t('inputDocs.labels.customColors')"
           block
         />
 
@@ -621,29 +494,26 @@
             focusBorder: '#7c3aed',
             placeholder: '#a78bfa'
           }"
-          placeholder="Colori misti"
+          :placeholder="$t('inputDocs.labels.mixedColors')"
           block
         />
       </div>
 
-      <DesignCodeBlock :code="colorsOverrideCode" />
+      <DesignCodeBlock :code="codeExamples.colorsOverrideCode" />
     </section>
 
     <!-- Events -->
     <section class="docs-section">
-      <h2>Events</h2>
-      <p>
-        Il componente emette <code>update:modelValue</code>, <code>input</code>,
-        <code>focus</code>, <code>blur</code> e <code>clear</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.events') }}</h2>
+      <p>{{ $t('inputDocs.eventsDescription') }}</p>
 
       <div class="example-col">
         <VxInput
           v-model="eventsExample"
           clearable
-          label="Event demo"
-          hint="Apri la console o aggancia una notify per vedere gli eventi"
-          placeholder="Interagisci con questo campo"
+          :label="$t('inputDocs.labels.eventDemo')"
+          :hint="$t('inputDocs.labels.eventHint')"
+          :placeholder="$t('inputDocs.labels.eventPlaceholder')"
           block
           @focus="onFocus"
           @blur="onBlur"
@@ -652,31 +522,18 @@
         />
       </div>
 
-      <DesignCodeBlock :code="eventsCode" />
+      <DesignCodeBlock :code="codeExamples.eventsCode" />
     </section>
 
     <!-- Related components -->
     <section class="docs-section">
-      <h2>Componenti collegati</h2>
-      <p>
-        <code>VxInput</code> condivide il proprio "chrome" (label, bordo,
-        varianti, focus, icone, hint/error) con
-        <code>VxFieldWrapper</code>, lo stesso wrapper usato dai componenti
-        dedicati per date, range di date, data+ora, range di data+ora e
-        orari — tutti costruiti sopra lo stesso overlay riutilizzabile
-        (anchoring, positioning, comportamento responsive popover/modal
-        automatici), oltre a colore e slider. <code>VxCheckbox</code> e
-        <code>VxRadio</code> condividono invece solo le prop di stile
-        (colore, size, focus, label/hint/error), non
-        <code>VxFieldWrapper</code>, avendo un markup dedicato. Se ti serve
-        uno di quei tipi, guarda la documentazione del componente specifico
-        invece di forzarlo su <code>VxInput</code>.
-      </p>
+      <h2>{{ $t('inputDocs.sections.related') }}</h2>
+      <p>{{ $t('inputDocs.relatedDescription') }}</p>
     </section>
 
     <!-- Props table -->
     <section class="docs-section">
-      <h2>Opzioni disponibili (VxInput)</h2>
+      <h2>{{ $t('inputDocs.sections.available') }}</h2>
       <DesignPropsTable
         :columns="propsColumns"
         :rows="propsRows"
@@ -687,7 +544,8 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Search, Mail, CircleAlert } from 'lucide-vue-next'
 import VxInput from '@/Library/components/Input/VxInput.vue'
 import VxDate from '@/Library/components/Input/VxDate.vue'
@@ -702,45 +560,30 @@ import VxRange from '@/Library/components/Input/VxRange.vue'
 import DesignCodeBlock from '@/Docs/components/Utils/DesignCodeBlock.vue'
 import DesignPropsTable from '@/Docs/components/Utils/DesignPropsTable.vue'
 import { useVxNotify } from '@/Library/composables/Notify/useVxNotify'
-import { propsColumns, propsRows } from '@/Docs/metadata/props/Input/inputGeneralProps'
+import { getInputGeneralMetadata } from '@/Docs/metadata/props/Input/inputGeneralProps'
 import {
-  datePickerPropsRows,
-  dateRangePropsRows,
-  dateTimePickerPropsRows,
-  dateTimeRangePropsRows,
-  timePickerPropsRows,
-  colorPickerPropsRows,
-  rangePropsRows,
-  checkboxPropsRows,
-  radioPropsRows,
+  getInputVariantMetadata,
 } from '@/Docs/metadata/props/Input/inputVariantsProps'
 import {
-  setupCode,
-  variantCode,
-  typeCode,
-  colorCode,
-  sizeCode,
-  labelHintCode,
-  iconCode,
-  stateCode,
-  accessCode,
-  layoutCode,
-  focusEffectCode,
-  textareaCode,
-  colorsOverrideCode,
-  eventsCode,
-  datePickerCode,
-  dateRangeCode,
-  dateTimeCode,
-  dateTimeRangeCode,
-  timePickerCode,
-  colorPickerCode,
-  rangeCode,
-  checkboxCode,
-  radioCode,
+  getInputCodeExamples,
 } from '@/Docs/metadata/code/Input/inputCodeExamples'
 
 const { VxNotify } = useVxNotify()
+const { t, tm } = useI18n()
+const codeExamples = computed(() => getInputCodeExamples(tm))
+const generalMetadata = computed(() => getInputGeneralMetadata(t))
+const variantMetadata = computed(() => getInputVariantMetadata(t))
+const propsColumns = computed(() => generalMetadata.value.columns)
+const propsRows = computed(() => generalMetadata.value.rows)
+const datePickerPropsRows = computed(() => variantMetadata.value.datePickerPropsRows)
+const dateRangePropsRows = computed(() => variantMetadata.value.dateRangePropsRows)
+const dateTimePickerPropsRows = computed(() => variantMetadata.value.dateTimePickerPropsRows)
+const dateTimeRangePropsRows = computed(() => variantMetadata.value.dateTimeRangePropsRows)
+const timePickerPropsRows = computed(() => variantMetadata.value.timePickerPropsRows)
+const colorPickerPropsRows = computed(() => variantMetadata.value.colorPickerPropsRows)
+const rangePropsRows = computed(() => variantMetadata.value.rangePropsRows)
+const checkboxPropsRows = computed(() => variantMetadata.value.checkboxPropsRows)
+const radioPropsRows = computed(() => variantMetadata.value.radioPropsRows)
 
 const checkboxExamples = reactive({
   single: false,
@@ -873,8 +716,8 @@ const eventsExample = ref('')
 
 const onFocus = () => {
   VxNotify({
-    title: 'Input focus',
-    message: 'Il campo ha ricevuto il focus.',
+    title: t('inputDocs.notify.focusTitle'),
+    message: t('inputDocs.notify.focusMessage'),
     color: 'info',
     duration: 2500,
   })
@@ -882,8 +725,8 @@ const onFocus = () => {
 
 const onBlur = () => {
   VxNotify({
-    title: 'Input blur',
-    message: 'Il campo ha perso il focus.',
+    title: t('inputDocs.notify.blurTitle'),
+    message: t('inputDocs.notify.blurMessage'),
     color: 'secondary',
     duration: 2500,
   })
@@ -891,8 +734,8 @@ const onBlur = () => {
 
 const onClear = () => {
   VxNotify({
-    title: 'Input cleared',
-    message: 'Il valore del campo è stato svuotato.',
+    title: t('inputDocs.notify.clearTitle'),
+    message: t('inputDocs.notify.clearMessage'),
     color: 'warning',
     duration: 2500,
   })
