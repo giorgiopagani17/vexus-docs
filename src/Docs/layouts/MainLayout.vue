@@ -112,6 +112,8 @@ import VexusLogo from '/vexus_logo.png'
 import {
   Menu,
   MousePointerClick,
+  ToggleLeft,
+  ChevronsUpDown,
   TextCursorInput,
   SquareMenu,
   Bell,
@@ -151,8 +153,8 @@ const menuStructure = computed(() => [
     icon: Blocks,
     children: [
       { id: 'button', label: 'VxButton', icon: MousePointerClick, to: '/button' },
-      { id: 'buttonToggle', label: 'VxButtonToggle', icon: MousePointerClick, to: '/button-toggle' },
-      { id: 'buttonDropdown', label: 'VxButtonDropdown', icon: MousePointerClick, to: '/button-dropdown' },
+      { id: 'buttonToggle', label: 'VxButtonToggle', icon: ToggleLeft, to: '/button-toggle' },
+      { id: 'buttonDropdown', label: 'VxButtonDropdown', icon: ChevronsUpDown, to: '/button-dropdown' },
       { id: 'input', label: 'VxInput', icon: TextCursorInput, to: '/input' },
       { id: 'select', label: 'VxSelect', icon: SquareMenu, to: '/select' },
     ],
