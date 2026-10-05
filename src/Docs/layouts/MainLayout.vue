@@ -13,7 +13,7 @@
         <button class="spotlight-trigger" type="button" @click="openSpotlight">
           <Search :size="16" />
           <span>{{ t('layout.search.open') }}</span>
-          <kbd>⌘K</kbd>
+          <kbd>CTRL+K</kbd>
         </button>
         <DesignLanguageSwitcher />
       </div>
