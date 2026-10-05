@@ -1,6 +1,11 @@
 <template>
   <div class="lang-switcher" v-click-away="closeDropdown">
-    <button class="lang-trigger" @click="isOpen = !isOpen">
+    <button
+      class="lang-trigger"
+      :aria-label="t('layout.language.select')"
+      :aria-expanded="isOpen"
+      @click="isOpen = !isOpen"
+    >
       <span class="flag">{{ currentLang.flag }}</span>
       <span class="code">{{ currentLang.code.toUpperCase() }}</span>
       <ChevronDown :size="14" class="chevron" :class="{ 'chevron--open': isOpen }" />
@@ -13,6 +18,8 @@
           :key="lang.code"
           class="lang-option"
           :class="{ 'lang-option--active': lang.code === currentLang.code }"
+          :aria-label="t('layout.language.switchTo', { language: lang.name })"
+          :aria-current="lang.code === currentLang.code ? 'true' : undefined"
           @click="selectLang(lang)"
         >
           <span class="flag">{{ lang.flag }}</span>
@@ -29,7 +36,7 @@ import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { ChevronDown, Check } from 'lucide-vue-next'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 
 const languages = [
   { code: 'it', name: 'Italiano', flag: '🇮🇹' },

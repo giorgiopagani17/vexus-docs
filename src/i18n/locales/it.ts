@@ -1,4 +1,8 @@
 export default {
+  layout: {
+    menu: { home: 'Home', documentation: 'Documentazione', uiComponents: 'Componenti UI', composables: 'Composables' },
+    language: { select: 'Seleziona lingua', switchTo: 'Passa a {language}' }
+  },
   errorNotFound: {
     title: 'Pagina non trovata',
     message: 'La pagina che stai cercando non esiste, è stata spostata o non hai i permessi per visualizzarla.'

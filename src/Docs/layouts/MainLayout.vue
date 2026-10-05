@@ -19,7 +19,7 @@
       :class="{ 'sidebar--mini': isMini, 'sidebar--hidden': !drawerOpen }"
     >
       <nav class="menu">
-        <template v-for="item in menuStructure" :key="item.label">
+        <template v-for="item in menuStructure" :key="item.id">
           <!-- Voce semplice, senza sottomenu -->
           <RouterLink
             v-if="!item.children"
@@ -36,31 +36,31 @@
           <div
             v-else
             class="menu-group"
-            :class="{ 'menu-group--open': isGroupOpen(item.label) }"
+            :class="{ 'menu-group--open': isGroupOpen(item.id) }"
           >
             <button
               class="menu-item menu-item--group"
               :class="{
-                'menu-item--active': isChildActive(item) || flyoutGroup === item.label,
+                'menu-item--active': isChildActive(item) || flyoutGroup === item.id,
               }"
-              :aria-expanded="isMini ? flyoutGroup === item.label : isGroupOpen(item.label)"
-              @click="onGroupClick(item.label)"
+              :aria-expanded="isMini ? flyoutGroup === item.id : isGroupOpen(item.id)"
+              @click="onGroupClick(item.id)"
             >
               <component :is="item.icon" :size="20" />
               <span v-if="!isMini" class="menu-label">{{ item.label }}</span>
               <ChevronDown v-if="!isMini" :size="16" class="group-chevron" />
               <!-- Tooltip in mini, nascosto quando il flyout è aperto -->
               <span
-                v-if="isMini && flyoutGroup !== item.label"
+                v-if="isMini && flyoutGroup !== item.id"
                 class="tooltip"
               >{{ item.label }}</span>
             </button>
 
             <!-- Sottomenu ad accordion (sidebar espansa) -->
-            <div v-if="!isMini && isGroupOpen(item.label)" class="submenu-wrapper">
+            <div v-if="!isMini && isGroupOpen(item.id)" class="submenu-wrapper">
               <RouterLink
                 v-for="child in item.children"
-                :key="child.label"
+                :key="child.id"
                 :to="child.to"
                 class="submenu-item"
                 active-class="submenu-item--active"
@@ -72,13 +72,13 @@
 
             <!-- Sottomenu a flyout (sidebar mini), aperto al click -->
             <div
-              v-else-if="isMini && flyoutGroup === item.label"
+              v-else-if="isMini && flyoutGroup === item.id"
               class="submenu-flyout"
             >
               <div class="submenu-flyout__title">{{ item.label }}</div>
               <RouterLink
                 v-for="child in item.children"
-                :key="child.label"
+                :key="child.id"
                 :to="child.to"
                 class="submenu-item"
                 active-class="submenu-item--active"
@@ -105,6 +105,7 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
+import { useI18n } from 'vue-i18n'
 import DesignLanguageSwitcher from '@/Docs/components/Utils/DesignLanguageSwitcher.vue'
 import { useRoute } from 'vue-router'
 import VexusLogo from '/vexus_logo.png'
@@ -128,6 +129,7 @@ import {
 const MOBILE_QUERY = '(max-width: 768px)'
 
 const route = useRoute()
+const { t } = useI18n()
 
 // Breakpoint mobile: sotto i 768px la sidebar è sempre espansa (il CSS nasconde tooltip e flyout)
 const mql = typeof window !== 'undefined' ? window.matchMedia(MOBILE_QUERY) : null
@@ -140,28 +142,30 @@ const flyoutGroup = ref(null)
 // Stato mini effettivo: mai attivo su mobile
 const isMini = computed(() => miniState.value && !isMobile.value)
 
-const menuStructure = [
-  { label: 'Home', icon: Home, to: '/' },
-  { label: 'Documentazione', icon: BookOpen, to: '/docs' },
+const menuStructure = computed(() => [
+  { id: 'home', label: t('layout.menu.home'), icon: Home, to: '/' },
+  { id: 'documentation', label: t('layout.menu.documentation'), icon: BookOpen, to: '/docs' },
   {
-    label: 'Componenti UI',
+    id: 'uiComponents',
+    label: t('layout.menu.uiComponents'),
     icon: Blocks,
     children: [
-      { label: 'VxButton', icon: MousePointerClick, to: '/button' },
-      { label: 'VxInput', icon: TextCursorInput, to: '/input' },
-      { label: 'VxSelect', icon: SquareMenu, to: '/select' },
+      { id: 'button', label: 'VxButton', icon: MousePointerClick, to: '/button' },
+      { id: 'input', label: 'VxInput', icon: TextCursorInput, to: '/input' },
+      { id: 'select', label: 'VxSelect', icon: SquareMenu, to: '/select' },
     ],
   },
   {
-    label: 'Composables',
+    id: 'composables',
+    label: t('layout.menu.composables'),
     icon: Puzzle,
     children: [
-      { label: 'VxNotify', icon: Bell, to: '/notify' },
-      { label: 'VxApi', icon: Phone, to: '/use-api' },
-      { label: 'VxFiscalCode', icon: IdCard, to: '/use-fiscal-code' },
+      { id: 'notify', label: 'VxNotify', icon: Bell, to: '/notify' },
+      { id: 'api', label: 'VxApi', icon: Phone, to: '/use-api' },
+      { id: 'fiscalCode', label: 'VxFiscalCode', icon: IdCard, to: '/use-fiscal-code' },
     ],
   },
-]
+])
 
 const openGroups = ref(new Set())
 
@@ -192,9 +196,9 @@ function onGroupClick(label) {
   }
 }
 
-menuStructure.forEach((item) => {
+menuStructure.value.forEach((item) => {
   if (item.children && isChildActive(item)) {
-    openGroups.value.add(item.label)
+    openGroups.value.add(item.id)
   }
 })
 
