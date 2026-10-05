@@ -17,7 +17,27 @@ export const routes: RouteRecordRaw[] = [
       {
         path: '',
         component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Buttons/VxButtonDocs.vue') }],
+        children: [{ path: '', component: () => import('@/Docs/pages/components/Button/VxButtonDocs.vue') }],
+      }
+    ]
+  },
+  {
+    path: '/button-toggle',
+    children: [
+      {
+        path: '',
+        component: () => import('@/Docs/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/Docs/pages/components/ButtonToggle/VxButtonToggleDocs.vue') }],
+      }
+    ]
+  },
+  {
+    path: '/button-dropdown',
+    children: [
+      {
+        path: '',
+        component: () => import('@/Docs/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/Docs/pages/components/ButtonDropdown/VxButtonDropdownDocs.vue') }],
       }
     ]
   },

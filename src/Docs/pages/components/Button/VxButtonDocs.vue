@@ -238,281 +238,16 @@
       />
     </section>
 
-    <!-- =====================================================================
-         VxButtonToggle
-         ===================================================================== -->
-    <div id="button-toggle" class="docs-header docs-header--sub">
-      <h1>VxButtonToggle</h1>
-      <p class="subtitle">{{ $t('buttonDocs.toggleSubtitle') }}</p>
-    </div>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.setup') }}</h2>
-      <p>{{ $t('buttonDocs.importComponent') }}</p>
-      <DesignCodeBlock :code="codeExamples.toggleSetupCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.base') }}</h2>
-      <p>
-        {{ $t('buttonDocs.baseDescription') }}
-      </p>
-
-      <div class="example-row">
-        <VxButtonToggle v-model="viewMode" :options="viewOptions" />
-        <span class="example-value">{{ $t('buttonDocs.value') }} {{ viewMode }}</span>
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.toggleBasicCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.multipleSelection') }}</h2>
-      <p>{{ $t('buttonDocs.multipleDescription') }}</p>
-
-      <div class="example-row">
-        <VxButtonToggle v-model="days" multiple :options="dayOptions" />
-        <span class="example-value">{{ $t('buttonDocs.value') }} {{ days }}</span>
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.toggleMultipleCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.iconOnlySelection') }}</h2>
-      <p>
-        {{ $t('buttonDocs.iconOnlySelectionDescription') }}
-      </p>
-
-      <div class="example-row">
-        <VxButtonToggle v-model="textFormat" multiple :options="formatOptions" />
-        <span class="example-value">{{ $t('buttonDocs.value') }} {{ textFormat }}</span>
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.toggleIconOnlyCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.style') }}</h2>
-      <p>
-        {{ $t('buttonDocs.styleDescription') }}
-      </p>
-
-      <div class="example-row">
-        <VxButtonToggle v-model="styleDemo" :options="abcOptions" variant="ghost" />
-        <VxButtonToggle
-          v-model="styleDemo"
-          :options="abcOptions"
-          color="secondary"
-          active-color="positive"
-        />
-        <VxButtonToggle v-model="styleDemo" :options="abcOptions" size="sm" />
-        <VxButtonToggle v-model="styleDemo" :options="abcOptions" size="lg" />
-        <VxButtonToggle v-model="styleDemo" :options="abcOptions" pill />
-        <VxButtonToggle v-model="styleDemo" :options="abcOptions" disabled />
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.toggleStyleCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.clearable') }}</h2>
-      <p>{{ $t('buttonDocs.clearableDescription') }}</p>
-
-      <div class="example-row">
-        <VxButtonToggle v-model="clearableValue" clearable :options="abcOptions" />
-        <span class="example-value">{{ $t('buttonDocs.value') }} {{ clearableValue }}</span>
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.toggleClearableCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.block') }}</h2>
-      <p>{{ $t('buttonDocs.toggleBlockDescription') }}</p>
-
-      <div class="example-row" style="flex-direction: column;">
-        <VxButtonToggle v-model="viewMode" block :options="viewOptions" />
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.toggleBlockCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.availableOptions') }}</h2>
-      <DesignPropsTable
-        :columns="propsColumns"
-        :rows="toggleRows"
-        :widths="['140px', '180px', '90px', '1fr']"
-      />
-    </section>
-
-    <!-- =====================================================================
-         VxButtonDropdown
-         ===================================================================== -->
-    <div id="button-dropdown" class="docs-header docs-header--sub">
-      <h1>VxButtonDropdown</h1>
-      <p class="subtitle">{{ $t('buttonDocs.dropdownSubtitle') }}</p>
-    </div>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.setup') }}</h2>
-      <p>{{ $t('buttonDocs.importComponent') }}</p>
-      <DesignCodeBlock :code="codeExamples.dropdownSetupCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.base') }}</h2>
-      <p>
-        {{ $t('buttonDocs.dropdownBaseDescription') }}
-      </p>
-
-      <div class="example-row">
-        <VxButtonDropdown :label="$t('buttonDocs.labels.actions')" :items="actionItems" @select="onSelect" />
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.dropdownBasicCode" />
-
-      <p class="section-note">{{ $t('buttonDocs.itemNote') }}</p>
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.variant') }} e {{ $t('buttonDocs.color').toLowerCase() }}</h2>
-      <p>
-        {{ $t('buttonDocs.dropdownVariantDescription') }}
-      </p>
-
-      <div class="example-row">
-        <VxButtonDropdown :label="$t('buttonDocs.labels.export')" :icon="Download" variant="outline" :items="exportItems" @select="onSelect" />
-        <VxButtonDropdown :label="$t('buttonDocs.labels.share')" :icon="Share2" variant="ghost" color="secondary" :items="exportItems" @select="onSelect" />
-        <VxButtonDropdown :label="$t('buttonDocs.labels.more')" variant="text" size="sm" :items="exportItems" @select="onSelect" />
-        <VxButtonDropdown :label="$t('buttonDocs.labels.pill')" pill :items="exportItems" @select="onSelect" />
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.dropdownVariantCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.split') }}</h2>
-      <p>
-        {{ $t('buttonDocs.splitDescription') }}
-      </p>
-
-      <div class="example-row">
-        <VxButtonDropdown
-          split
-          :label="$t('buttonDocs.labels.save')"
-          :icon="Save"
-          :items="saveItems"
-          @click="onClick"
-          @select="onSelect"
-        />
-        <VxButtonDropdown
-          split
-          variant="outline"
-          :label="$t('buttonDocs.labels.save')"
-          :items="saveItems"
-          @click="onClick"
-          @select="onSelect"
-        />
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.dropdownSplitCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.placement') }}</h2>
-      <p>
-        {{ $t('buttonDocs.placementDescription') }}
-      </p>
-
-      <div class="example-row">
-        <VxButtonDropdown label="bottom-start" :items="exportItems" @select="onSelect" />
-        <VxButtonDropdown label="bottom-end" placement="bottom-end" :items="exportItems" @select="onSelect" />
-        <VxButtonDropdown label="top-start" placement="top-start" :items="exportItems" @select="onSelect" />
-        <VxButtonDropdown label="top-end" placement="top-end" :items="exportItems" @select="onSelect" />
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.dropdownPlacementCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.slot') }}</h2>
-      <p>
-        {{ $t('buttonDocs.slotDescription') }}
-      </p>
-
-      <div class="example-row">
-        <VxButtonDropdown :items="userItems" @select="onSelect">
-          <template #default>{{ $t('buttonDocs.labels.users') }}</template>
-
-          <template #item="{ item }">
-            <span class="docs-user-item">
-              <strong>{{ item.label }}</strong>
-              <small>{{ item.email }}</small>
-            </span>
-          </template>
-        </VxButtonDropdown>
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.dropdownSlotCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.block') }} e {{ $t('buttonDocs.disabled').toLowerCase() }}</h2>
-      <p>
-        {{ $t('buttonDocs.dropdownBlockDescription') }}
-      </p>
-
-      <div class="example-row" style="flex-direction: column;">
-        <VxButtonDropdown block :label="$t('buttonDocs.labels.fullWidth')" :items="exportItems" @select="onSelect" />
-        <VxButtonDropdown disabled :label="$t('buttonDocs.labels.disabled')" :items="exportItems" />
-      </div>
-
-      <DesignCodeBlock :code="codeExamples.dropdownBlockCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.codeControl') }}</h2>
-      <p>
-        {{ $t('buttonDocs.codeControlDescription') }}
-      </p>
-
-      <DesignCodeBlock :code="codeExamples.dropdownExposeCode" />
-    </section>
-
-    <section class="docs-section">
-      <h2>{{ $t('buttonDocs.availableOptions') }}</h2>
-      <DesignPropsTable
-        :columns="propsColumns"
-        :rows="dropdownRows"
-        :widths="['140px', '180px', '90px', '1fr']"
-      />
-    </section>
   </div>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import {
   Sparkles,
-  List,
-  LayoutGrid,
-  Bold,
-  Italic,
-  Underline,
-  Pencil,
-  Copy,
-  Archive,
-  Trash2,
-  Download,
-  Share2,
-  Save
 } from 'lucide-vue-next'
 import VxButton from '@/Library/components/Button/VxButton.vue'
-import VxButtonDropdown from '@/Library/components/Button/VxButtonDropdown.vue'
-import VxButtonToggle from '@/Library/components/Button/VxButtonToggle.vue'
 import DesignCodeBlock from '@/Docs/components/Utils/DesignCodeBlock.vue'
 import DesignPropsTable from '@/Docs/components/Utils/DesignPropsTable.vue'
 import { useVxNotify } from '@/Library/composables/Notify/useVxNotify'
@@ -525,8 +260,6 @@ const metadata = computed(() => getButtonDocsMetadata(t))
 const codeExamples = computed(() => getButtonCodeExamples(tm))
 const propsColumns = computed(() => metadata.value.columns)
 const propsRows = computed(() => metadata.value.propsRows)
-const toggleRows = computed(() => metadata.value.toggleRows)
-const dropdownRows = computed(() => metadata.value.dropdownRows)
 
 const onClick = () => {
   VxNotify({
@@ -537,67 +270,6 @@ const onClick = () => {
   })
 }
 
-/* ===== VxButtonToggle: stato e opzioni degli esempi ===== */
-const viewMode = ref('list')
-const days = ref(['Lun', 'Mer'])
-const textFormat = ref(['bold'])
-const styleDemo = ref('B')
-const clearableValue = ref(null)
-
-const viewOptions = computed(() => [
-  { label: t('buttonDocs.labels.list'), value: 'list', icon: List },
-  { label: t('buttonDocs.labels.grid'), value: 'grid', icon: LayoutGrid }
-])
-
-const dayOptions = computed(() => [
-  t('buttonDocs.labels.mon'), t('buttonDocs.labels.tue'), t('buttonDocs.labels.wed'),
-  t('buttonDocs.labels.thu'), t('buttonDocs.labels.fri')
-])
-
-const formatOptions = computed(() => [
-  { value: 'bold', icon: Bold, ariaLabel: t('buttonDocs.labels.bold') },
-  { value: 'italic', icon: Italic, ariaLabel: t('buttonDocs.labels.italic') },
-  { value: 'underline', icon: Underline, ariaLabel: t('buttonDocs.labels.underlineText') }
-])
-
-const abcOptions = ['A', 'B', 'C']
-
-/* ===== VxButtonDropdown: voci degli esempi ===== */
-const actionItems = computed(() => [
-  { header: t('buttonDocs.labels.document') },
-  { label: t('buttonDocs.labels.edit'), value: 'edit', icon: Pencil },
-  { label: t('buttonDocs.labels.duplicate'), value: 'duplicate', icon: Copy },
-  { label: t('buttonDocs.labels.archive'), value: 'archive', icon: Archive, disabled: true },
-  { separator: true },
-  { label: t('buttonDocs.labels.delete'), value: 'delete', icon: Trash2, color: 'negative' }
-])
-
-const exportItems = computed(() => [
-  { label: 'PDF', value: 'pdf' },
-  { label: 'CSV', value: 'csv' },
-  { label: 'Excel', value: 'xlsx' }
-])
-
-const saveItems = computed(() => [
-  { label: t('buttonDocs.labels.saveDraft'), value: 'draft' },
-  { label: t('buttonDocs.labels.saveClose'), value: 'close' },
-  { label: t('buttonDocs.labels.saveDuplicate'), value: 'duplicate', icon: Copy }
-])
-
-const userItems = [
-  { label: 'Mario Rossi', email: 'mario.rossi@example.com', value: 1 },
-  { label: 'Giulia Bianchi', email: 'giulia.bianchi@example.com', value: 2 },
-  { label: 'Luca Verdi', email: 'luca.verdi@example.com', value: 3 }
-]
-
-const onSelect = (item) => {
-  VxNotify({
-    title: t('buttonDocs.selectedTitle'),
-    message: item.label,
-    color: 'positive',
-    duration: 3000
-  })
-}
 </script>
 
 <style lang="scss" scoped>
@@ -626,7 +298,7 @@ const onSelect = (item) => {
     margin: 0 0 12px;
   }
 
-  /* intestazione dei componenti successivi (Toggle, Dropdown) nella stessa pagina */
+  /* Standalone page header styling. */
   &--sub {
     margin-top: 24px;
     padding-top: 48px;

@@ -151,6 +151,8 @@ const menuStructure = computed(() => [
     icon: Blocks,
     children: [
       { id: 'button', label: 'VxButton', icon: MousePointerClick, to: '/button' },
+      { id: 'buttonToggle', label: 'VxButtonToggle', icon: MousePointerClick, to: '/button-toggle' },
+      { id: 'buttonDropdown', label: 'VxButtonDropdown', icon: MousePointerClick, to: '/button-dropdown' },
       { id: 'input', label: 'VxInput', icon: TextCursorInput, to: '/input' },
       { id: 'select', label: 'VxSelect', icon: SquareMenu, to: '/select' },
     ],
