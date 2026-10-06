@@ -1,5 +1,37 @@
-# Vue 3 + TypeScript + Vite
+# Vexus
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+> A modern and flexible toolkit for Vue 3.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Vexus is a collection of reusable **composables, utilities and tools** designed to make Vue 3 application development simpler, cleaner and more consistent.
+
+Built with **Vue 3** and **TypeScript**, Vexus provides a flexible foundation that can adapt to different application architectures and development needs.
+
+## ✨ Features
+
+* ⚡ Vue 3 focused
+* 🧩 Reusable composables
+* 🛠️ Powerful utilities
+* 🔷 TypeScript support
+* 🎨 Flexible and customizable
+* 📦 Modular and easy to integrate
+* 🚀 Designed for modern applications
+
+## 📦 Installation
+
+```bash
+npm install vexus
+```
+
+## 📚 Documentation
+
+Explore the full documentation, available features and examples:
+
+**[Vexus Documentation](https://giorgiopagani17.github.io/vexus-docs/)**
+
+## 📄 License
+
+MIT © Giorgio Pagani
+
+---
+
+Made with ♥.
