@@ -1,4 +1,4 @@
-export const setupCode = `import VxButtonToggle from '@/Library/components/Button/VxButtonToggle.vue'`
+export const setupCode = `import VxButtonToggle from '@vexus`
 
 export const basicCode = `<VxButtonToggle v-model="viewMode" :options="viewOptions" />
 

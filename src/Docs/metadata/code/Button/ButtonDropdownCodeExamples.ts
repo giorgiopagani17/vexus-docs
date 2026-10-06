@@ -1,4 +1,4 @@
-export const setupCode = `import VxButtonDropdown from '@/Library/components/Button/VxButtonDropdown.vue'`
+export const setupCode = `import VxButtonDropdown from '@vexus'`
 
 export const basicCode = `<VxButtonDropdown label="Azioni" :items="actionItems" @select="onSelect" />
 

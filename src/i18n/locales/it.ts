@@ -728,7 +728,8 @@ export default {
         }
   },
   inputDocs: {
-        intro: 'Componente input flessibile con varianti, colori custom, effetti focus, icone, loading, clearable, textarea e supporto per hint ed errori.',
+        intro: 'Componente input flessibile con varianti, colori custom, effetti focus, icone, loading, clearable, textarea e supporto per hint ed errori.', 
+        setup: 'Setup',
         props: {
           modelValue: 'Valore collegato del campo.', type: 'Tipo di input nativo.', variant: 'Variante visiva del campo.',
           color: 'Token colore o valore CSS del campo.', colors: 'Override custom dei colori.', size: 'Dimensione del campo.',

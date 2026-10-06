@@ -728,7 +728,8 @@ export default {
         }
   },
   inputDocs: {
-        intro: 'Flexible input component with custom variants and colors, focus effects, icons, loading, clearable, textarea, hints, and errors.',
+        intro: 'Flexible input component with custom variants and colors, focus effects, icons, loading, clearable, textarea, hints, and errors.',     
+        setup: 'Setup',
         props: {
           modelValue: 'Bound field value.',
           type: 'Native input type.',

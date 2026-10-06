@@ -4,6 +4,15 @@
       <h1>VxInput</h1>
       <p class="subtitle">{{ $t('inputDocs.intro') }}</p>
     </div>
+
+    <!-- Setup -->
+    <section class="docs-section">
+      <h2>{{ $t('inputDocs.setup') }}</h2>
+      <p>{{ $t('inputDocs.importComponent') }}</p>
+      <DesignCodeBlock :code="codeExamples.setupCode" />
+    </section>
+
+
     <section v-for="section in sections" :key="section.title" class="docs-section">
       <h2>{{ $t(section.title) }}</h2>
       <p>{{ $t(section.description) }}</p>
