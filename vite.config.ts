@@ -6,6 +6,8 @@ import pkg from './package.json'
 export default defineConfig({
   plugins: [vue()],
 
+  base: '/vexus-docs/',
+  
   define: {
     __APP_VERSION__: JSON.stringify(pkg.version),
     __APP_NAME__: JSON.stringify(pkg.libraryName),
