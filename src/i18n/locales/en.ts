@@ -64,7 +64,7 @@ export default {
     },
     v012: {
       title: 'Third release',
-      escription: 'Minor updates and bug fixes for the Vexus component library.'
+      description: 'Minor updates and bug fixes for the Vexus component library.'
     },
   },
   reports: {

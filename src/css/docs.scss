@@ -388,18 +388,38 @@
 
 @media (max-width: 600px) {
   .version-summary {
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'main icon'
+      'date date';
+    align-items: start;
+    gap: 8px 12px;
     padding: 16px;
 
+    &::after {
+      grid-area: icon;
+    }
+
     time {
-      width: 100%;
+      grid-area: date;
     }
   }
 
   .version-summary__main {
-    align-items: flex-start;
+    grid-area: main;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px 10px;
+  }
+
+  .version-title {
+    min-width: 0;
+    overflow: visible;
+    font-size: 16px;
+    text-overflow: clip;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .version-description {

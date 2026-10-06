@@ -167,4 +167,20 @@ const closeDropdown = () => {
   opacity: 0;
   transform: translateY(-4px);
 }
+
+// Mobile: nel trigger resta solo la bandiera (stessa misura del pulsante ricerca).
+// Il dropdown non cambia, quindi i nomi delle lingue restano leggibili.
+@media (max-width: 768px) {
+  .lang-trigger {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    justify-content: center;
+
+    .code,
+    .chevron {
+      display: none;
+    }
+  }
+}
 </style>
