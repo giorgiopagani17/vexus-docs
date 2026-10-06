@@ -1,6 +1,6 @@
 export default {
   layout: {
-    menu: { home: 'Home', documentation: 'Documentazione', versions: 'Versioni', uiComponents: 'Componenti UI', composables: 'Composables' },
+    menu: { home: 'Home', documentation: 'Documentazione', versions: 'Versioni', reports: 'Segnalazioni', uiComponents: 'Componenti UI', composables: 'Composables' },
     language: { select: 'Seleziona lingua', switchTo: 'Passa a {language}' },
     search: {
       open: 'Cerca',
@@ -64,6 +64,31 @@ export default {
       title: 'Terza release',
       description: 'Aggiornamenti minori e correzioni di bug.',
     },
+  },
+  reports: {
+    title: "Segnalazioni",
+    subtitle: "Hai trovato un problema o hai un'idea? Scrivici da qui.",
+    categories: { "bug": "Bug", "suggestion": "Suggerimento", "other": "Altro" },
+    name: "Nome",
+    namePlaceholder: "Opzionale",
+    email: "Email",
+    emailHint: "Opzionale, solo se vuoi una risposta",
+    subject: "Oggetto",
+    message: "Messaggio",
+    messagePlaceholder: "Descrivi cosa è successo e come riprodurlo...",
+    send: "Invia segnalazione",
+    sending: "Invio in corso...",
+    errors: {
+      subjectRequired: "L'oggetto è obbligatorio",
+      messageTooShort: "Scrivi almeno 10 caratteri",
+      emailInvalid: "Indirizzo email non valido"
+    },
+    status: {
+      success: "Grazie, la segnalazione è stata inviata.",
+      successLabel: "Inviata",
+      error: "Invio non riuscito, riprova tra poco.",
+      errorLabel: "Errore"
+    }
   },
   buttonDocs: {
     setup: 'Setup',

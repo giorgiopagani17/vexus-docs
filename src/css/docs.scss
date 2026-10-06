@@ -408,6 +408,24 @@
 }
 
 // =============================================================
+// Pagina segnalazioni
+// =============================================================
+
+.report-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.report-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+// =============================================================
 // Home (tutto annidato sotto .intro per non inquinare le altre pagine)
 // =============================================================
 

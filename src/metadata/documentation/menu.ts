@@ -8,6 +8,7 @@ import {
   CalendarDays,
   SquareMenu,
   Bell,
+  TriangleAlert,
   Phone,
   Home,
   Blocks,
@@ -37,6 +38,7 @@ export const isMenuGroup = (item: MenuItem): item is MenuGroup => 'children' in 
 export const getMenu = (t: ComposerTranslation): MenuItem[] => [
   { id: 'home', label: t('layout.menu.home'), icon: Home, to: '/' },
   { id: 'versions', label: t('layout.menu.versions'), icon: BookOpen, to: '/versions' },
+  { id: 'reports', label: t('layout.menu.reports'), icon: TriangleAlert, to: '/reports' },
   {
     id: 'uiComponents',
     label: t('layout.menu.uiComponents'),

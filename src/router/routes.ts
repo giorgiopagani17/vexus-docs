@@ -22,6 +22,16 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/reports',
+    children: [
+      {
+        path: '',
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/Reports.vue') }],
+      }
+    ]
+  },
+  {
     path: '/button',
     children: [
       {

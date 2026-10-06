@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^5.0.2",
     "@floating-ui/dom": "^1.7.6",
     "lucide-vue-next": "^1.0.0",
     "material-icons": "^1.13.14",

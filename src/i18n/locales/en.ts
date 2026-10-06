@@ -1,6 +1,6 @@
 export default {
   layout: {
-    menu: { home: 'Home', documentation: 'Documentation', versions: 'Versions', uiComponents: 'UI components', composables: 'Composables' },
+    menu: { home: 'Home', documentation: 'Documentation', versions: 'Versions', reports: 'Reports', uiComponents: 'UI components', composables: 'Composables' },
     language: { select: 'Select language', switchTo: 'Switch to {language}' },
     search: {
       open: 'Search',
@@ -64,6 +64,31 @@ export default {
       title: 'Third release',
       escription: 'Minor updates and bug fixes for the Vexus component library.'
     },
+  },
+  reports: {
+    title: "Reports",
+    subtitle: "Have you found a problem or have an idea? Write to us from here.",
+    categories: { "bug": "Bug", "suggestion": "Suggestion", "other": "Other" },
+    name: "Name",
+    namePlaceholder: "Optional",
+    email: "Email",
+    emailHint: "Optional, only if you want a response",
+    subject: "Subject",
+    message: "Message",
+    messagePlaceholder: "Describe what happened and how to reproduce it...",
+    send: "Send report",
+    sending: "Sending...",
+    errors: {
+      subjectRequired: "The subject is required",
+      messageTooShort: "Write at least 10 characters",
+      emailInvalid: "Invalid email address"
+    },
+    status: {
+      success: "Thank you, the report has been submitted.",
+      successLabel: "Submitted",
+      error: "Submission failed, please try again later.",
+      errorLabel: "Error"
+    }
   },
   buttonDocs: {
     setup: 'Setup',
