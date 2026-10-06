@@ -43,7 +43,7 @@ export const configRows = [
   { name: 'storageTokenKey', type: 'string', required: 'No', description: 'Chiave localStorage di fallback per il token (es. reset password).' },
 ]
 
-export const getApiMetadata = (t) => ({
+export const getApiMetadata = (t : any) => ({
   optionsColumns: [
     { key: 'name', label: t('common.propsColumns.option'), class: 'prop-name' },
     { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },

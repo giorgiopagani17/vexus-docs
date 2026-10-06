@@ -87,7 +87,7 @@ export const hookRequireAdultCode = `const invalidFields = await validate({
 // error.value === 'minorUserNotAllowed'
 // minor.value === true`
 
-export const getFiscalCodeCodeExamples = (tm) => {
+export const getFiscalCodeCodeExamples = (tm : any) => {
   const labels = tm('apiDocs.cfDocs.codeLabels')
   const source = { setupCode, generateCode, validateFormatCode, decodeCode, hookBasicCode, hookExistsCode, hookRequireAdultCode }
   const replacements = {

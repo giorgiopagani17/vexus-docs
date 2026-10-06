@@ -212,7 +212,7 @@ export const propsRows = [
   }
 ]
 
-export const getInputGeneralMetadata = (t) => ({
+export const getInputGeneralMetadata = (t : any) => ({
   columns: [
     { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
     { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },

@@ -139,7 +139,7 @@ export const validateReturnRows = [
   },
 ]
 
-export const getFiscalCodeMetadata = (t) => ({
+export const getFiscalCodeMetadata = (t : any) => ({
   columns: [
     { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
     { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },

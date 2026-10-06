@@ -18,7 +18,7 @@ export const colorKeys = [
   { name: 'progressTrack', desc: 'Colore del binario sotto la barra di progresso' },
 ]
 
-export const getNotifyColorMetadata = (t) => ({
+export const getNotifyColorMetadata = (t : any) => ({
   columns: [
     { key: 'name', label: t('notifyDocs.colorColumns.key'), class: 'prop-name' },
     { key: 'desc', label: t('notifyDocs.colorColumns.description'), class: 'prop-desc' },

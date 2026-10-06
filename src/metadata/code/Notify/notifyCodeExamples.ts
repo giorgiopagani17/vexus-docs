@@ -127,7 +127,7 @@ setTimeout(() => dismiss(id), 2000)
 // oppure chiudi tutte le notifiche attive
 dismissAll()`
 
-export const getNotifyCodeExamples = (tm) => {
+export const getNotifyCodeExamples = (tm : any) => {
   const labels = tm('notifyDocs.codeLabels')
   const source = { setupCode, typesCode, colorsCode, titleCode, htmlCode, loadingCode, progressCode, positionCode, durationCode, actionsCode, iconCode, sizeCode, dismissCode }
   const replacements = {

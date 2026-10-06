@@ -122,7 +122,7 @@ export const configCode = `interface ApiClientConfig {
   storageTokenKey?: string
 }`
 
-export const getApiCodeExamples = (tm) => {
+export const getApiCodeExamples = (tm : any) => {
   const labels = tm('apiDocs.codeLabels')
   const source = {
     setupCode, usageCode, getPostCode, notifyCode, messagePathCode,

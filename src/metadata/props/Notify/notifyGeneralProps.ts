@@ -27,7 +27,7 @@ export const generalProps = [
   { name: 'onClose', type: '() => void | null', default: 'null', desc: 'Callback eseguita alla chiusura' }
 ]
 
-export const getNotifyGeneralMetadata = (t) => ({
+export const getNotifyGeneralMetadata = (t : any) => ({
   columns: [
     { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
     { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },

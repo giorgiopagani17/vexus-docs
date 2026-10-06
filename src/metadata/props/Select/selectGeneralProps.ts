@@ -164,7 +164,7 @@ export const propsRows = [
     }
 ]
 
-export const getSelectMetadata = (t) => ({
+export const getSelectMetadata = (t : any) => ({
   columns: [
     { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
     { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },

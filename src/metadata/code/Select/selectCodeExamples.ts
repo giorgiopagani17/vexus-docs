@@ -89,7 +89,7 @@ export const eventsCode = `<VxSelect
   @filter="onFilter"
 />`
 
-export const getSelectCodeExamples = (tm) => {
+export const getSelectCodeExamples = (tm : any) => {
   const labels = tm('selectDocs.codeLabels')
   const source = {
     setupCode, basicCode, optionCode, searchCode, multipleCode, chipsCode,
