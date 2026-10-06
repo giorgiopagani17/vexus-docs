@@ -62,7 +62,6 @@ export default {
       package: 'Pacchetto',
       version: 'Versione',
       purpose: 'A cosa serve',
-      note: 'Le dipendenze di questo sito (vue-router, vue-i18n, EmailJS) servono solo alla documentazione e non sono necessarie per usare la libreria.',
       items: {
         vue: 'Framework su cui sono costruiti tutti i componenti.',
         floating: 'Posizionamento di dropdown, select e tooltip.',

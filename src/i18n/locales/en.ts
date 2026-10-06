@@ -62,7 +62,6 @@ export default {
       package: 'Package',
       version: 'Version',
       purpose: 'Purpose',
-      note: 'This site\'s own dependencies (vue-router, vue-i18n, EmailJS) are only used by the documentation and aren\'t needed to use the library.',
       items: {
         vue: 'The framework all components are built on.',
         floating: 'Positioning for dropdowns, selects and tooltips.',

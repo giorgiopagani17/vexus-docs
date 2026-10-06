@@ -63,8 +63,6 @@
           </tbody>
         </table>
       </div>
-
-      <p class="section-note deps-note">{{ $t('documentation.deps.note') }}</p>
     </section>
   </main>
 </template>
