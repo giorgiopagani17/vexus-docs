@@ -343,10 +343,6 @@ watch(isMini, () => {
 </script>
 
 <style lang="scss" scoped>
-.layout {
-  min-height: 100vh;
-}
-
 .app-header {
   position: fixed;
   top: 0;
@@ -789,9 +785,12 @@ watch(isMini, () => {
 }
 
 .content {
+  box-sizing: border-box;   // il padding resta DENTRO i 100dvh
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
   margin-left: 240px;
-  margin-top: 64px;
-  padding: 24px;
+  padding: 88px 24px 24px;  // 64px header + 24px di respiro sopra, 24px sotto
   transition: margin-left 0.25s ease;
 
   &--mini {

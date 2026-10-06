@@ -1,48 +1,24 @@
-.docs-page {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
+// =============================================================
+// docs.scss: stili condivisi della documentazione Vexus
+// Assume che $primary, $secondary, $tertiary e $negative siano
+// già disponibili (es. via additionalData di Vite).
+// =============================================================
+
+// ---------- Variabili di layout (usate da layout.vue e Home) ----------
+:root {
+  --docs-header-h: 64px;
+  --docs-content-pad: 24px;
 }
 
-.docs-header {
-  margin-bottom: 48px;
-}
-
-.docs-header h1 {
-  font-size: 36px;
-  font-weight: 800;
+// ---------- Mixin ----------
+@mixin gradient-text {
   background: linear-gradient(135deg, $primary, $secondary);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin: 0 0 12px;
 }
 
-.docs-page .subtitle {
-  font-size: 15px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0;
-}
-
-.docs-page .docs-section {
-  margin-bottom: 56px;
-}
-
-.docs-page .docs-section h2 {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 8px;
-}
-
-.docs-page .docs-section > p {
-  font-size: 14px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0 0 20px;
-}
-
-.docs-page .docs-section > p code {
+@mixin inline-code {
   background: rgba($primary, 0.1);
   color: $primary;
   padding: 2px 6px;
@@ -50,8 +26,7 @@
   font-size: 13px;
 }
 
-.example-row,
-.example-grid {
+@mixin example-box {
   padding: 24px;
   border-radius: 16px;
   border: 1px solid rgba($primary, 0.12);
@@ -59,263 +34,79 @@
   margin-bottom: 16px;
 }
 
-.example-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+// =============================================================
+// Pagine di documentazione (componenti, composables)
+// =============================================================
+
+.docs-page {
+  width: 100%; // necessario: .content è una colonna flex e margin:auto restringerebbe l'elemento
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+
+  @media (max-width: 600px) {
+    padding: 0;
+  }
 }
 
-.versions-page {
-  max-width: 820px;
+.docs-header {
+  margin-bottom: 48px;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0 0 12px;
+    @include gradient-text;
+  }
+
+  // Intestazione secondaria all'interno della stessa pagina
+  &--sub {
+    margin-top: 24px;
+    padding-top: 48px;
+    border-top: 1px solid rgba($primary, 0.12);
+
+    h1 {
+      font-size: 28px;
+    }
+  }
 }
 
-.versions-list {
-  display: grid;
-  gap: 14px;
-}
-
-.version-card {
-  overflow: hidden;
-  border: 1px solid rgba($primary, 0.16);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.025);
-  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-}
-
-.version-card[open] {
-  border-color: rgba($primary, 0.45);
-  background: rgba($primary, 0.045);
-  box-shadow: 0 12px 30px rgba($primary, 0.08);
-}
-
-.version-summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 20px 24px;
-  cursor: pointer;
-  list-style: none;
-}
-
-.version-summary::-webkit-details-marker {
-  display: none;
-}
-
-.version-summary::after {
-  content: '+';
-  flex: 0 0 auto;
-  color: $primary;
-  font-size: 24px;
-  font-weight: 300;
-  line-height: 1;
-  transition: transform 0.2s ease;
-}
-
-.version-card[open] .version-summary::after {
-  transform: rotate(45deg);
-}
-
-.version-summary__main {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 0;
-}
-
-.version-badge {
-  flex: 0 0 auto;
-  padding: 5px 10px;
-  border-radius: 999px;
-  background: rgba($primary, 0.14);
-  color: $primary;
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.version-title {
-  overflow: hidden;
-  font-size: 17px;
-  font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.version-summary time {
-  flex: 0 0 auto;
-  font-size: 13px;
-  opacity: 0.58;
-}
-
-.version-description {
+.subtitle {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.65;
   margin: 0;
-  padding: 18px 24px 22px;
-  border-top: 1px solid rgba($primary, 0.1);
+}
+
+.docs-section {
+  margin-bottom: 56px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  > p {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.65;
+    margin: 0 0 20px;
+
+    code {
+      @include inline-code;
+    }
+  }
+}
+
+.section-note {
   font-size: 14px;
-  line-height: 1.55;
-  opacity: 0.75;
-}
-
-.example-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-}
-
-@media (max-width: 600px) {
-  .docs-page {
-    padding: 0;
-  }
-
-  .version-summary {
-    align-items: flex-start;
-    padding: 16px;
-  }
-
-  .version-summary__main {
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 8px 10px;
-  }
-
-  .version-summary time {
-    width: 100%;
-  }
-
-  .version-description {
-    padding: 16px 16px 18px;
-  }
-}
-
-/* Styles migrated from src/pages/components/Api/VxApiDocs.vue */
-
-.docs-page {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
-
-@media (max-width: 600px) {
-  .docs-page {
-    padding: 0;
-  }
-}
-
-.docs-header {
-  margin-bottom: 48px;
-
-  h1 {
-    font-size: 36px;
-    font-weight: 800;
-    background: linear-gradient(135deg, $primary, $secondary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin: 0 0 12px;
-  }
-}
-
-.subtitle {
-  font-size: 15px;
   line-height: 1.6;
   opacity: 0.65;
-  margin: 0;
-}
+  margin: 0 0 16px;
 
-.docs-section {
-  margin-bottom: 56px;
-
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 8px;
-  }
-
-  > p {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.65;
-    margin: 0 0 20px;
-
-    code {
-      background: rgba($primary, 0.1);
-      color: $primary;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 13px;
-    }
-  }
-}
-
-.example-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-
-/* Styles migrated from src/pages/components/Cf/VxFiscalCodeDocs.vue */
-
-.docs-page {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
-
-@media (max-width: 600px) {
-  .docs-page {
-    padding: 0;
-  }
-}
-
-.docs-header {
-  margin-bottom: 48px;
-
-  h1 {
-    font-size: 36px;
-    font-weight: 800;
-    background: linear-gradient(135deg, $primary, $secondary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin: 0 0 12px;
-  }
-}
-
-.subtitle {
-  font-size: 15px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0;
-}
-
-.docs-section {
-  margin-bottom: 56px;
-
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 8px;
-  }
-
-  > p {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.65;
-    margin: 0 0 20px;
-
-    code {
-      background: rgba($primary, 0.1);
-      color: $primary;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 13px;
-    }
+  code {
+    @include inline-code;
   }
 }
 
@@ -337,36 +128,60 @@
   }
 
   code {
-    background: rgba($primary, 0.1);
-    color: $primary;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 13px;
+    @include inline-code;
   }
 }
 
+// ---------- Contenitori degli esempi ----------
+
 .example-row {
+  @include example-box;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
   gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
+
+  // Allinea in basso (es. input + bottone sulla stessa riga)
+  &--end {
+    align-items: flex-end;
+  }
 }
 
 .example-col {
+  @include example-box;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
 }
+
+.example-grid {
+  @include example-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+
+  // Celle più larghe (Select, Input)
+  &--wide {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+// valore corrente del v-model negli esempi del Toggle
+.example-value {
+  align-self: center;
+  font-family: monospace;
+  font-size: 13px;
+  opacity: 0.65;
+}
+
+.props-section {
+  margin-top: 32px;
+}
+
+.docs-props-table {
+  margin-top: 20px;
+}
+
+// ---------- Elementi di esempio ----------
 
 .docs-result {
   display: flex;
@@ -432,126 +247,355 @@
   }
 }
 
-.docs-props-table {
-  margin-top: 20px;
+// contenuto custom delle voci nell'esempio dello slot #item del Dropdown
+.docs-user-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  small {
+    font-size: 12px;
+    opacity: 0.6;
+  }
 }
 
+// Esempio di hover custom gestito direttamente nella pagina docs
+.docs-hover-custom {
+  &:hover:not(.vx-btn--disabled) {
+    background: repeating-linear-gradient(
+      45deg,
+      var(--btn-bg),
+      var(--btn-bg) 10px,
+      color-mix(in srgb, var(--btn-bg) 70%, black) 10px,
+      color-mix(in srgb, var(--btn-bg) 70%, black) 20px
+    );
+  }
+}
 
-/* Styles migrated from src/pages/components/Input/VxInputPickersDocs.vue */
+// Nota: in un file non scoped :deep() non è valido, quindi si usa
+// direttamente il selettore discendente.
+.docs-focus-custom {
+  .vx-input--focus-custom.vx-input--focused {
+    scale: 1.02;
+    transition: all 0.2s ease-in-out;
+  }
+}
 
-.example-col { display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid rgba($primary, 0.12); border-radius: 16px; margin: 16px 0; }
+// =============================================================
+// Pagina versioni
+// =============================================================
 
+.versions-page {
+  max-width: 820px;
+}
 
-/* Styles migrated from src/pages/components/Button/VxButtonToggleDocs.vue */
+.versions-list {
+  display: grid;
+  gap: 14px;
+}
 
-.docs-page { max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; }
-.docs-header { margin-bottom: 48px; }
-.docs-header h1 { font-size: 36px; font-weight: 800; margin: 0 0 12px; color: $primary; }
-.subtitle { font-size: 15px; line-height: 1.6; opacity: 0.65; margin: 0; }
-.docs-section { margin-bottom: 56px; }
-.docs-section h2 { font-size: 20px; font-weight: 700; margin: 0 0 8px; }
-.docs-section > p { font-size: 14px; line-height: 1.6; opacity: 0.65; margin: 0 0 20px; }
-.example-row { display: flex; flex-wrap: wrap; gap: 10px; padding: 24px; border-radius: 16px; border: 1px solid rgba($primary, 0.12); background: rgba(255, 255, 255, 0.02); margin-bottom: 16px; }
-.example-value { align-self: center; font-family: monospace; font-size: 13px; opacity: 0.65; }
-@media (max-width: 600px) { .docs-page { padding: 0; } }
+.version-card {
+  overflow: hidden;
+  border: 1px solid rgba($primary, 0.16);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 
+  &[open] {
+    border-color: rgba($primary, 0.45);
+    background: rgba($primary, 0.045);
+    box-shadow: 0 12px 30px rgba($primary, 0.08);
+  }
+}
 
-/* Styles migrated from src/pages/ErrorNotFound.vue */
+.version-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 24px;
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::after {
+    content: '+';
+    flex: 0 0 auto;
+    color: $primary;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+
+  time {
+    flex: 0 0 auto;
+    font-size: 13px;
+    opacity: 0.58;
+  }
+}
+
+.version-card[open] .version-summary::after {
+  transform: rotate(45deg);
+}
+
+.version-summary__main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.version-badge {
+  flex: 0 0 auto;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba($primary, 0.14);
+  color: $primary;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.version-title {
+  overflow: hidden;
+  font-size: 17px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.version-description {
+  margin: 0;
+  padding: 18px 24px 22px;
+  border-top: 1px solid rgba($primary, 0.1);
+  font-size: 14px;
+  line-height: 1.55;
+  opacity: 0.75;
+}
+
+@media (max-width: 600px) {
+  .version-summary {
+    align-items: flex-start;
+    padding: 16px;
+
+    time {
+      width: 100%;
+    }
+  }
+
+  .version-summary__main {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+  }
+
+  .version-description {
+    padding: 16px 16px 18px;
+  }
+}
+
+// =============================================================
+// Home (tutto annidato sotto .intro per non inquinare le altre pagine)
+// =============================================================
+
+.intro {
+  flex: 1; // riempie lo spazio rimasto in .content (colonna flex a tutta altezza)
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 5vh, 56px);
+  padding: 0 24px;
+
+  .hero {
+    text-align: center;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba($primary, 0.3);
+    background: rgba($primary, 0.08);
+    margin-bottom: clamp(16px, 3vh, 28px);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $secondary;
+    box-shadow: 0 0 8px $secondary;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .logo-text {
+    margin: 0;
+    font-size: clamp(40px, 9vh, 88px);
+    line-height: 1;
+    @include gradient-text;
+  }
+
+  .tagline {
+    font-size: clamp(14px, 2vh, 17px);
+    line-height: 1.6;
+    opacity: 0.7;
+    margin: clamp(12px, 2vh, 20px) 0 clamp(20px, 4vh, 36px);
+
+    strong {
+      color: white;
+    }
+  }
+
+  .cta {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    max-width: 960px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .footer {
+    font-size: 13px;
+    opacity: 0.5;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .heart {
+    color: $primary;
+  }
+
+  @media (max-width: 768px) {
+    padding: 24px 0;
+  }
+}
+
+// =============================================================
+// Pagina 404 (annidata sotto .not-found)
+// =============================================================
 
 .not-found {
-  min-height: 100vh;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-}
+  min-height: 100vh; // fallback
+  min-height: 100dvh;
 
-.card {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba($primary, 0.25);
-  padding: 56px 44px;
-  border-radius: 24px;
-  max-width: 460px;
-  backdrop-filter: blur(16px);
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-.glitch-number {
-  position: relative;
-  font-size: 96px;
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 16px;
-  letter-spacing: 4px;
-  background: linear-gradient(135deg, $primary, $secondary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-
-  &::before,
-  &::after {
-    content: attr(data-text);
-    position: absolute;
-    inset: 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    opacity: 0.6;
+  .card {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba($primary, 0.25);
+    padding: 56px 44px;
+    border-radius: 24px;
+    max-width: 460px;
+    backdrop-filter: blur(16px);
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
-  &::before {
-    background: linear-gradient(135deg, $primary, $secondary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation: glitch-1 3s infinite linear alternate-reverse;
+  .glitch-number {
+    position: relative;
+    font-size: 96px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: 4px;
+    @include gradient-text;
+
+    &::before,
+    &::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      opacity: 0.6;
+    }
+
+    &::before {
+      background: linear-gradient(135deg, $primary, $secondary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: glitch-1 3s infinite linear alternate-reverse;
+    }
+
+    &::after {
+      background: linear-gradient(135deg, $secondary, $primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: glitch-2 2.5s infinite linear alternate-reverse;
+    }
   }
 
-  &::after {
-    background: linear-gradient(135deg, $secondary, $primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    animation: glitch-2 2.5s infinite linear alternate-reverse;
+  h2 {
+    margin: 0 0 12px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
   }
-}
 
-h2 {
-  margin: 0 0 12px;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
+  p {
+    opacity: 0.65;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
 
-p {
-  opacity: 0.65;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 32px;
-}
+  .actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
-.actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+  .btn-primary {
+    border-radius: 12px;
+    padding: 8px 24px;
+    box-shadow: 0 8px 24px rgba($primary, 0.35);
+  }
 
-.btn-primary {
-  border-radius: 12px;
-  padding: 8px 24px;
-  box-shadow: 0 8px 24px rgba($primary, 0.35);
-}
-
-.btn-secondary {
-  border-radius: 12px;
-  padding: 8px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  .btn-secondary {
+    border-radius: 12px;
+    padding: 8px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
 }
 
 @keyframes glitch-1 {
-  0%   { clip-path: inset(0 0 90% 0); transform: translate(-2px, 0); }
+  0%   { clip-path: inset(0 0 90% 0);   transform: translate(-2px, 0); }
   20%  { clip-path: inset(20% 0 60% 0); transform: translate(2px, 0); }
   40%  { clip-path: inset(50% 0 30% 0); transform: translate(-1px, 0); }
   60%  { clip-path: inset(70% 0 10% 0); transform: translate(1px, 0); }
@@ -562,613 +606,7 @@ p {
 @keyframes glitch-2 {
   0%   { clip-path: inset(60% 0 20% 0); transform: translate(2px, 0); }
   25%  { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 0); }
-  50%  { clip-path: inset(80% 0 5% 0); transform: translate(1px, 0); }
+  50%  { clip-path: inset(80% 0 5% 0);  transform: translate(1px, 0); }
   75%  { clip-path: inset(30% 0 50% 0); transform: translate(-2px, 0); }
-  100% { clip-path: inset(5% 0 85% 0); transform: translate(2px, 0); }
+  100% { clip-path: inset(5% 0 85% 0);  transform: translate(2px, 0); }
 }
-
-
-/* Styles migrated from src/pages/components/Notify/VxNotifyDocs.vue */
-
-.docs-page {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
-
-@media (max-width: 600px) {
-  .docs-page {
-    padding: 0;
-  }
-}
-
-.docs-header {
-  margin-bottom: 48px;
-
-  h1 {
-    font-size: 36px;
-    font-weight: 800;
-    background: linear-gradient(135deg, $primary, $secondary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin: 0 0 12px;
-  }
-}
-
-.subtitle {
-  font-size: 15px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0;
-}
-
-.docs-section {
-  margin-bottom: 56px;
-
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 8px;
-  }
-
-  > p {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.65;
-    margin: 0 0 20px;
-
-    code {
-      background: rgba($primary, 0.1);
-      color: $primary;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 13px;
-    }
-  }
-}
-
-.example-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-.example-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-
-/* Styles migrated from src/pages/Home.vue */
-
-.intro {
-  min-height: 100vh;
-  padding: 80px 24px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.hero {
-  text-align: center;
-  max-width: 640px;
-  margin-bottom: 80px;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  letter-spacing: 0.5px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba($primary, 0.3);
-  background: rgba($primary, 0.08);
-  margin-bottom: 28px;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: $secondary;
-  box-shadow: 0 0 8px $secondary;
-}
-
-.tagline {
-  font-size: 17px;
-  line-height: 1.6;
-  opacity: 0.7;
-  margin-bottom: 36px;
-
-  strong {
-    color: white;
-    opacity: 1;
-  }
-}
-
-.cta {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  border-radius: 12px;
-  padding: 10px 28px;
-  box-shadow: 0 8px 24px rgba($primary, 0.35);
-}
-
-.btn-secondary {
-  border-radius: 12px;
-  padding: 10px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  max-width: 960px;
-  width: 100%;
-  margin-bottom: 60px;
-}
-
-.footer {
-  margin-top: auto;
-  font-size: 13px;
-  opacity: 0.5;
-}
-
-.heart {
-  color: $primary;
-}
-
-.logo-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 800;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.logo-text {
-  background: linear-gradient(135deg, $primary, $secondary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin: 0;
-}
-
-
-/* Styles migrated from src/pages/components/Button/VxButtonDocs.vue */
-
-.docs-page {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
-
-@media (max-width: 600px) {
-  .docs-page {
-    padding: 0;
-  }
-}
-
-.docs-header {
-  margin-bottom: 48px;
-
-  h1 {
-    font-size: 36px;
-    font-weight: 800;
-    background: linear-gradient(135deg, $primary, $secondary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin: 0 0 12px;
-  }
-
-  /* Standalone page header styling. */
-  &--sub {
-    margin-top: 24px;
-    padding-top: 48px;
-    border-top: 1px solid rgba($primary, 0.12);
-
-    h1 {
-      font-size: 28px;
-    }
-  }
-}
-
-.subtitle {
-  font-size: 15px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0;
-}
-
-.docs-section {
-  margin-bottom: 56px;
-
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 8px;
-  }
-
-  > p {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.65;
-    margin: 0 0 20px;
-
-    code {
-      background: rgba($primary, 0.1);
-      color: $primary;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 13px;
-    }
-  }
-}
-
-.section-note {
-  font-size: 14px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0 0 16px;
-
-  code {
-    background: rgba($primary, 0.1);
-    color: $primary;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 13px;
-  }
-}
-
-.example-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-.example-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-/* valore corrente del v-model negli esempi del Toggle */
-.example-value {
-  align-self: center;
-  font-family: monospace;
-  font-size: 13px;
-  opacity: 0.65;
-}
-
-/* contenuto custom delle voci nell'esempio dello slot #item del Dropdown */
-.docs-user-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-
-  small {
-    font-size: 12px;
-    opacity: 0.6;
-  }
-}
-
-/* Esempio di hover custom gestito direttamente nella pagina docs */
-.docs-hover-custom {
-  &:hover:not(.vx-btn--disabled) {
-    background: repeating-linear-gradient(
-      45deg,
-      var(--btn-bg),
-      var(--btn-bg) 10px,
-      color-mix(in srgb, var(--btn-bg) 70%, black) 10px,
-      color-mix(in srgb, var(--btn-bg) 70%, black) 20px
-    );
-  }
-}
-
-
-/* Styles migrated from src/pages/components/Select/VxSelectDocs.vue */
-
-.docs-page {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
-
-@media (max-width: 600px) {
-  .docs-page {
-    padding: 0;
-  }
-}
-
-.docs-header {
-  margin-bottom: 48px;
-
-  h1 {
-    font-size: 36px;
-    font-weight: 800;
-    background: linear-gradient(135deg, $primary, $secondary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin: 0 0 12px;
-  }
-}
-
-.subtitle {
-  font-size: 15px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0;
-}
-
-.docs-section {
-  margin-bottom: 56px;
-
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 8px;
-  }
-
-  > p {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.65;
-    margin: 0 0 20px;
-
-    code {
-      background: rgba($primary, 0.1);
-      color: $primary;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 13px;
-    }
-  }
-}
-
-.section-note {
-  font-size: 14px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0 0 16px;
-
-  code {
-    background: rgba($primary, 0.1);
-    color: $primary;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 13px;
-  }
-}
-
-.example-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-.example-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-.example-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-.docs-focus-custom {
-  :deep(.vx-input--focus-custom.vx-input--focused) {
-    scale: 1.02;
-    transition: all 0.2s ease-in-out;
-  }
-}
-
-.docs-props-table {
-  margin-top: 16px;
-}
-
-
-/* Styles migrated from src/pages/components/Button/VxButtonDropdownDocs.vue */
-
-.docs-page {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
-
-@media (max-width: 600px) {
-  .docs-page {
-    padding: 0;
-  }
-}
-
-.docs-header {
-  margin-bottom: 48px;
-
-  h1 {
-    font-size: 36px;
-    font-weight: 800;
-    background: linear-gradient(135deg, $primary, $secondary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin: 0 0 12px;
-  }
-
-  /* Shared header styles for the standalone dropdown documentation page. */
-  &--sub {
-    margin-top: 24px;
-    padding-top: 48px;
-    border-top: 1px solid rgba($primary, 0.12);
-
-    h1 {
-      font-size: 28px;
-    }
-  }
-}
-
-.subtitle {
-  font-size: 15px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0;
-}
-
-.docs-section {
-  margin-bottom: 56px;
-
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 8px;
-  }
-
-  > p {
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.65;
-    margin: 0 0 20px;
-
-    code {
-      background: rgba($primary, 0.1);
-      color: $primary;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 13px;
-    }
-  }
-}
-
-.section-note {
-  font-size: 14px;
-  line-height: 1.6;
-  opacity: 0.65;
-  margin: 0 0 16px;
-
-  code {
-    background: rgba($primary, 0.1);
-    color: $primary;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 13px;
-  }
-}
-
-.example-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-.example-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-  padding: 24px;
-  border-radius: 16px;
-  border: 1px solid rgba($primary, 0.12);
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
-}
-
-/* valore corrente del v-model negli esempi del Toggle */
-.example-value {
-  align-self: center;
-  font-family: monospace;
-  font-size: 13px;
-  opacity: 0.65;
-}
-
-/* contenuto custom delle voci nell'esempio dello slot #item del Dropdown */
-.docs-user-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-
-  small {
-    font-size: 12px;
-    opacity: 0.6;
-  }
-}
-
-/* Esempio di hover custom gestito direttamente nella pagina docs */
-.docs-hover-custom {
-  &:hover:not(.vx-btn--disabled) {
-    background: repeating-linear-gradient(
-      45deg,
-      var(--btn-bg),
-      var(--btn-bg) 10px,
-      color-mix(in srgb, var(--btn-bg) 70%, black) 10px,
-      color-mix(in srgb, var(--btn-bg) 70%, black) 20px
-    );
-  }
-}
-
-
-/* Styles migrated from src/pages/components/Input/VxInputDocs.vue */
-
-.docs-header { margin-bottom: 48px; }
-.example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; padding: 24px; border: 1px solid rgba($primary, 0.12); border-radius: 16px; margin: 16px 0; }
-
-
-/* Styles migrated from src/pages/components/Input/VxInputOthersDocs.vue */
-
-.props-section { margin-top: 32px; }
-.example-col { display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid rgba($primary, 0.12); border-radius: 16px; margin: 16px 0; }
