@@ -29,6 +29,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .feature-card {
+  font-family: 'Fredoka', sans-serif;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba($primary, 0.15);
   border-radius: 18px;

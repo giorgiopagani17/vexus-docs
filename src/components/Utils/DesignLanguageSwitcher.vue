@@ -93,6 +93,7 @@ const closeDropdown = () => {
 
 .code {
   letter-spacing: 0.5px;
+  font-family: 'Fredoka', sans-serif;
 }
 
 .chevron {
@@ -124,6 +125,7 @@ const closeDropdown = () => {
 
 .lang-option {
   width: 100%;
+  font-family: 'Fredoka', sans-serif;
   display: flex;
   align-items: center;
   gap: 10px;

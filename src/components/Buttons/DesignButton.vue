@@ -36,6 +36,7 @@ defineEmits(['click'])
 
 <style lang="scss" scoped>
 .base-btn {
+  font-family: 'Fredoka', sans-serif;
   display: inline-flex;
   align-items: center;
   gap: 8px;

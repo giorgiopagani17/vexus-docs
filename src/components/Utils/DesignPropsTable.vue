@@ -83,6 +83,7 @@ const innerStyle = computed(() => {
 
 <style lang="scss" scoped>
 .props-table {
+  font-family: 'Fredoka', sans-serif;
   border-radius: 14px;
   border: 1px solid rgba($primary, 0.15);
   overflow: hidden;
@@ -151,20 +152,20 @@ const innerStyle = computed(() => {
 }
 
 :deep(.prop-name) {
-  font-family: 'Courier New', monospace;
+  font-family: 'Fredoka', sans-serif;
   color: $secondary;
   font-weight: 600;
 }
 
 :deep(.prop-type) {
-  font-family: 'Courier New', monospace;
+  font-family: 'Fredoka', sans-serif;
   opacity: 0.6;
   font-size: 12px;
 }
 
 :deep(.prop-default) {
   opacity: 0.5;
-  font-family: 'Courier New', monospace;
+  font-family: 'Fredoka', sans-serif;
 }
 
 :deep(.prop-desc) {

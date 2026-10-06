@@ -31,6 +31,7 @@ const copy = async (event) => {
 
 <style lang="scss" scoped>
 .code-block {
+  font-family: 'Fredoka', sans-serif;
   position: relative;
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba($primary, 0.12);
@@ -45,7 +46,7 @@ pre {
 }
 
 code {
-  font-family: 'Courier New', monospace;
+  font-family: 'Fredoka', sans-serif;
   font-size: 12.5px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);

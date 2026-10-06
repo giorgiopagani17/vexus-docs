@@ -343,6 +343,10 @@ watch(isMini, () => {
 </script>
 
 <style lang="scss" scoped>
+.layout {
+  font-family: 'Fredoka', sans-serif;
+}
+
 .app-header {
   position: fixed;
   top: 0;

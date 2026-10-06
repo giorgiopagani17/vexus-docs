@@ -1,8 +1,10 @@
 @import 'material-icons/iconfont/material-icons.css';
 @import './docs.scss';
+@import './fonts.scss';
 
 html, body, #app {
   margin: 0;
+  font-family: 'Fredoka', sans-serif;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
 }
