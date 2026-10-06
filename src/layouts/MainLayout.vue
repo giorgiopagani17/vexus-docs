@@ -5,8 +5,13 @@
         <Menu :size="20" />
       </button>
 
-      <div class="image-wrapper">
-        <img :src="VexusLogo" class="logo-image" alt="Vexus Logo" />
+      <div class="logo-wrap">
+        <div class="image-wrapper">
+          <img :src="VexusLogo" class="logo-image" alt="Vexus Logo" />
+        </div>
+        <div v-if="libraryName && !isMobile">
+          <h1 class="logo-text">{{ libraryName }} Docs</h1>
+        </div>
       </div>
 
       <div class="header-actions">
@@ -182,6 +187,7 @@ import {
 } from 'lucide-vue-next'
 
 const MOBILE_QUERY = '(max-width: 768px)'
+const libraryName = __APP_NAME__ || 'Vexus'
 
 const route = useRoute()
 const { t } = useI18n()
@@ -575,6 +581,25 @@ watch(isMini, () => {
   }
 }
 
+@mixin gradient-text {
+  background: linear-gradient(135deg, $primary, $secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-text {
+  margin: 0;
+  line-height: 1;
+  @include gradient-text;
+}
+
 .image-wrapper {
   display: flex;
   align-items: center;
@@ -804,8 +829,24 @@ watch(isMini, () => {
 
 // Mobile breakpoint (tenere allineato a MOBILE_QUERY nello script)
 @media (max-width: 768px) {
+  // Griglia 1fr | auto | 1fr: le colonne laterali hanno sempre la stessa
+  // larghezza, quindi il logo resta centrato anche se le actions sono più larghe del burger
+  .app-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
   .icon-btn--mobile-only {
     display: inline-flex;
+    justify-self: start;
+  }
+
+  .logo-wrap {
+    justify-self: center;
+  }
+
+  .header-actions {
+    justify-self: end;
   }
 
   .sidebar {
