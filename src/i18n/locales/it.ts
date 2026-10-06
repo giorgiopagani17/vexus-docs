@@ -61,7 +61,12 @@ export default {
       text: 'Vexus si appoggia a poche librerie. Se il tuo package manager non le installa in automatico, aggiungile al progetto.',
       package: 'Pacchetto',
       version: 'Versione',
+      type: 'Tipo',
       purpose: 'A cosa serve',
+      types: {
+        peer: 'Peer dependency (richiesta da Vexus, ma non installata automaticamente)',
+        auto: 'Installata automaticamente (richiesta da Vexus)',
+      },
       items: {
         vue: 'Framework su cui sono costruiti tutti i componenti.',
         floating: 'Posizionamento di dropdown, select e tooltip.',

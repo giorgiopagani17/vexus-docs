@@ -11,8 +11,7 @@
       <p>{{ $t('documentation.requirements.text') }}</p>
       <ul class="docs-list">
         <li><code>Node.js</code> 20+</li>
-        <li><code>Vue</code> ^3.5</li>
-        <li>{{ $t('documentation.requirements.sass') }}</li>
+        <li><code>Vue</code> ^3.5.43</li>
       </ul>
     </section>
 
@@ -51,6 +50,7 @@
             <tr>
               <th>{{ $t('documentation.deps.package') }}</th>
               <th>{{ $t('documentation.deps.version') }}</th>
+              <th>{{ $t('documentation.deps.type') }}</th>
               <th>{{ $t('documentation.deps.purpose') }}</th>
             </tr>
           </thead>
@@ -58,6 +58,7 @@
             <tr v-for="dep in dependencies" :key="dep.name">
               <td><code>{{ dep.name }}</code></td>
               <td>{{ dep.version }}</td>
+              <td>{{ $t(dep.type) }}</td>
               <td>{{ $t(dep.purpose) }}</td>
             </tr>
           </tbody>
@@ -71,9 +72,9 @@
 import { computed, ref } from 'vue'
 
 const packageManagers = [
-  { id: 'npm', command: 'npm install vexus' },
-  { id: 'pnpm', command: 'pnpm add vexus' },
-  { id: 'yarn', command: 'yarn add vexus' },
+  { id: 'npm', command: 'npm install vexus vue' },
+  { id: 'pnpm', command: 'pnpm add vexus vue' },
+  { id: 'yarn', command: 'yarn add vexus vue' },
 ]
 
 const activePm = ref('npm')
@@ -81,11 +82,9 @@ const activeCommand = computed(
   () => packageManagers.find((pm) => pm.id === activePm.value)?.command ?? '',
 )
 
-// TODO: allinea con le dipendenze reali del package.json di vexus
 const dependencies = [
-  { name: 'vue', version: '^3.5', purpose: 'documentation.deps.items.vue' },
-  { name: '@floating-ui/dom', version: '^1.7', purpose: 'documentation.deps.items.floating' },
-  { name: 'lucide-vue-next', version: '^1.0', purpose: 'documentation.deps.items.lucide' },
-  { name: 'material-icons', version: '^1.13', purpose: 'documentation.deps.items.material' },
+  { name: 'vue', version: '^3.5.43', type: 'documentation.deps.types.peer', purpose: 'documentation.deps.items.vue' },
+  { name: '@floating-ui/dom', version: '^1.8.0', type: 'documentation.deps.types.auto', purpose: 'documentation.deps.items.floating' },
+  { name: 'lucide-vue-next', version: '^1.0.0', type: 'documentation.deps.types.auto', purpose: 'documentation.deps.items.lucide' },
 ]
 </script>
