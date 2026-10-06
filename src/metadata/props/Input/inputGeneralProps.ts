@@ -214,10 +214,10 @@ export const propsRows = [
 
 export const getInputGeneralMetadata = (t) => ({
   columns: [
-    { key: 'name', label: t('inputDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
   rows: propsRows.map(row => ({
     ...row,

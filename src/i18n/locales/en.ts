@@ -16,6 +16,17 @@ export default {
     title: 'Page not found',
     message: 'The page you are looking for does not exist, has been moved, or you do not have permission to view it.'
   },
+  common: {
+    availableOptions: 'Available options',
+    propsColumns: { 
+      name: 'Prop', 
+      type: 'Type', 
+      default: 'Default', 
+      description: 'Description',
+      option: 'Option', 
+      required: 'Required'
+    },
+  },
   home: {
     development: 'In development',
     taglinePartOne: 'A UI component library for',
@@ -45,6 +56,14 @@ export default {
       title: 'First release',
       description: 'Initial release of the Vexus component library, including the first UI components and their documentation.',
     },
+    v011: {
+      title: 'Second release',
+      description: 'Minor updates and bug fixes for the Vexus component library.',
+    },
+    v012: {
+      title: 'Third release',
+      escription: 'Minor updates and bug fixes for the Vexus component library.'
+    },
   },
   buttonDocs: {
     setup: 'Setup',
@@ -61,7 +80,6 @@ export default {
     iconOnly: 'Icon only',
     customColors: 'Custom colors',
     events: 'Events',
-    availableOptions: 'Available options',
     toggleSubtitle: 'A group of connected buttons for choosing one or more values: single selection, multiple selection, icon-only mode, and full style customization.',
     dropdownSubtitle: 'A button that opens a menu of items: supports split mode, sections and separators, automatic positioning, and keyboard navigation.',
     intro: 'Flexible button component with variants, colors, icons, loading state, full-width layout, and advanced slot support.',
@@ -187,12 +205,6 @@ export default {
       placementComment: "'bottom-start' (default) | 'bottom-end' | 'top-start' | 'top-end'",
       flipComment: 'If there is not enough space below or above, the panel flips automatically',
       slotComment: '#item replaces item content, while #default replaces button content'
-    },
-    propsColumns: {
-      name: 'Prop',
-      type: 'Type',
-      default: 'Default',
-      description: 'Description'
     },
     props: {
       button: {
@@ -270,7 +282,6 @@ export default {
     iconOnly: 'Icon only',
     customColors: 'Custom colors',
     events: 'Events',
-    availableOptions: 'Available options',
     toggleSubtitle: 'A group of connected buttons for choosing one or more values: single selection, multiple selection, icon-only mode, and full style customization.',
     dropdownSubtitle: 'A button that opens a menu of items: supports split mode, sections and separators, automatic positioning, and keyboard navigation.',
     intro: 'Flexible button component with variants, colors, icons, loading state, full-width layout, and advanced slot support.',
@@ -396,12 +407,6 @@ export default {
       placementComment: "'bottom-start' (default) | 'bottom-end' | 'top-start' | 'top-end'",
       flipComment: 'If there is not enough space below or above, the panel flips automatically',
       slotComment: '#item replaces item content, while #default replaces button content'
-    },
-    propsColumns: {
-      name: 'Prop',
-      type: 'Type',
-      default: 'Default',
-      description: 'Description'
     },
     props: {
       button: {
@@ -479,7 +484,6 @@ export default {
     iconOnly: 'Icon only',
     customColors: 'Custom colors',
     events: 'Events',
-    availableOptions: 'Available options',
     toggleSubtitle: 'A group of connected buttons for choosing one or more values: single selection, multiple selection, icon-only mode, and full style customization.',
     dropdownSubtitle: 'A button that opens a menu of items: supports split mode, sections and separators, automatic positioning, and keyboard navigation.',
     intro: 'Flexible button component with variants, colors, icons, loading state, full-width layout, and advanced slot support.',
@@ -605,12 +609,6 @@ export default {
       placementComment: "'bottom-start' (default) | 'bottom-end' | 'top-start' | 'top-end'",
       flipComment: 'If there is not enough space below or above, the panel flips automatically',
       slotComment: '#item replaces item content, while #default replaces button content'
-    },
-    propsColumns: {
-      name: 'Prop',
-      type: 'Type',
-      default: 'Default',
-      description: 'Description'
     },
     props: {
       button: {
@@ -712,7 +710,6 @@ export default {
           category: 'Category', description: 'Description', importComponent: 'Import the Select component',
           apple: 'Apple', banana: 'Banana', orange: 'Orange'
         },
-        propsColumns: { name: 'Prop', type: 'Type', default: 'Default', description: 'Description' },
         props: {
           modelValue: 'Selected value used with v-model', options: 'Local options list',
           optionLabel: 'Property or function used to derive the label', optionValue: 'Property or function used to derive the value',
@@ -847,10 +844,10 @@ export default {
           customColors: 'Fully custom colors', mixedColors: 'Mixed colors', eventDemo: 'Event demo',
           eventHint: 'Open the console or attach a notification to see events', eventPlaceholder: 'Interact with this field'
           ,time: 'Select a time', timeStep: '15 min step', rgb: 'rgb()', nameAtCss: 'CSS name',
-          emailAddress: "name{'@'}domain.com", searchDots: 'Search...'
+          emailAddress: "name{'@'}domain.com", searchDots: 'Search...',
+          textareaHint: "You can resize the field vertically"
         },
         notify: { focusTitle: 'Input focus', focusMessage: 'The field received focus.', blurTitle: 'Input blur', blurMessage: 'The field lost focus.', clearTitle: 'Input cleared', clearMessage: 'The field value was cleared.' },
-        propsColumns: { name: 'Prop', type: 'Type', default: 'Default', description: 'Description' },
         sections: {
           setup: 'Setup', variant: 'Variant', type: 'Type', datePicker: 'Date picker', dateRange: 'Date range',
           dateTime: 'DateTime picker', dateTimeRange: 'DateTime range', time: 'Time picker', colorPicker: 'Color picker',
@@ -895,7 +892,6 @@ export default {
     labels: { default: 'Default', success: 'Success', error: 'Error', warning: 'Warning', info: 'Info', customColor: 'Custom color', partialOverride: 'Partial type override', showTitle: 'Show with title', html: 'HTML notification', simulateUpload: 'Simulate upload', withProgress: 'With progress bar', withoutProgress: 'Without progress bar', fast: 'Fast (1.5s)', slow: 'Slow (8s)', persistent: 'Persistent', showActions: 'Show with actions', cancel: 'Cancel', delete: 'Delete', customIcon: 'Custom icon', largeNotification: 'Large notification', dismissAfter: 'Open and close after 2s', dismissAll: 'Dismiss all' },
     positions: { 'top-left': 'top-left', 'top-center': 'top-center', 'top-right': 'top-right', 'center-left': 'center-left', 'center-center': 'center-center', 'center-right': 'center-right', 'bottom-left': 'bottom-left', 'bottom-center': 'bottom-center', 'bottom-right': 'bottom-right' },
     messages: { generic: 'Generic notification', success: 'Operation completed!', error: 'Something went wrong.', warning: 'Warning, check the data.', info: 'New update available.', customColor: 'I have my own color!', override: 'Success with a different background', savedTitle: 'Saved!', saved: 'The changes were saved successfully.', html: 'The <b>Pro</b> plan is about to expire. <a href="/billing">Renew now</a>.', closingSoon: 'I will close soon...', noProgress: 'No progress bar here', from: 'Notification from', fast: 'Disappears quickly', slow: 'Stays longer', manualClose: 'Close me manually', deleteWarning: 'You are about to delete this item.', deleted: 'Item deleted.', newFeature: 'New feature available!', largeTitle: 'Large title', largeText: 'Enlarged text for emphasis.', dismissAfter: 'I will close in 2 seconds...', uploading: 'Uploading file...', uploaded: 'File uploaded successfully!' },
-    propsColumns: { prop: 'Prop', type: 'Type', default: 'Default', description: 'Description', key: 'Colors key' },
     colorColumns: { key: 'Colors key', description: 'Description' },
     colors: { background: 'Toast background color', border: 'Border color', text: 'Message text color', title: 'Title color', icon: 'Icon color', accent: 'Link and action color', badgeBackground: 'Duplicate count badge background', badgeText: 'Badge text color', closeColor: 'Close icon color', shadow: 'Shadow color', progress: 'Progress bar color', progressTrack: 'Progress track color' },
     props: { message: 'Main notification text', html: 'Renders message as HTML when true', title: 'Optional title above the message', type: 'Visual variant with automatic icon and color', colors: 'Individual color overrides', loading: 'Shows a spinner instead of the icon', progress: 'Shows the countdown bar', duration: 'Milliseconds before automatic close; 0 = persistent', position: 'Screen position', icon: 'Custom icon', iconSize: 'Icon or spinner size', textSize: 'Text size', titleSize: 'Title size', radius: 'Border radius', closeButtonSize: 'Close button size', actions: 'Interactive notification buttons', alignItems: 'Vertical content alignment', closable: 'Shows or hides the close button', onClose: 'Callback invoked on close' },
@@ -915,7 +911,6 @@ export default {
     sections: { setup: 'Setup', usage: 'Basic usage', params: 'Query and path params', notifications: 'Automatic notifications', messagePaths: 'Messages from custom structures', loading: 'Loading notification', refresh: 'Automatic token refresh', blob: 'Binary responses', config: 'Plugin configuration', options: 'VxRequest() options' },
     labels: { getUser: 'GET /users/1', success: 'Success', error: 'Error', loadUsers: 'Load user list' },
     notify: { userLoaded: 'User loaded successfully!', userLoadError: 'Unable to load the user.', success: 'Operation completed!', endpointError: 'Endpoint not found (error demo).', loadingUsers: 'Loading user list...', usersLoaded: 'Users loaded!' },
-    propsColumns: { option: 'Option', type: 'Type', default: 'Default', required: 'Required', description: 'Description' },
     required: { Yes: 'Yes', No: 'No' },
     codeLabels: {
       setupComment: 'once at app level', usageComment: 'In any component, without additional setup',
@@ -966,7 +961,6 @@ export default {
       limitationsIntro: 'These limitations are documented openly:',
       labels: { name: 'Name', surname: 'Surname', mario: 'Mario', rossi: 'Rossi', birthDate: 'Birth date', birthplaceCode: 'Cadastral code', birthplaceHint: 'e.g. H501 for Rome', generated: 'Generated Fiscal Code', fiscalCode: 'Fiscal Code', format: 'Format', checksum: 'Checksum', valid: 'valid', invalid: 'invalid', decoded: 'Decoded', invalidFormat: 'invalid format', fiscalCodeToValidate: 'Fiscal Code to validate', requireAdult: 'Require adult', validate: 'Validate', result: 'Result', invalidFields: 'Invalid fields', error: 'error', none: 'null', minor: 'minor' },
       limitations: { omocodyTitle: 'Omocodia is not supported', omocody: 'Omocodic variants are neither generated nor recognized as equivalent.', databaseTitle: 'No town database', database: 'birthplaceCode must be supplied by the caller; a town database is out of scope.', centuryTitle: 'Heuristic year century', century: 'The code contains only the last two year digits, so very old dates may be ambiguous.' },
-      propsColumns: { name: 'Name', type: 'Type', default: 'Default', description: 'Description' },
       codeLabels: { characters: 'characters', pattern: 'correct pattern', checksum: 'the 16th check character', bothChecks: 'both checks together', badChecksum: 'invalid checksum', invalidReturnsNull: 'Returns null for an invalid code', noError: 'no error', hookComment: 'The check', existsComment: 'existence is injected by the project.', minor: 'minor', existsResult: 'when the code is already registered' },
       props: { name: 'First name', surname: 'Surname', gender: 'Registered gender', day: 'Birth day', month: 'Birth month', year: 'Birth year', birthplaceCode: 'Birth place cadastral code', checkExistsFn: 'Function checking whether the code already exists', checkExists: 'Checks whether the code is already registered', requireAdult: 'Requires the user to be an adult', checkFormatOnly: 'Runs only format and checksum checks', birthdayDate: 'Birth date', codiceFiscale: 'Fiscal Code to validate', invalidFields: 'Fields inconsistent with the code', error: 'Error updated during validation', minor: 'Whether the subject is a minor', 'VxGenerateFiscalCode(input)': 'Generates a complete Fiscal Code', 'VxIsValidFiscalCodeFormat(cf)': 'Validates the format', 'VxIsValidFiscalCodeChecksum(cf)': 'Validates the check character', 'VxIsValidFiscalCode(cf)': 'Validates format and checksum', 'VxDecodeFiscalCode(cf, referenceDate?)': 'Decodes a valid Fiscal Code', computeControlChar: 'Computes the check character' }
     }
@@ -985,12 +979,6 @@ export default {
     dateTimeDescription: 'VxDateTime combines date and time selection using YYYY-MM-DD HH:MM.',
     dateTimeRangeDescription: 'VxDateTimeRange adds start and end time selection to a date range.',
     timeSectionDescription: 'VxTime provides a custom time picker with formatting and minute intervals.',
-    propsColumns: {
-      name: 'Name',
-      type: 'Type',
-      default: 'Default',
-      description: 'Description',
-    },
     props: {
       modelValue: 'Selected picker value bound with v-model.',
       dateRangeModelValue: 'Selected range with start and end dates in ISO YYYY-MM-DD format, bound with v-model.',
@@ -1047,12 +1035,6 @@ export default {
     rangeSectionDescription: 'VxRange replaces type range with a restyled slider.',
     checkboxSectionDescription: 'VxCheckbox handles single checkboxes or groups through boolean or array v-model.',
     radioSectionDescription: 'VxRadio handles option groups sharing name and v-model, allowing one selection.',
-    propsColumns: {
-      name: 'Name',
-      type: 'Type',
-      default: 'Default',
-      description: 'Description',
-    },
     props: {
       modelValue: 'Selected value bound with v-model.',
       colorPickerModelValue: 'Selected color in #rrggbb hexadecimal format, bound with v-model.',

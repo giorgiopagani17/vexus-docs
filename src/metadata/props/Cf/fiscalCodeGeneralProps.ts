@@ -141,10 +141,10 @@ export const validateReturnRows = [
 
 export const getFiscalCodeMetadata = (t) => ({
   columns: [
-    { key: 'name', label: t('apiDocs.cfDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('apiDocs.cfDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('apiDocs.cfDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('apiDocs.cfDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
   generateInputRows: generateInputRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
   decodeOutputRows: decodeOutputRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),

@@ -27,8 +27,25 @@
       </div>
       <DesignCodeBlock :code="codeExamples[section.code]" />
     </section>
+
     <section class="docs-section">
-      <h2>{{ $t('buttonDocs.availableOptions') }}</h2>
+      <h2>{{ $t('inputDocs.sections.textarea') }}</h2>
+      <p>{{ $t('inputDocs.textareaDescription') }}</p>
+      <div class="example-col">
+        <VxInput
+          v-model="values.message"
+          tag="textarea"
+          :label="$t('inputDocs.labels.message')"
+          :placeholder="$t('inputDocs.labels.messagePlaceholder')"
+          :hint="$t('inputDocs.labels.textareaHint')"
+          block
+        />
+      </div>
+      <DesignCodeBlock :code="codeExamples.textareaCode" />
+    </section>
+
+    <section class="docs-section">
+      <h2>{{ $t('common.availableOptions') }}</h2>
       <DesignPropsTable :columns="metadata.columns" :rows="metadata.rows" :widths="['140px', '200px', '90px', '1fr']" />
     </section>
   </div>

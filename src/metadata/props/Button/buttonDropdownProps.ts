@@ -135,10 +135,10 @@ export const propsRows = [
 
 export const getButtonDropdownMetadata = (t: (key: string) => string) => ({
   columns: [
-    { key: 'name', label: t('buttonDropdownDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('buttonDropdownDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('buttonDropdownDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('buttonDropdownDocs.propsColumns.description'), class: 'prop-desc' }
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' }
   ],
   rows: propsRows.map(row => ({ ...row, desc: t(`buttonDropdownDocs.props.dropdown.${row.name}`) }))
 })

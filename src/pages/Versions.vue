@@ -6,10 +6,15 @@
     </header>
 
     <div class="versions-list">
-      <details v-for="(v, index) in versions" :key="v.version" class="version-card" :open="index === 0">
+      <details
+        v-for="(v, index) in reversedVersions"
+        :key="v.version"
+        class="version-card"
+        :open="index === 0"
+      >
         <summary class="version-summary">
           <span class="version-summary__main">
-            <span class="version-badge">v{{ v.version }}</span>
+            <span :class="index === 0 ? 'version-badge-latest' : 'version-badge'">v{{ v.version }}</span>
             <span class="version-title">{{ v.title ? $t(v.title) : $t('versions.release') }}</span>
           </span>
           <time :datetime="v.date">{{ formatDate(v.date) }}</time>
@@ -22,10 +27,14 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { versions } from '@/metadata/documentation/versions'
 
 const { locale } = useI18n()
+
+// Ordine inverso rispetto al file: l'ultima versione scritta diventa la prima
+const reversedVersions = computed(() => [...versions].reverse())
 
 const formatDate = (d: string) => {
   const language = locale.value === 'it' ? 'it-IT' : 'en-US'

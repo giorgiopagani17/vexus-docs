@@ -45,20 +45,20 @@ export const configRows = [
 
 export const getApiMetadata = (t) => ({
   optionsColumns: [
-    { key: 'name', label: t('apiDocs.propsColumns.option'), class: 'prop-name' },
-    { key: 'type', label: t('apiDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('apiDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'description', label: t('apiDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.option'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'description', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
   optionsRows: optionsRows.map(row => ({
     ...row,
     description: t(`apiDocs.optionsProps.${row.name}`, row.description),
   })),
   configColumns: [
-    { key: 'name', label: t('apiDocs.propsColumns.option'), class: 'prop-name' },
-    { key: 'type', label: t('apiDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'required', label: t('apiDocs.propsColumns.required'), class: 'prop-default' },
-    { key: 'description', label: t('apiDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.option'), class: 'prop-name' },
+    { key: 'type', label: t('common.type'), class: 'prop-type' },
+    { key: 'required', label: t('common.propsColumns.required'), class: 'prop-default' },
+    { key: 'description', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
   configRows: configRows.map(row => ({
     ...row,

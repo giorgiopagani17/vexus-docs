@@ -306,7 +306,7 @@
 <script setup>
 import { computed, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
-import VxSelect from 'vexus'
+import { VxSelect } from 'vexus'
 import DesignCodeBlock from '@/components/Utils/DesignCodeBlock.vue'
 import DesignPropsTable from '@/components/Utils/DesignPropsTable.vue'
 import { getSelectMetadata } from '@/metadata/props/Select/selectGeneralProps'

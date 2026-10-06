@@ -75,7 +75,7 @@
     </section>
 
     <section class="docs-section">
-      <h2>{{ $t('buttonToggleDocs.availableOptions') }}</h2>
+      <h2>{{ $t('common.availableOptions') }}</h2>
       <DesignPropsTable :columns="propsColumns" :rows="propsRows" :widths="['140px', '180px', '90px', '1fr']" />
     </section>
   </div>

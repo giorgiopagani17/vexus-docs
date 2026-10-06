@@ -81,10 +81,10 @@ export const propsRows = [
 
 export const getButtonDocsMetadata = (t: (key: string) => string) => ({
   columns: [
-    { key: 'name', label: t('buttonDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('buttonDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('buttonDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('buttonDocs.propsColumns.description'), class: 'prop-desc' }
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' }
   ],
   propsRows: propsRows.map(row => ({ ...row, desc: t(`buttonDocs.props.button.${row.name}`) }))
 })

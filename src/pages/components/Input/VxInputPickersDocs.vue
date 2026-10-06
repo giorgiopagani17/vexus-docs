@@ -14,7 +14,7 @@
         <DesignCodeBlock :code="codeExamples[picker.code]" />
       </section>
       <section class="props-section">
-        <h2>{{ $t('buttonDocs.availableOptions') }}</h2>
+        <h2>{{ $t('common.availableOptions') }}</h2>
         <DesignPropsTable
           :columns="metadata[picker.key].columns"
           :rows="metadata[picker.key].rows"

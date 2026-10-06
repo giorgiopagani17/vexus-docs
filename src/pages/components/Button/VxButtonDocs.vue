@@ -230,7 +230,7 @@
 
     <!-- Props table -->
     <section class="docs-section">
-      <h2>{{ $t('buttonDocs.availableOptions') }}</h2>
+      <h2>{{ $t('common.availableOptions') }}</h2>
       <DesignPropsTable
         :columns="propsColumns"
         :rows="propsRows"

@@ -166,10 +166,10 @@ export const propsRows = [
 
 export const getSelectMetadata = (t) => ({
   columns: [
-    { key: 'name', label: t('selectDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('selectDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('selectDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('selectDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
   rows: propsRows.map(row => ({
     ...row,

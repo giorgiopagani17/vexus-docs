@@ -359,6 +359,16 @@
   font-weight: 800;
 }
 
+.version-badge-latest {
+  flex: 0 0 auto;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba($secondary, 0.14);
+  color: $secondary;
+  font-size: 13px;
+  font-weight: 800;
+}
+
 .version-title {
   overflow: hidden;
   font-size: 17px;

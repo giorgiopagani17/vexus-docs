@@ -210,10 +210,10 @@ export const timePickerPropsRows = [
 export const getDateMetadata = (t: (key: string, fallback?: string) => string) => ({
   rows: datePickerPropsRows.map((row) => ({ ...row, desc: t(`inputPickersDocs.props.${row.name}`, row.desc) })),
   columns: [
-    { key: 'name', label: t('inputPickersDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputPickersDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputPickersDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputPickersDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 })
 
@@ -223,20 +223,20 @@ export const getDateRangeMetadata = (t: (key: string, fallback?: string) => stri
     desc: t(`inputPickersDocs.props.${row.name === 'modelValue' ? 'dateRangeModelValue' : row.name}`, row.desc),
   })),
   columns: [
-    { key: 'name', label: t('inputPickersDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputPickersDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputPickersDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputPickersDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 })
 
 export const getDateTimeMetadata = (t: (key: string, fallback?: string) => string) => ({
   rows: dateTimePickerPropsRows.map((row) => ({ ...row, desc: t(`inputPickersDocs.props.${row.name}`, row.desc) })),
   columns: [
-    { key: 'name', label: t('inputPickersDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputPickersDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputPickersDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputPickersDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 })
 
@@ -246,20 +246,20 @@ export const getDateTimeRangeMetadata = (t: (key: string, fallback?: string) => 
     desc: t(`inputPickersDocs.props.${row.name === 'modelValue' ? 'dateTimeRangeModelValue' : row.name}`, row.desc),
   })),
   columns: [
-    { key: 'name', label: t('inputPickersDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputPickersDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputPickersDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputPickersDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 })
 
 export const getTimeMetadata = (t: (key: string, fallback?: string) => string) => ({
   rows: timePickerPropsRows.map((row) => ({ ...row, desc: t(`inputPickersDocs.props.${row.name}`, row.desc) })),
   columns: [
-    { key: 'name', label: t('inputPickersDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputPickersDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputPickersDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputPickersDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 })
 

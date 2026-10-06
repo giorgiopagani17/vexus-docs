@@ -12,7 +12,7 @@
       </div>
       <DesignCodeBlock :code="item.code" />
       <section class="props-section">
-        <h2>{{ $t('buttonDocs.availableOptions') }}</h2>
+        <h2>{{ $t('common.availableOptions') }}</h2>
         <DesignPropsTable
           :columns="item.metadata.columns"
           :rows="item.metadata.rows"

@@ -355,10 +355,10 @@ export const getColorPickerMetadata = (t: (key: string, fallback?: string) => st
     desc: t(`inputOthersDocs.props.${row.name === 'modelValue' ? 'colorPickerModelValue' : row.name}`, row.desc),
   })),
   columns: [
-    { key: 'name', label: t('inputOthersDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputOthersDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputOthersDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputOthersDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 })
 
@@ -368,10 +368,10 @@ export const getRangeMetadata = (t: (key: string, fallback?: string) => string) 
     desc: t(`inputOthersDocs.props.${row.name === 'modelValue' ? 'rangeModelValue' : row.name}`, row.desc),
   })),
   columns: [
-    { key: 'name', label: t('inputOthersDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputOthersDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputOthersDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputOthersDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 })
 
@@ -381,10 +381,10 @@ export const getCheckboxMetadata = (t: (key: string, fallback?: string) => strin
     desc: t(`inputOthersDocs.props.${row.name === 'modelValue' ? 'checkboxModelValue' : row.name}`, row.desc),
   })),
   columns: [
-    { key: 'name', label: t('inputOthersDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputOthersDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputOthersDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputOthersDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 })
 
@@ -394,10 +394,10 @@ export const getRadioMetadata = (t: (key: string, fallback?: string) => string) 
     desc: t(`inputOthersDocs.props.${row.name === 'modelValue' ? 'radioModelValue' : row.name}`, row.desc),
   })),
   columns: [
-    { key: 'name', label: t('inputOthersDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('inputOthersDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('inputOthersDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('inputOthersDocs.propsColumns.description'), class: 'prop-desc' },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 })
 

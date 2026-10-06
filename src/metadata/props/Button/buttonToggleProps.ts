@@ -111,10 +111,10 @@ export const propsRows = [
 
 export const getButtonToggleMetadata = (t: (key: string) => string) => ({
   columns: [
-    { key: 'name', label: t('buttonToggleDocs.propsColumns.name'), class: 'prop-name' },
-    { key: 'type', label: t('buttonToggleDocs.propsColumns.type'), class: 'prop-type' },
-    { key: 'default', label: t('buttonToggleDocs.propsColumns.default'), class: 'prop-default' },
-    { key: 'desc', label: t('buttonToggleDocs.propsColumns.description'), class: 'prop-desc' }
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' }
   ],
   rows: propsRows.map(row => ({ ...row, desc: t(`buttonToggleDocs.props.toggle.${row.name}`) }))
 })

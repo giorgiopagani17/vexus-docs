@@ -16,6 +16,17 @@ export default {
     title: 'Pagina non trovata',
     message: 'La pagina che stai cercando non esiste, è stata spostata o non hai i permessi per visualizzarla.'
   },
+  common: {
+    availableOptions: 'Opzioni disponibili',
+    propsColumns: { 
+      name: 'Prop', 
+      type: 'Tipo', 
+      default: 'Default', 
+      description: 'Descrizione',
+      option: 'Opzione', 
+      required: 'Obbligatoria'
+    },
+  },
   home: {
     development: 'In sviluppo',
     taglinePartOne: 'Una libreria di componenti UI per',
@@ -45,6 +56,14 @@ export default {
       title: 'Prima release',
       description: 'Prima release della libreria di componenti Vexus, con i primi componenti UI e la relativa documentazione.',
     },
+    v011: {
+      title: 'Seconda release',
+      description: 'Aggiornamenti minori e correzioni di bug.',
+    },
+    v012: {
+      title: 'Terza release',
+      description: 'Aggiornamenti minori e correzioni di bug.',
+    },
   },
   buttonDocs: {
     setup: 'Setup',
@@ -61,7 +80,6 @@ export default {
     iconOnly: 'Icon only',
     customColors: 'Colori custom',
     events: 'Events',
-    availableOptions: 'Opzioni disponibili',
     toggleSubtitle: 'Gruppo di bottoni uniti per scegliere uno o più valori: selezione singola, multipla, solo icone e personalizzazione completa dello stile.',
     dropdownSubtitle: 'Bottone che apre un menu di voci: supporta la modalità split, sezioni e separatori, posizionamento automatico e navigazione da tastiera.',
     intro: 'Componente bottone flessibile con varianti, colori, icone, stato di caricamento, layout a larghezza completa e slot avanzati.',
@@ -187,12 +205,6 @@ export default {
       placementComment: "'bottom-start' (default) | 'bottom-end' | 'top-start' | 'top-end'",
       flipComment: 'Se sotto (o sopra) non c’è abbastanza spazio, il pannello si ribalta da solo',
       slotComment: '#item sostituisce il contenuto della voce, #default quello del bottone'
-    },
-    propsColumns: {
-      name: 'Prop',
-      type: 'Tipo',
-      default: 'Default',
-      description: 'Descrizione'
     },
     props: {
       button: {
@@ -270,7 +282,6 @@ export default {
     iconOnly: 'Icon only',
     customColors: 'Colori custom',
     events: 'Events',
-    availableOptions: 'Opzioni disponibili',
     toggleSubtitle: 'Gruppo di bottoni uniti per scegliere uno o più valori: selezione singola, multipla, solo icone e personalizzazione completa dello stile.',
     dropdownSubtitle: 'Bottone che apre un menu di voci: supporta la modalità split, sezioni e separatori, posizionamento automatico e navigazione da tastiera.',
     intro: 'Componente bottone flessibile con varianti, colori, icone, stato di caricamento, layout a larghezza completa e slot avanzati.',
@@ -396,12 +407,6 @@ export default {
       placementComment: "'bottom-start' (default) | 'bottom-end' | 'top-start' | 'top-end'",
       flipComment: 'Se sotto (o sopra) non c’è abbastanza spazio, il pannello si ribalta da solo',
       slotComment: '#item sostituisce il contenuto della voce, #default quello del bottone'
-    },
-    propsColumns: {
-      name: 'Prop',
-      type: 'Tipo',
-      default: 'Default',
-      description: 'Descrizione'
     },
     props: {
       button: {
@@ -479,7 +484,6 @@ export default {
     iconOnly: 'Icon only',
     customColors: 'Colori custom',
     events: 'Events',
-    availableOptions: 'Opzioni disponibili',
     toggleSubtitle: 'Gruppo di bottoni uniti per scegliere uno o più valori: selezione singola, multipla, solo icone e personalizzazione completa dello stile.',
     dropdownSubtitle: 'Bottone che apre un menu di voci: supporta la modalità split, sezioni e separatori, posizionamento automatico e navigazione da tastiera.',
     intro: 'Componente bottone flessibile con varianti, colori, icone, stato di caricamento, layout a larghezza completa e slot avanzati.',
@@ -605,12 +609,6 @@ export default {
       placementComment: "'bottom-start' (default) | 'bottom-end' | 'top-start' | 'top-end'",
       flipComment: 'Se sotto (o sopra) non c’è abbastanza spazio, il pannello si ribalta da solo',
       slotComment: '#item sostituisce il contenuto della voce, #default quello del bottone'
-    },
-    propsColumns: {
-      name: 'Prop',
-      type: 'Tipo',
-      default: 'Default',
-      description: 'Descrizione'
     },
     props: {
       button: {
@@ -712,7 +710,6 @@ export default {
           category: 'Categoria', description: 'Descrizione', importComponent: 'Importa il componente Select',
           apple: 'Mela', banana: 'Banana', orange: 'Arancia'
         },
-        propsColumns: { name: 'Prop', type: 'Tipo', default: 'Default', description: 'Descrizione' },
         props: {
           modelValue: 'Valore selezionato usato con v-model', options: 'Lista delle opzioni locali',
           optionLabel: 'Proprietà o funzione per ricavare la label', optionValue: 'Proprietà o funzione per ricavare il valore',
@@ -813,10 +810,10 @@ export default {
           customColors: 'Colori completamente custom', mixedColors: 'Colori misti', eventDemo: 'Demo eventi',
           eventHint: 'Apri la console o aggancia una notify per vedere gli eventi', eventPlaceholder: 'Interagisci con questo campo'
           ,time: 'Seleziona un orario', timeStep: 'Step 15 min', rgb: 'rgb()', nameAtCss: 'Nome CSS',
-          emailAddress: "nome{'@'}dominio.it", searchDots: 'Cerca...'
+          emailAddress: "nome{'@'}dominio.it", searchDots: 'Cerca...',
+          textareaHint: "Puoi ridimensionare verticalmente il campo"
         },
         notify: { focusTitle: 'Input focus', focusMessage: 'Il campo ha ricevuto il focus.', blurTitle: 'Input blur', blurMessage: 'Il campo ha perso il focus.', clearTitle: 'Input cleared', clearMessage: 'Il valore del campo è stato svuotato.' },
-        propsColumns: { name: 'Prop', type: 'Tipo', default: 'Default', description: 'Descrizione' },
         sections: {
           setup: 'Setup', variant: 'Variant', type: 'Type', datePicker: 'Date picker', dateRange: 'Date range',
           dateTime: 'DateTime picker', dateTimeRange: 'DateTime range', time: 'Time picker', colorPicker: 'Color picker',
@@ -861,7 +858,6 @@ export default {
     labels: { default: 'Default', success: 'Success', error: 'Error', warning: 'Warning', info: 'Info', customColor: 'Colore custom', partialOverride: 'Override parziale su type', showTitle: 'Mostra con titolo', html: 'Notifica con HTML', simulateUpload: 'Simula upload', withProgress: 'Con progress bar', withoutProgress: 'Senza progress bar', fast: 'Veloce (1.5s)', slow: 'Lenta (8s)', persistent: 'Persistente', showActions: 'Mostra con azioni', cancel: 'Annulla', delete: 'Elimina', customIcon: 'Icona personalizzata', largeNotification: 'Notifica grande', dismissAfter: 'Apri e chiudi dopo 2s', dismissAll: 'Chiudi tutte' },
     positions: { 'top-left': 'top-left', 'top-center': 'top-center', 'top-right': 'top-right', 'center-left': 'center-left', 'center-center': 'center-center', 'center-right': 'center-right', 'bottom-left': 'bottom-left', 'bottom-center': 'bottom-center', 'bottom-right': 'bottom-right' },
     messages: { generic: 'Notifica generica', success: 'Operazione completata!', error: 'Qualcosa è andato storto.', warning: 'Attenzione, controlla i dati.', info: 'Nuovo aggiornamento disponibile.', customColor: 'Ho un colore tutto mio!', override: 'Success ma con sfondo diverso', savedTitle: 'Salvato!', saved: 'Le modifiche sono state salvate correttamente.', html: 'Il piano <b>Pro</b> sta per scadere. <a href="/billing">Rinnova ora</a>.', closingSoon: 'Mi chiudo tra poco...', noProgress: 'Nessuna barra qui', from: 'Notifica da', fast: 'Scompare in fretta', slow: 'Resta più a lungo', manualClose: 'Chiudimi manualmente', deleteWarning: 'Stai per eliminare questo elemento.', deleted: 'Elemento eliminato.', newFeature: 'Nuova funzionalità disponibile!', largeTitle: 'Titolo grande', largeText: 'Testo ingrandito per dare più risalto.', dismissAfter: 'Mi chiuderò tra 2 secondi...', uploading: 'Caricamento file in corso...', uploaded: 'File caricato con successo!' },
-    propsColumns: { prop: 'Prop', type: 'Tipo', default: 'Default', description: 'Descrizione', key: 'Chiave colors' },
     colorColumns: { key: 'Chiave colors', description: 'Descrizione' },
     colors: { background: 'Colore di sfondo del toast', border: 'Colore del bordo', text: 'Colore del testo', title: 'Colore del titolo', icon: 'Colore dell’icona', accent: 'Colore di link e azioni', badgeBackground: 'Sfondo del badge contatore', badgeText: 'Colore del testo del badge', closeColor: 'Colore dell’icona di chiusura', shadow: 'Colore dell’ombra', progress: 'Colore della barra di progresso', progressTrack: 'Colore del binario della barra' },
     props: { message: 'Testo principale della notifica', html: 'Renderizza message come HTML quando true', title: 'Titolo opzionale sopra il messaggio', type: 'Variante visiva con icona e colore automatici', colors: 'Override dei singoli colori', loading: 'Mostra uno spinner al posto dell’icona', progress: 'Mostra la barra del countdown', duration: 'Millisecondi prima della chiusura automatica; 0 = persistente', position: 'Posizione sullo schermo', icon: 'Icona custom', iconSize: 'Dimensione dell’icona o dello spinner', textSize: 'Dimensione del testo', titleSize: 'Dimensione del titolo', radius: 'Raggio dei bordi', closeButtonSize: 'Dimensione del pulsante di chiusura', actions: 'Bottoni interattivi nella notifica', alignItems: 'Allineamento verticale del contenuto', closable: 'Mostra o nasconde il pulsante di chiusura', onClose: 'Callback eseguita alla chiusura' },
@@ -881,7 +877,6 @@ export default {
     sections: { setup: 'Setup', usage: 'Uso base', params: 'Query e path params', notifications: 'Notifiche automatiche', messagePaths: 'Messaggi da strutture custom', loading: 'Notifica di caricamento', refresh: 'Refresh automatico del token', blob: 'Risposte binarie', config: 'Configurazione del plugin', options: 'Opzioni di VxRequest()' },
     labels: { getUser: 'GET /users/1', success: 'Successo', error: 'Errore', loadUsers: 'Carica lista utenti' },
     notify: { userLoaded: 'Utente caricato con successo!', userLoadError: 'Impossibile caricare l’utente.', success: 'Operazione completata!', endpointError: 'Endpoint non trovato (demo errore).', loadingUsers: 'Carico la lista utenti...', usersLoaded: 'Utenti caricati!' },
-    propsColumns: { option: 'Opzione', type: 'Tipo', default: 'Default', required: 'Obbligatoria', description: 'Descrizione' },
     required: { Yes: 'Sì', No: 'No' },
     codeLabels: {
       setupComment: 'una sola volta, a livello di app', usageComment: 'In qualsiasi componente, senza altro setup',
@@ -932,7 +927,6 @@ export default {
       limitationsIntro: 'Questi limiti sono documentati apertamente:',
       labels: { name: 'Nome', surname: 'Cognome', mario: 'Mario', rossi: 'Rossi', birthDate: 'Data di nascita', birthplaceCode: 'Codice catastale', birthplaceHint: 'es. H501 per Roma', generated: 'Codice Fiscale generato', fiscalCode: 'Codice Fiscale', format: 'Formato', checksum: 'Checksum', valid: 'valido', invalid: 'non valido', decoded: 'Decodificato', invalidFormat: 'formato non valido', fiscalCodeToValidate: 'Codice Fiscale da validare', requireAdult: 'Richiedi maggiorenne', validate: 'Valida', result: 'Risultato', invalidFields: 'Campi non validi', error: 'errore', none: 'null', minor: 'minorenne' },
       limitations: { omocodyTitle: 'Omocodia non gestita', omocody: 'Le varianti omocodiche non sono generate né riconosciute come equivalenti.', databaseTitle: 'Nessun database comuni', database: 'birthplaceCode va fornito dal chiamante; il database dei comuni è fuori scopo.', centuryTitle: 'Secolo dell’anno euristico', century: 'Il codice contiene solo le ultime due cifre dell’anno, quindi date molto vecchie possono essere ambigue.' },
-      propsColumns: { name: 'Nome', type: 'Tipo', default: 'Predefinito', description: 'Descrizione' },
       codeLabels: { characters: 'caratteri', pattern: 'pattern corretto', checksum: 'il 16° carattere di controllo', bothChecks: 'entrambe le verifiche insieme', badChecksum: 'checksum errato', invalidReturnsNull: 'Su un CF non valido ritorna null', noError: 'nessun errore', hookComment: 'Il controllo', existsComment: 'esistenza è iniettato dal progetto.', minor: 'minorenne', existsResult: 'se il CF risulta già registrato' },
       props: { name: 'Nome di battesimo', surname: 'Cognome', gender: 'Sesso anagrafico', day: 'Giorno di nascita', month: 'Mese di nascita', year: 'Anno di nascita', birthplaceCode: 'Codice catastale del luogo di nascita', checkExistsFn: 'Funzione per verificare se il CF esiste già', checkExists: 'Verifica se il CF è già registrato', requireAdult: 'Richiede che l’utente sia maggiorenne', checkFormatOnly: 'Esegue solo i controlli di formato e checksum', birthdayDate: 'Data di nascita', codiceFiscale: 'Codice Fiscale da validare', invalidFields: 'Campi incoerenti con il CF', error: 'Errore aggiornato durante la validazione', minor: 'Indica se il soggetto è minorenne', 'VxGenerateFiscalCode(input)': 'Genera un Codice Fiscale completo', 'VxIsValidFiscalCodeFormat(cf)': 'Verifica il formato', 'VxIsValidFiscalCodeChecksum(cf)': 'Verifica il carattere di controllo', 'VxIsValidFiscalCode(cf)': 'Verifica formato e checksum', 'VxDecodeFiscalCode(cf, referenceDate?)': 'Decodifica un Codice Fiscale valido', computeControlChar: 'Calcola il carattere di controllo' }
     }
@@ -951,12 +945,6 @@ export default {
     dateTimeDescription: 'VxDateTime combina data e ora usando il formato YYYY-MM-DD HH:MM.',
     dateTimeRangeDescription: 'VxDateTimeRange aggiunge l’orario iniziale e finale all’intervallo di date.',
     timeSectionDescription: 'VxTime offre un selettore orario custom con formato e intervalli dei minuti.',
-    propsColumns: {
-      name: 'Nome',
-      type: 'Tipo',
-      default: 'Predefinito',
-      description: 'Descrizione',
-    },
     props: {
       modelValue: 'Valore selezionato del picker collegato con v-model.',
       dateRangeModelValue: 'Intervallo selezionato con data iniziale e finale in formato ISO YYYY-MM-DD, collegato con v-model.',
@@ -1011,12 +999,6 @@ export default {
     rangeSectionDescription: 'VxRange sostituisce type range con uno slider restylizzato.',
     checkboxSectionDescription: 'VxCheckbox gestisce checkbox singoli o gruppi tramite v-model booleano o array.',
     radioSectionDescription: 'VxRadio gestisce gruppi di opzioni con lo stesso name e v-model, consentendo una selezione.',
-    propsColumns: {
-      name: 'Nome',
-      type: 'Tipo',
-      default: 'Predefinito',
-      description: 'Descrizione',
-    },
     props: {
       modelValue: 'Valore selezionato collegato con v-model.',
       colorPickerModelValue: 'Colore selezionato in formato esadecimale #rrggbb, collegato con v-model.',
