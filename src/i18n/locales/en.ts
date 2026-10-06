@@ -40,7 +40,9 @@ export default {
       customizableDescription: 'Theme based on SCSS variables, easy to adapt to your project\'s brand.',
       typescript: 'TypeScript-first',
       typescriptDescription: 'Full typing for a solid and reliable development experience.'
-    }
+    },
+    madeWith: 'Made with',
+    by: 'by'
   },
   buttons: {
     startNow: 'Start now',

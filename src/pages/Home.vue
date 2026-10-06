@@ -48,7 +48,7 @@
     </div>
 
     <div class="footer">
-      <p>Creato con <span class="heart">♥</span> da <strong>Giorgio Pagani</strong></p>
+      <p>{{$t('home.madeWith')}} <span class="heart">♥</span> {{$t('home.by')}} <strong>Giorgio Pagani</strong></p>
     </div>
   </div>
 </template>
