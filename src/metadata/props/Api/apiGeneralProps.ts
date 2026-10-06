@@ -56,7 +56,7 @@ export const getApiMetadata = (t : any) => ({
   })),
   configColumns: [
     { key: 'name', label: t('common.propsColumns.option'), class: 'prop-name' },
-    { key: 'type', label: t('common.type'), class: 'prop-type' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
     { key: 'required', label: t('common.propsColumns.required'), class: 'prop-default' },
     { key: 'description', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
