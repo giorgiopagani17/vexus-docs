@@ -2,15 +2,16 @@
 
 > A modern and flexible toolkit for Vue 3.
 
-Vexus is a collection of reusable **composables, utilities and tools** designed to make Vue 3 application development simpler, cleaner and more consistent.
+Vexus is a collection of reusable **Vue components, composables, utilities and tools** designed to make Vue 3 application development simpler, cleaner and more consistent.
 
-Built with **Vue 3** and **TypeScript**, Vexus provides a flexible foundation that can adapt to different application architectures and development needs.
+Built with **Vue 3** and **TypeScript**, Vexus provides a flexible and modular foundation that can adapt to different application architectures and development needs.
 
 ## ✨ Features
 
 * ⚡ Vue 3 focused
 * 🧩 Reusable composables
-* 🛠️ Powerful utilities
+* 🧱 Ready-to-use Vue components
+* 🛠️ Powerful utilities and tools
 * 🔷 TypeScript support
 * 🎨 Flexible and customizable
 * 📦 Modular and easy to integrate
@@ -34,4 +35,4 @@ MIT © Giorgio Pagani
 
 ---
 
-Made with ♥.
+Made with ♥
