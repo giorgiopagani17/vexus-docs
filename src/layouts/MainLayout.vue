@@ -248,7 +248,7 @@ function onSpotlightKeydown(e) {
   }
 }
 
-const openGroups = ref(new Set())
+const openGroups = ref(new Set(['uiComponents', 'composables']))
 
 function isGroupOpen(label) {
   return openGroups.value.has(label)
