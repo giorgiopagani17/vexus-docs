@@ -6,8 +6,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/Home.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/Home.vue') }],
       }
     ]
   },
@@ -16,8 +16,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/Versions.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/Versions.vue') }],
       }
     ]
   },
@@ -26,8 +26,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Button/VxButtonDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Button/VxButtonDocs.vue') }],
       }
     ]
   },
@@ -36,8 +36,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Button/VxButtonToggleDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Button/VxButtonToggleDocs.vue') }],
       }
     ]
   },
@@ -46,8 +46,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Button/VxButtonDropdownDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Button/VxButtonDropdownDocs.vue') }],
       }
     ]
   },
@@ -56,8 +56,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Input/VxInputDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Input/VxInputDocs.vue') }],
       }
     ]
   },
@@ -66,8 +66,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Input/VxInputOthersDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Input/VxInputOthersDocs.vue') }],
       }
     ]
   },
@@ -76,8 +76,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Input/VxInputPickersDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Input/VxInputPickersDocs.vue') }],
       }
     ]
   },
@@ -86,8 +86,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Select/VxSelectDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Select/VxSelectDocs.vue') }],
       }
     ]
   },
@@ -96,8 +96,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Notify/VxNotifyDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Notify/VxNotifyDocs.vue') }],
       }
     ]
   },
@@ -106,8 +106,8 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Api/VxApiDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Api/VxApiDocs.vue') }],
       }
     ]
   },
@@ -116,14 +116,14 @@ export const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '',
-        component: () => import('@/Docs/layouts/MainLayout.vue'),
-        children: [{ path: '', component: () => import('@/Docs/pages/components/Cf/VxFiscalCodeDocs.vue') }],
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Cf/VxFiscalCodeDocs.vue') }],
       }
     ]
   },
   {
     path: '/:catchAll(.*)*',
-    component: () => import('@/Docs/pages/ErrorNotFound.vue')
+    component: () => import('@/pages/ErrorNotFound.vue')
   }
 ]
 

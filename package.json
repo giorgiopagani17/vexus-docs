@@ -1,7 +1,5 @@
 {
-  "name": "Vexus UI Lib",
-  "libraryName": "Vexus UI Lib",
-  "libraryNameShort": "V",
+  "name": "vexus-docs",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -17,7 +15,8 @@
     "vue": "^3.5.38",
     "vue-i18n": "^11.4.6",
     "vue-router": "^5.3.1",
-    "vue3-click-away": "^1.2.4"
+    "vue3-click-away": "^1.2.4",
+    "vexus": "file:../vexus-library"
   },
   "devDependencies": {
     "@types/node": "^24.13.2",

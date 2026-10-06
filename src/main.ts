@@ -4,7 +4,7 @@ import router from './router'
 import '@/css/style.scss'
 import i18n from './i18n'
 import { directive as clickAway } from 'vue3-click-away'
-import { createApiClient } from '@/Library/core/composables/Api/apiConfig.js'
+import { createApiClient } from 'vexus'
 
 const app = createApp(App)
 
