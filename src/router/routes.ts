@@ -12,6 +12,16 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/documentation',
+    children: [
+      {
+        path: '',
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/Documentation.vue') }],
+      }
+    ]
+  },
+  {
     path: '/versions',
     children: [
       {

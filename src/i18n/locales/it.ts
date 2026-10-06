@@ -44,8 +44,39 @@ export default {
     madeWith: 'Creato con',
     by: 'da'
   },
+  documentation: {
+    title: 'Documentazione',
+    subtitle: 'Come aggiungere Vexus al tuo progetto Vue 3 e quali dipendenze richiede.',
+    requirements: {
+      title: 'Requisiti',
+      text: 'Prima di iniziare assicurati di avere:',
+      sass: 'Sass, se vuoi personalizzare i token SCSS della libreria',
+    },
+    install: {
+      title: 'Installazione',
+      text: 'Installa il pacchetto con il package manager che preferisci:',
+    },
+    deps: {
+      title: 'Dipendenze',
+      text: 'Vexus si appoggia a poche librerie. Se il tuo package manager non le installa in automatico, aggiungile al progetto.',
+      package: 'Pacchetto',
+      version: 'Versione',
+      purpose: 'A cosa serve',
+      note: 'Le dipendenze di questo sito (vue-router, vue-i18n, EmailJS) servono solo alla documentazione e non sono necessarie per usare la libreria.',
+      items: {
+        vue: 'Framework su cui sono costruiti tutti i componenti.',
+        floating: 'Posizionamento di dropdown, select e tooltip.',
+        lucide: 'Icone usate internamente dai componenti.',
+        material: 'Set di icone Material.',
+      },
+    },
+    usage: {
+      title: 'Primo utilizzo',
+      text: 'Importa un componente e usalo nel template.',
+    },
+  },
   buttons: {
-    startNow: 'Inizia ora',
+    getStarted: 'Inizia ora',
     documentation: 'Documentazione',
     versions: 'Versioni',
     backToHome: 'Torna alla Home'

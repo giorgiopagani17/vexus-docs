@@ -15,7 +15,7 @@
       </p>
 
       <div class="cta">
-        <DesignButton :text="$t('buttons.startNow')" :icon-left="Plus" variant="primary" @click="doSomething" />
+        <DesignButton :text="$t('buttons.getStarted')" :icon-left="Plus" variant="primary" @click="goToDocumentation" />
         <DesignButton :text="$t('buttons.versions')" :icon-left="Plus" variant="primary" @click="goToVersions" />
       </div>
     </div>
@@ -62,6 +62,10 @@ const version = __APP_VERSION__ || '0.1.0'
 const libraryName = __APP_NAME__ || 'Vexus'
 
 const router = useRouter()
+
+const goToDocumentation = () => {
+  router.push('/documentation')
+}
 
 const goToVersions = () => {
   router.push('/versions')

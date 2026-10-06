@@ -44,8 +44,39 @@ export default {
     madeWith: 'Made with',
     by: 'by'
   },
+  documentation: {
+    title: 'Documentation',
+    subtitle: 'How to add Vexus to your Vue 3 project and which dependencies it requires.',
+    requirements: {
+      title: 'Requirements',
+      text: 'Before you start, make sure you have:',
+      sass: 'Sass, if you want to customize the library\'s SCSS tokens',
+    },
+    install: {
+      title: 'Installation',
+      text: 'Install the package with your preferred package manager:',
+    },
+    deps: {
+      title: 'Dependencies',
+      text: 'Vexus relies on a few libraries. If your package manager doesn\'t install them automatically, add them to your project.',
+      package: 'Package',
+      version: 'Version',
+      purpose: 'Purpose',
+      note: 'This site\'s own dependencies (vue-router, vue-i18n, EmailJS) are only used by the documentation and aren\'t needed to use the library.',
+      items: {
+        vue: 'The framework all components are built on.',
+        floating: 'Positioning for dropdowns, selects and tooltips.',
+        lucide: 'Icons used internally by the components.',
+        material: 'Material icon set.',
+      },
+    },
+    usage: {
+      title: 'First usage',
+      text: 'Import a component and use it in your template.',
+    },
+  },
   buttons: {
-    startNow: 'Start now',
+    getStarted: 'Get started',
     versions: 'Versions',
     documentation: 'Documentation',
     backToHome: 'Back to Home'

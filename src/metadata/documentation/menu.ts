@@ -37,6 +37,7 @@ export const isMenuGroup = (item: MenuItem): item is MenuGroup => 'children' in 
 
 export const getMenu = (t: ComposerTranslation): MenuItem[] => [
   { id: 'home', label: t('layout.menu.home'), icon: Home, to: '/' },
+  { id: 'documentation', label: t('layout.menu.documentation'), icon: BookOpen, to: '/documentation' },
   { id: 'versions', label: t('layout.menu.versions'), icon: BookOpen, to: '/versions' },
   { id: 'reports', label: t('layout.menu.reports'), icon: TriangleAlert, to: '/reports' },
   {
