@@ -562,7 +562,7 @@ watch(isMini, () => {
   left: 0;
   bottom: 0;
   width: 240px;
-  background: rgba($tertiary, 0.95);
+  background: $tertiary;
   border-right: 1px solid rgba($primary, 0.15);
   display: flex;
   flex-direction: column;
