@@ -101,6 +101,10 @@ export default {
       title: 'Terza release',
       description: 'Aggiornamenti minori e correzioni di bug.',
     },
+    v013: {
+      title: 'useVxNotify',
+      description: 'Composable per gestire le notifiche di Vexus, con supporto per notifiche success, error, warning, info e stati di caricamento. Le notifiche possono essere aggiornate, chiuse singolarmente o gestite in modo dinamico.'
+    },
   },
   reports: {
     title: "Segnalazioni",

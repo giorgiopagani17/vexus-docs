@@ -110,18 +110,7 @@ import DesignButton from '@/components/Buttons/DesignButton.vue'
 import DesignCodeBlock from '@/components/Utils/DesignCodeBlock.vue'
 import DesignPropsTable from '@/components/Utils/DesignPropsTable.vue'
 import { getApiMetadata } from '@/metadata/props/Api/apiGeneralProps'
-import {
-  setupCode,
-  usageCode,
-  getPostCode,
-  notifyCode,
-  messagePathCode,
-  loadingCode,
-  refreshCode,
-  blobCode,
-  configCode,
-  getApiCodeExamples,
-} from '@/metadata/code/Api/apiCodeExamples'
+import { getApiCodeExamples } from '@/metadata/code/Api/apiCodeExamples'
 
 const { t, tm } = useI18n()
 const metadata = computed(() => getApiMetadata(t))

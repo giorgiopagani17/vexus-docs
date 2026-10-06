@@ -11,7 +11,7 @@ const app = createApp(App)
 app.directive('click-away', clickAway)
 
 app.use(createApiClient({
-  baseUrl: '',
+  baseUrl: 'https://dummyjson.com/',
   getAccessToken: () => null,
   getRefreshToken: () => null,
 }))

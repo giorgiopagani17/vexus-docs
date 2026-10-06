@@ -101,6 +101,10 @@ export default {
       title: 'Third release',
       description: 'Minor updates and bug fixes for the Vexus component library.'
     },
+    v013: {
+      title: 'useVxNotify',
+      description: 'Composable for managing Vexus notifications, with support for success, error, warning, info notifications and loading states. Notifications can be updated, closed individually or managed dynamically.'
+    },
   },
   reports: {
     title: "Reports",
