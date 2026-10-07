@@ -94,16 +94,16 @@ export default {
       description: 'Prima release della libreria di componenti Vexus, con i primi componenti UI e la relativa documentazione.',
     },
     v011: {
-      title: 'Seconda release',
-      description: 'Aggiornamenti minori e correzioni di bug.',
+      title: 'Fix import componenti',
+      description: 'Sistemati e ottimizzati gli import dei componenti della libreria, migliorandone la gestione e la compatibilità.',
     },
     v012: {
-      title: 'Terza release',
-      description: 'Aggiornamenti minori e correzioni di bug.',
+      title: 'Fix import componenti',
+      description: 'Sistemati e ottimizzati gli import dei componenti della libreria, migliorandone la gestione e la compatibilità.',
     },
     v013: {
-      title: 'useVxNotify',
-      description: 'Composable per gestire le notifiche di Vexus, con supporto per notifiche success, error, warning, info e stati di caricamento. Le notifiche possono essere aggiornate, chiuse singolarmente o gestite in modo dinamico.'
+      title: 'Fix loading VxNotify',
+      description: 'Sistemata la gestione della notifica di loading di VxNotify, migliorandone la visualizzazione e il comportamento durante il caricamento.'
     },
   },
   reports: {
@@ -994,7 +994,7 @@ export default {
       labels: { name: 'Nome', surname: 'Cognome', mario: 'Mario', rossi: 'Rossi', birthDate: 'Data di nascita', birthplaceCode: 'Codice catastale', birthplaceHint: 'es. H501 per Roma', generated: 'Codice Fiscale generato', fiscalCode: 'Codice Fiscale', format: 'Formato', checksum: 'Checksum', valid: 'valido', invalid: 'non valido', decoded: 'Decodificato', invalidFormat: 'formato non valido', fiscalCodeToValidate: 'Codice Fiscale da validare', requireAdult: 'Richiedi maggiorenne', validate: 'Valida', result: 'Risultato', invalidFields: 'Campi non validi', error: 'errore', none: 'null', minor: 'minorenne' },
       limitations: { omocodyTitle: 'Omocodia non gestita', omocody: 'Le varianti omocodiche non sono generate né riconosciute come equivalenti.', databaseTitle: 'Nessun database comuni', database: 'birthplaceCode va fornito dal chiamante; il database dei comuni è fuori scopo.', centuryTitle: 'Secolo dell’anno euristico', century: 'Il codice contiene solo le ultime due cifre dell’anno, quindi date molto vecchie possono essere ambigue.' },
       codeLabels: { characters: 'caratteri', pattern: 'pattern corretto', checksum: 'il 16° carattere di controllo', bothChecks: 'entrambe le verifiche insieme', badChecksum: 'checksum errato', invalidReturnsNull: 'Su un CF non valido ritorna null', noError: 'nessun errore', hookComment: 'Il controllo', existsComment: 'esistenza è iniettato dal progetto.', minor: 'minorenne', existsResult: 'se il CF risulta già registrato' },
-      props: { name: 'Nome di battesimo', surname: 'Cognome', gender: 'Sesso anagrafico', day: 'Giorno di nascita', month: 'Mese di nascita', year: 'Anno di nascita', birthplaceCode: 'Codice catastale del luogo di nascita', checkExistsFn: 'Funzione per verificare se il CF esiste già', checkExists: 'Verifica se il CF è già registrato', requireAdult: 'Richiede che l’utente sia maggiorenne', checkFormatOnly: 'Esegue solo i controlli di formato e checksum', birthdayDate: 'Data di nascita', codiceFiscale: 'Codice Fiscale da validare', invalidFields: 'Campi incoerenti con il CF', error: 'Errore aggiornato durante la validazione', minor: 'Indica se il soggetto è minorenne', 'VxGenerateFiscalCode(input)': 'Genera un Codice Fiscale completo', 'VxIsValidFiscalCodeFormat(cf)': 'Verifica il formato', 'VxIsValidFiscalCodeChecksum(cf)': 'Verifica il carattere di controllo', 'VxIsValidFiscalCode(cf)': 'Verifica formato e checksum', 'VxDecodeFiscalCode(cf, referenceDate?)': 'Decodifica un Codice Fiscale valido', computeControlChar: 'Calcola il carattere di controllo' }
+      props: { name: 'Nome di battesimo', surname: 'Cognome', gender: 'Sesso anagrafico', day: 'Giorno di nascita', month: 'Mese di nascita', year: 'Anno di nascita', birthplaceCode: 'Codice catastale del luogo di nascita', checkExistsFn: 'Funzione per verificare se il CF esiste già', checkExists: 'Verifica se il CF è già registrato', requireAdult: 'Richiede che l’utente sia maggiorenne', checkFormatOnly: 'Esegue solo i controlli di formato e checksum', birthdayDate: 'Data di nascita', codiceFiscale: 'Codice Fiscale da validare', invalidFields: 'Campi incoerenti con il CF', error: 'Errore aggiornato durante la validazione', minor: 'Indica se il soggetto è minorenne', 'VxGenerateFiscalCode(input)': 'Genera un Codice Fiscale completo', 'VxIsValidFiscalCodeFormat(cf)': 'Verifica il formato', 'VxIsValidFiscalCodeChecksum(cf)': 'Verifica il carattere di controllo', 'VxIsValidFiscalCode(cf)': 'Verifica formato e checksum', 'VxDecodeFiscalCode(cf, referenceDate?)': 'Decodifica un Codice Fiscale valido', 'computeControlChar(first15Chars)': 'Calcola il solo carattere di controllo a partire dai primi 15 caratteri. Usata internamente da generate/validate, esposta per casi avanzati' }
     }
   },
   inputPickersDocs: {

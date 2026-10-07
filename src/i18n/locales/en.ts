@@ -94,16 +94,16 @@ export default {
       description: 'Initial release of the Vexus component library, including the first UI components and their documentation.',
     },
     v011: {
-      title: 'Second release',
-      description: 'Minor updates and bug fixes for the Vexus component library.',
+      title: 'Fix import components',
+      description: 'Fixed and optimized the imports of the components in the library, improving their management and compatibility.',
     },
     v012: {
-      title: 'Third release',
-      description: 'Minor updates and bug fixes for the Vexus component library.'
+      title: 'Fix import components',
+      description: 'Fixed and optimized the imports of the components in the library, improving their management and compatibility.',
     },
     v013: {
-      title: 'useVxNotify',
-      description: 'Composable for managing Vexus notifications, with support for success, error, warning, info notifications and loading states. Notifications can be updated, closed individually or managed dynamically.'
+      title: 'Fix loading VxNotify',
+      description: 'Fixed the management of the loading notification in VxNotify, improving its display and behavior during loading.'
     },
   },
   reports: {
@@ -1028,7 +1028,7 @@ export default {
       labels: { name: 'Name', surname: 'Surname', mario: 'Mario', rossi: 'Rossi', birthDate: 'Birth date', birthplaceCode: 'Cadastral code', birthplaceHint: 'e.g. H501 for Rome', generated: 'Generated Fiscal Code', fiscalCode: 'Fiscal Code', format: 'Format', checksum: 'Checksum', valid: 'valid', invalid: 'invalid', decoded: 'Decoded', invalidFormat: 'invalid format', fiscalCodeToValidate: 'Fiscal Code to validate', requireAdult: 'Require adult', validate: 'Validate', result: 'Result', invalidFields: 'Invalid fields', error: 'error', none: 'null', minor: 'minor' },
       limitations: { omocodyTitle: 'Omocodia is not supported', omocody: 'Omocodic variants are neither generated nor recognized as equivalent.', databaseTitle: 'No town database', database: 'birthplaceCode must be supplied by the caller; a town database is out of scope.', centuryTitle: 'Heuristic year century', century: 'The code contains only the last two year digits, so very old dates may be ambiguous.' },
       codeLabels: { characters: 'characters', pattern: 'correct pattern', checksum: 'the 16th check character', bothChecks: 'both checks together', badChecksum: 'invalid checksum', invalidReturnsNull: 'Returns null for an invalid code', noError: 'no error', hookComment: 'The check', existsComment: 'existence is injected by the project.', minor: 'minor', existsResult: 'when the code is already registered' },
-      props: { name: 'First name', surname: 'Surname', gender: 'Registered gender', day: 'Birth day', month: 'Birth month', year: 'Birth year', birthplaceCode: 'Birth place cadastral code', checkExistsFn: 'Function checking whether the code already exists', checkExists: 'Checks whether the code is already registered', requireAdult: 'Requires the user to be an adult', checkFormatOnly: 'Runs only format and checksum checks', birthdayDate: 'Birth date', codiceFiscale: 'Fiscal Code to validate', invalidFields: 'Fields inconsistent with the code', error: 'Error updated during validation', minor: 'Whether the subject is a minor', 'VxGenerateFiscalCode(input)': 'Generates a complete Fiscal Code', 'VxIsValidFiscalCodeFormat(cf)': 'Validates the format', 'VxIsValidFiscalCodeChecksum(cf)': 'Validates the check character', 'VxIsValidFiscalCode(cf)': 'Validates format and checksum', 'VxDecodeFiscalCode(cf, referenceDate?)': 'Decodes a valid Fiscal Code', computeControlChar: 'Computes the check character' }
+      props: { name: 'First name', surname: 'Surname', gender: 'Registered gender', day: 'Birth day', month: 'Birth month', year: 'Birth year', birthplaceCode: 'Birth place cadastral code', checkExistsFn: 'Function checking whether the code already exists', checkExists: 'Checks whether the code is already registered', requireAdult: 'Requires the user to be an adult', checkFormatOnly: 'Runs only format and checksum checks', birthdayDate: 'Birth date', codiceFiscale: 'Fiscal Code to validate', invalidFields: 'Fields inconsistent with the code', error: 'Error updated during validation', minor: 'Whether the subject is a minor', 'VxGenerateFiscalCode(input)': 'Generates a complete Fiscal Code', 'VxIsValidFiscalCodeFormat(cf)': 'Validates the format', 'VxIsValidFiscalCodeChecksum(cf)': 'Validates the check character', 'VxIsValidFiscalCode(cf)': 'Validates format and checksum', 'VxDecodeFiscalCode(cf, referenceDate?)': 'Decodes a valid Fiscal Code', 'computeControlChar(first15Chars)': 'Calculates the check character from the first 15 characters. Used internally by generate/validate, exposed for advanced cases' }
     }
   },
   inputPickersDocs: {

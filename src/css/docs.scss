@@ -420,7 +420,6 @@
 .version-summary {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
   padding: 20px 24px;
   cursor: pointer;
@@ -430,19 +429,26 @@
     display: none;
   }
 
+  // Icona + / × a larghezza fissa, sempre all'estrema destra
   &::after {
-    content: '+';
-    flex: 0 0 auto;
-    color: $primary;
-    font-size: 24px;
-    font-weight: 300;
-    line-height: 1;
+    content: '';
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+    background:
+      linear-gradient($primary, $primary) center / 10px 2px no-repeat,
+      linear-gradient($primary, $primary) center / 2px 10px no-repeat;
     transition: transform 0.2s ease;
   }
 
+  // Data: colonna fissa, mai compressa, allineata a destra
   time {
     flex: 0 0 auto;
+    min-width: 9rem;
+    text-align: right;
+    white-space: nowrap;
     font-size: 13px;
+    font-variant-numeric: tabular-nums;
     opacity: 0.58;
   }
 }
@@ -451,34 +457,42 @@
   transform: rotate(45deg);
 }
 
+// min-width: 0 è indispensabile perché l'ellipsis funzioni dentro un flex
 .version-summary__main {
   display: flex;
   align-items: center;
   gap: 14px;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
-.version-badge {
+.version-badge,
+.version-badge-latest {
   flex: 0 0 auto;
+  box-sizing: border-box;
+  min-width: 4.5rem; // il titolo parte sempre dalla stessa x
   padding: 5px 10px;
   border-radius: 999px;
-  background: rgba($primary, 0.14);
-  color: $primary;
+  text-align: center;
+  white-space: nowrap;
   font-size: 13px;
   font-weight: 800;
+}
+
+.version-badge {
+  background: rgba($primary, 0.14);
+  color: $primary;
 }
 
 .version-badge-latest {
-  flex: 0 0 auto;
-  padding: 5px 10px;
-  border-radius: 999px;
   background: rgba($secondary, 0.14);
   color: $secondary;
-  font-size: 13px;
-  font-weight: 800;
 }
 
+// Titolo su una sola riga, troncato con "..."
 .version-title {
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   font-size: 17px;
   font-weight: 700;
@@ -498,11 +512,11 @@
 @media (max-width: 600px) {
   .version-summary {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) 24px;
     grid-template-areas:
       'main icon'
       'date date';
-    align-items: start;
+    align-items: center;
     gap: 8px 12px;
     padding: 16px;
 
@@ -512,23 +526,24 @@
 
     time {
       grid-area: date;
+      min-width: 0;
+      text-align: left;
     }
   }
 
   .version-summary__main {
     grid-area: main;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 10px;
+    gap: 10px;
   }
 
+  .version-badge,
+  .version-badge-latest {
+    min-width: 4rem;
+  }
+
+  // Anche su mobile resta su una riga con "..."
   .version-title {
-    min-width: 0;
-    overflow: visible;
     font-size: 16px;
-    text-overflow: clip;
-    white-space: normal;
-    overflow-wrap: anywhere;
   }
 
   .version-description {
