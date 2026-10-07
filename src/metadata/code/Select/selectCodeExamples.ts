@@ -32,7 +32,7 @@ export const multipleCode = `<VxSelect
 export const chipsCode = `<VxSelect
   v-model="values"
   multiple
-  :useChips="false"
+  :useChips="true"
 />`
 
 export const clearCode = `<VxSelect

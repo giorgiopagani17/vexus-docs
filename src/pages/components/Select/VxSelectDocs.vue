@@ -133,7 +133,7 @@
             v-model="selectExamples.noChips"
             multiple
             :options="['A','B','C']"
-            :useChips="false"
+            :useChips="true"
             />
         </div>
 

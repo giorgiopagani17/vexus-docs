@@ -127,20 +127,73 @@ setTimeout(() => dismiss(id), 2000)
 // oppure chiudi tutte le notifiche attive
 dismissAll()`
 
-export const getNotifyCodeExamples = (tm : any) => {
+export const getNotifyCodeExamples = (tm: any) => {
   const labels = tm('notifyDocs.codeLabels')
   const source = { setupCode, typesCode, colorsCode, titleCode, htmlCode, loadingCode, progressCode, positionCode, durationCode, actionsCode, iconCode, sizeCode, dismissCode }
-  const replacements = {
-    'Notifica generica': labels.generic, 'Operazione completata!': labels.success,
-    'Qualcosa è andato storto.': labels.error, 'Attenzione, controlla i dati.': labels.warning,
-    'Nuovo aggiornamento disponibile.': labels.info, 'Caricamento file in corso...': labels.uploading,
-    'File caricato con successo!': labels.uploaded, 'Mi chiudo tra poco...': labels.closingSoon,
-    'Nessuna barra qui': labels.noProgress, 'Mi chiuderò tra 2 secondi...': labels.dismissAfter,
+
+  const replacements: Record<string, string> = {
+    // typesCode
+    'Notifica generica': labels.generic,
+    'Operazione completata!': labels.success,
+    'Qualcosa è andato storto.': labels.error,
+    'Attenzione, controlla i dati.': labels.warning,
+    'Nuovo aggiornamento disponibile.': labels.info,
+
+    // colorsCode
+    'Ho un colore tutto mio!': labels.customColor,
+    'oppure override parziale sopra un type esistente': labels.partialOverrideComment,
+    'Success ma con sfondo diverso': labels.partialOverride,
+
+    // titleCode
+    'Salvato!': labels.savedTitle,
+    'Le modifiche sono state salvate correttamente.': labels.saved,
+
+    // htmlCode
+    'Il piano <b>Pro</b> sta per scadere. <a href="/billing">Rinnova ora</a>.': labels.htmlMessage,
+    'Sanitizza sempre input non fidato prima di passarlo, es:': labels.sanitizeComment,
+
+    // loadingCode
+    'Caricamento file in corso...': labels.uploading,
+    'resta aperta finché non la aggiorni': labels.loadingStaysOpen,
+    "quando l'operazione asincrona finisce:": labels.loadingDone,
+    'File caricato con successo!': labels.uploaded,
+
+    // progressCode
+    'Mi chiudo tra poco...': labels.closingSoon,
+    'Nessuna barra qui': labels.noProgress,
+    'Passando il mouse sopra la notifica, il countdown si mette in pausa': labels.progressHover,
+
+    // positionCode
+    'Ciao!': labels.hello,
+    '... e le altre 6 posizioni disponibili': labels.otherPositions,
+
+    // durationCode
+    'Scompare in fretta': labels.fast,
+    'Resta più a lungo': labels.slow,
+    'Chiudimi manualmente': labels.manualClose,
+    '// persistente': `// ${labels.persistent}`,
+
+    // actionsCode
     'Stai per eliminare questo elemento.': labels.deleteWarning,
-    Annulla: labels.cancel, Elimina: labels.delete, 'Elemento eliminato.': labels.deleted,
-    'Nuova funzionalità disponibile!': labels.newFeature, 'Titolo grande': labels.largeTitle,
+    "console.log('annullato')": `console.log('${labels.cancelledLog}')`,
+    "console.log('eliminato')": `console.log('${labels.deletedLog}')`,
+    "label: 'Annulla'": `label: '${labels.cancel}'`,
+    "label: 'Elimina'": `label: '${labels.delete}'`,
+    'Elemento eliminato.': labels.deleted,
+
+    // iconCode
+    'Nuova funzionalità disponibile!': labels.newFeature,
+
+    // sizeCode
+    'Titolo grande': labels.largeTitle,
     'Testo ingrandito per dare più risalto.': labels.largeText,
+
+    // dismissCode
+    'VxNotify() ritorna un id univoco': labels.dismissIdComment,
+    'Mi chiuderò tra 2 secondi...': labels.dismissAfter,
+    'oppure chiudi tutte le notifiche attive': labels.dismissAllComment,
   }
+
   return Object.fromEntries(Object.entries(source).map(([key, value]) => {
     let localized = value
     for (const [from, to] of Object.entries(replacements)) localized = localized.split(from).join(to)
