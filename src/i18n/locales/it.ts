@@ -105,6 +105,10 @@ export default {
       title: 'Fix loading VxNotify',
       description: 'Sistemata la gestione della notifica di loading di VxNotify, migliorandone la visualizzazione e il comportamento durante il caricamento.'
     },
+    v014: {
+      title: 'Traduzioni automatiche dei Picker',
+      description: 'I Picker di data, ora e intervallo ora traducono automaticamente le loro etichette, i segnaposto e i testi di accessibilità in base alla prop locale. Sono supportati l\'italiano e l\'inglese, mentre altre localizzazioni ritornano all\'inglese. Ogni etichetta può ancora essere sovrascritta attraverso la prop propria.',
+    },
   },
   reports: {
     title: "Segnalazioni",
@@ -1060,7 +1064,8 @@ export default {
       icon: 'Componente dell’icona.', iconPosition: 'Posizione dell’icona.', iconSize: 'Dimensione dell’icona.', clearable: 'Permette di svuotare il valore.',
       placeholder: 'Testo placeholder.', label: 'Label sopra il campo.', hint: 'Testo di supporto sotto il campo.',
       error: 'Segna il campo come non valido.', errorMessage: 'Messaggio di validazione.', focusEffect: 'Effetto visivo del focus.',
-      locale: 'Locale del picker.', format: 'Formato del valore mostrato.', firstDayOfWeek: 'Primo giorno del calendario.',
+      locale: 'Locale del picker. In automatico il picker traduce anche le etichette, i segnaposto e i testi di accessibilità. (La traduzione automatica è supportata solo per Italiano e Inglese, le altre lingue hanno come fallback l\'inglese).',
+      format: 'Formato del valore mostrato.', firstDayOfWeek: 'Primo giorno del calendario.',
       min: 'Valore minimo accettato.', max: 'Valore massimo accettato.', timeFormat: 'Formato dell’orario.',
       minuteStep: 'Intervallo di selezione dei minuti.', clearFooterLabel: 'Label dell’azione di cancellazione.',
       todayLabel: 'Label dell’azione oggi.', rangeSeparator: 'Separatore tra i valori del range.', separator: 'Separatore tra data e ora.',

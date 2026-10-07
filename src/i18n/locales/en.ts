@@ -105,6 +105,10 @@ export default {
       title: 'Fix loading VxNotify',
       description: 'Fixed the management of the loading notification in VxNotify, improving its display and behavior during loading.'
     },
+    v014: {
+      title: 'Automatic picker translations',
+      description: 'Date, time and range pickers now translate their labels, placeholders and accessibility texts automatically based on the locale prop. Italian and English are supported, other locales fall back to English. Every label can still be overridden through its own prop.',
+    },
   },
   reports: {
     title: "Reports",
@@ -1094,7 +1098,7 @@ export default {
       icon: 'Field icon component.', iconPosition: 'Icon position.', iconSize: 'Icon size.', clearable: 'Allows clearing the value.',
       placeholder: 'Placeholder text.', label: 'Label displayed above the field.', hint: 'Supporting text displayed below the field.',
       error: 'Marks the field as invalid.', errorMessage: 'Validation error message.', focusEffect: 'Focus visual effect.',
-      locale: 'Locale used by the picker.', format: 'Displayed value format.', firstDayOfWeek: 'First day shown in the calendar.',
+      locale: 'Locale of the picker. Automatically translates labels, placeholders, and accessibility texts. (Automatic translation is supported only for Italian and English, other locales fall back to English).', format: 'Displayed value format.', firstDayOfWeek: 'First day shown in the calendar.',
       min: 'Minimum accepted value.', max: 'Maximum accepted value.', timeFormat: 'Time display format.',
       minuteStep: 'Minute selection interval.', clearFooterLabel: 'Clear action label.', todayLabel: 'Today action label.',
       rangeSeparator: 'Separator between range values.', separator: 'Separator between date and time.',
