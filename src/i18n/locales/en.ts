@@ -125,6 +125,7 @@ export default {
   },
   home: {
     development: 'In development',
+    available: 'Available',
     taglinePartOne: 'A UI component library for',
     taglinePartTwo: 'designed to be fast, composable, and beautiful to use.',
     features: {

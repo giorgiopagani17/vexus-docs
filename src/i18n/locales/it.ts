@@ -125,6 +125,7 @@ export default {
   },
   home: {
     development: 'In sviluppo',
+    available: 'Disponibile',
     taglinePartOne: 'Una libreria di componenti UI per',
     taglinePartTwo: 'progettata per essere veloce, componibile e bella da usare.',
     features: {

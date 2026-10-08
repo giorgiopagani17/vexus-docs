@@ -3,7 +3,7 @@
     <div class="hero">
       <div class="badge">
         <span class="dot"></span>
-        v{{ version }} — {{ $t('home.development') }}
+        v{{ version }} — {{ $t('home.available') }}
       </div>
 
       <div class="logo-wrap">
