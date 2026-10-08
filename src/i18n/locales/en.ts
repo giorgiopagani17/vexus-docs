@@ -27,6 +27,102 @@ export default {
       required: 'Required'
     },
   },
+  cookies: {
+    banner: {
+      title: 'Cookie preferences',
+      text: 'We use technical cookies required for the site to work and, only with your consent, analytics cookies to understand how the documentation is used.',
+    },
+    actions: {
+      accept: 'Accept all',
+      reject: 'Reject optional',
+      settings: 'Settings',
+      save: 'Save preferences',
+      close: 'Close',
+      readPolicy: 'Read the cookie policy',
+    },
+    settings: {
+      title: 'Settings',
+      intro: 'You can choose which categories to allow. Necessary cookies are always active because they save preferences and keep the site working.',
+    },
+    categories: {
+      necessary: {
+        title: 'Necessary cookies',
+        description: 'They store cookie preferences and support the essential functions of the documentation.',
+        alwaysOn: 'Always on',
+      },
+      analytics: {
+        title: 'Analytics cookies',
+        description: 'They help measure visits and viewed pages through Google Analytics. They are enabled only after consent.',
+      },
+    },
+    policy: {
+      title: 'Cookie policy',
+      updated: 'Last updated: October 8, 2026.',
+      sections: {
+        what: {
+          title: 'What cookies are',
+          text: 'Cookies are small files or identifiers stored by the browser to let a website work, remember preferences, or collect aggregate statistics.',
+        },
+        used: {
+          title: 'Cookies used by Vexus Docs',
+          text: 'The project scan identified the following storage tools or third-party services. No advertising profiling cookies were found.',
+        },
+        analytics: {
+          title: 'Analytics',
+          text: 'If you consent, the site can load Google Analytics through the identifier configured by the site owner. The tag may set first-party cookies such as _ga and _ga_* to distinguish users and sessions. IP anonymization is enabled in the code and the script is not loaded before consent.',
+        },
+        emailjs: {
+          title: 'Reports form and EmailJS',
+          text: 'When you send a report, the form data is transmitted to EmailJS to deliver the message by email. This processing happens only when you voluntarily use the form.',
+          items: {
+            formData: 'Submitted data: category, subject, message, optional name, and optional email.',
+            context: 'Technical context included to diagnose the report: page, documentation version, language, and browser user agent.',
+            antiSpam: 'Anti-spam measures: local honeypot field, headless browser blocking, and send-rate limiting through technical browser storage.',
+          },
+        },
+        manage: {
+          title: 'Managing consent',
+          text: 'You can change or withdraw consent at any time by reopening cookie settings from the sidebar. You can also delete cookies and site data from your browser settings.',
+        },
+        providers: {
+          title: 'Third-party providers',
+        },
+      },
+      table: {
+        headers: {
+          tool: 'Tool',
+          provider: 'Provider',
+          purpose: 'Purpose',
+          data: 'Data',
+          duration: 'Duration/basis',
+        },
+        rows: {
+          consent: {
+            provider: 'Vexus Docs',
+            purpose: 'Stores cookie preferences.',
+            data: 'Analytics choice, consent version, and update date.',
+            duration: 'Persistent until deletion or preference change. Necessary technical storage.',
+          },
+          language: {
+            provider: 'Vexus Docs',
+            purpose: 'Remembers the selected language.',
+            data: 'Language code.',
+            duration: 'Persistent until deletion or language change. Functional technical storage.',
+          },
+          ga: {
+            purpose: 'Aggregate statistics about visits and viewed pages.',
+            data: 'Pseudonymous identifiers, visited pages, navigation events, and technical browser data.',
+            duration: 'Up to 2 years according to Google Analytics settings. Active only with consent.',
+          },
+          emailjsStorage: {
+            purpose: 'Limits repeated submissions of the reports form.',
+            data: 'Technical timestamp of the latest form submission.',
+            duration: 'At least 30 seconds to enforce the send limit. Technical anti-spam storage.',
+          },
+        },
+      },
+    },
+  },
   home: {
     development: 'In development',
     taglinePartOne: 'A UI component library for',

@@ -27,6 +27,11 @@ export async function sendReport(payload: ReportPayload): Promise<void> {
 
   emailjs.init({
     publicKey: PUBLIC_KEY,
+    blockHeadless: true,
+    limitRate: {
+      id: 'vexus-docs-report-form',
+      throttle: 30_000,
+    },
   })
 
   const subjectPrefix = {

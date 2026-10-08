@@ -27,6 +27,102 @@ export default {
       required: 'Obbligatoria'
     },
   },
+  cookies: {
+    banner: {
+      title: 'Preferenze cookie',
+      text: 'Usiamo cookie tecnici necessari al funzionamento del sito e, solo con il tuo consenso, cookie analytics per capire come viene consultata la documentazione.',
+    },
+    actions: {
+      accept: 'Accetta tutto',
+      reject: 'Rifiuta opzionali',
+      settings: 'Impostazioni',
+      save: 'Salva preferenze',
+      close: 'Chiudi',
+      readPolicy: 'Leggi la cookie policy',
+    },
+    settings: {
+      title: 'Impostazioni',
+      intro: 'Puoi scegliere quali categorie autorizzare. I cookie necessari sono sempre attivi perché servono a salvare le preferenze e mantenere il sito funzionante.',
+    },
+    categories: {
+      necessary: {
+        title: 'Cookie necessari',
+        description: 'Servono per memorizzare le preferenze cookie e garantire le funzioni essenziali della documentazione.',
+        alwaysOn: 'Sempre attivi',
+      },
+      analytics: {
+        title: 'Cookie analytics',
+        description: 'Aiutano a misurare visite e pagine consultate tramite Google Analytics. Vengono attivati solo dopo consenso.',
+      },
+    },
+    policy: {
+      title: 'Cookie policy',
+      updated: 'Ultimo aggiornamento: 8 ottobre 2026.',
+      sections: {
+        what: {
+          title: 'Cosa sono i cookie',
+          text: 'I cookie sono piccoli file o identificatori salvati dal browser per permettere a un sito di funzionare, ricordare preferenze o raccogliere statistiche aggregate.',
+        },
+        used: {
+          title: 'Cookie usati da Vexus Docs',
+          text: 'La scansione del progetto ha individuato questi strumenti di memorizzazione o servizi terzi. Non sono stati rilevati cookie di profilazione pubblicitaria.',
+        },
+        analytics: {
+          title: 'Analytics',
+          text: 'Se acconsenti, il sito può caricare Google Analytics tramite l’identificativo configurato dal gestore. Il tag può impostare cookie di prima parte come _ga e _ga_* per distinguere utenti e sessioni. Nel codice è attiva l’anonimizzazione IP e lo script non viene caricato prima del consenso.',
+        },
+        emailjs: {
+          title: 'Form segnalazioni ed EmailJS',
+          text: 'Quando invii una segnalazione, i dati del form vengono trasmessi a EmailJS per recapitare il messaggio via email. Questo trattamento avviene solo quando usi volontariamente il form.',
+          items: {
+            formData: 'Dati inseriti: categoria, oggetto, messaggio, nome facoltativo ed email facoltativa.',
+            context: 'Dati tecnici inclusi per diagnosticare la segnalazione: pagina, versione della documentazione, lingua e user agent del browser.',
+            antiSpam: 'Misure antispam: campo honeypot locale, blocco browser headless e limite di invio tramite storage tecnico del browser.',
+          },
+        },
+        manage: {
+          title: 'Gestione del consenso',
+          text: 'Puoi modificare o revocare il consenso in qualsiasi momento riaprendo le impostazioni cookie dal menu laterale. Puoi anche cancellare cookie e dati del sito dalle impostazioni del browser.',
+        },
+        providers: {
+          title: 'Fornitori terzi',
+        },
+      },
+      table: {
+        headers: {
+          tool: 'Strumento',
+          provider: 'Fornitore',
+          purpose: 'Finalità',
+          data: 'Dati',
+          duration: 'Durata/base',
+        },
+        rows: {
+          consent: {
+            provider: 'Vexus Docs',
+            purpose: 'Memorizzare le preferenze cookie.',
+            data: 'Scelta analytics, versione del consenso e data aggiornamento.',
+            duration: 'Persistente fino a cancellazione o modifica preferenze. Tecnico necessario.',
+          },
+          language: {
+            provider: 'Vexus Docs',
+            purpose: 'Ricordare la lingua selezionata.',
+            data: 'Codice lingua.',
+            duration: 'Persistente fino a cancellazione o cambio lingua. Tecnico funzionale.',
+          },
+          ga: {
+            purpose: 'Statistiche aggregate su visite e pagine consultate.',
+            data: 'Identificatori pseudonimi, pagine visitate, eventi di navigazione e dati tecnici del browser.',
+            duration: 'Fino a 2 anni secondo impostazioni Google Analytics. Attivo solo con consenso.',
+          },
+          emailjsStorage: {
+            purpose: 'Limitare invii ripetuti del form segnalazioni.',
+            data: 'Timestamp tecnico dell’ultimo invio per il form.',
+            duration: 'Almeno 30 secondi per applicare il limite di invio. Tecnico antispam.',
+          },
+        },
+      },
+    },
+  },
   home: {
     development: 'In sviluppo',
     taglinePartOne: 'Una libreria di componenti UI per',
