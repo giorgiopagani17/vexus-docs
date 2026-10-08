@@ -27,7 +27,7 @@ npm install vexus
 
 Explore the full documentation, available features and examples:
 
-**[Vexus Documentation](https://giorgiopagani17.github.io/vexus-docs/)**
+<strong><a href="https://giorgiopagani17.github.io/vexus-docs/" target="_blank" rel="noopener noreferrer">Vexus Documentation</a></strong>
 
 ## 📄 License
 

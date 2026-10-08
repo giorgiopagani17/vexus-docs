@@ -177,6 +177,7 @@ export default {
   },
   buttons: {
     getStarted: 'Inizia ora',
+    viewOnNpm: 'Vedi su NPM',
     documentation: 'Documentazione',
     versions: 'Versioni',
     backToHome: 'Torna alla Home'

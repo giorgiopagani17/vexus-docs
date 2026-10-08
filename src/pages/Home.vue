@@ -16,6 +16,7 @@
 
       <div class="cta">
         <DesignButton :text="$t('buttons.getStarted')" :icon-left="Plus" variant="primary" @click="goToDocumentation" />
+        <DesignButton :text="$t('buttons.viewOnNpm')" :icon-left="Plus" variant="primary" @click="goToNpm" />
         <DesignButton :text="$t('buttons.versions')" :icon-left="Plus" variant="primary" @click="goToVersions" />
       </div>
     </div>
@@ -69,5 +70,9 @@ const goToDocumentation = () => {
 
 const goToVersions = () => {
   router.push('/versions')
+}
+
+const goToNpm = () => {
+  window.open('https://www.npmjs.com/package/vexus', '_blank')
 }
 </script>

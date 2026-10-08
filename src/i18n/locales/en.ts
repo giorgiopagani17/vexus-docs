@@ -177,6 +177,7 @@ export default {
   },
   buttons: {
     getStarted: 'Get started',
+    viewOnNpm: 'View on NPM',
     versions: 'Versions',
     documentation: 'Documentation',
     backToHome: 'Back to Home'
