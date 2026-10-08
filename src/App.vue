@@ -1,12 +1,17 @@
 <template>
   <router-view />
 
-  <CookieConsent />
-  <CookieSettingsButton />
+  <CookieConsent
+    @visibility-change="cookieConsentOpen = $event"
+  />
+
+  <CookieSettingsButton
+    v-if="!cookieConsentOpen"
+  />
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 import CookieConsent from '@/components/Cookie/CookieConsent.vue'
@@ -16,6 +21,8 @@ import { trackPageView } from '@/services/analytics'
 import { hasAnalyticsConsent } from '@/services/cookieConsent'
 
 const route = useRoute()
+
+const cookieConsentOpen = ref(false)
 
 watch(
   () => route.fullPath,

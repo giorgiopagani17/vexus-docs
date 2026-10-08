@@ -172,6 +172,17 @@ const showSettings = ref(false)
 const showPolicy = ref(false)
 const draftPreferences = reactive<CookiePreferences>(defaultCookiePreferences())
 
+const emit = defineEmits<{
+  (e: 'visibility-change', visible: boolean): void
+}>()
+
+function emitVisibility() {
+  emit(
+    'visibility-change',
+    showBanner.value || showSettings.value || showPolicy.value,
+  )
+}
+
 function syncDraft(preferences: CookiePreferences) {
   draftPreferences.necessary = true
   draftPreferences.analytics = preferences.analytics
@@ -184,6 +195,7 @@ function persist(preferences: CookiePreferences) {
   showBanner.value = false
   showSettings.value = false
   showPolicy.value = false
+  emitVisibility()
 }
 
 function acceptAll() {
@@ -204,18 +216,21 @@ function openSettings() {
   showBanner.value = false
   showPolicy.value = false
   showSettings.value = true
+  emitVisibility()
 }
 
 function openPolicy() {
   showBanner.value = false
   showSettings.value = false
   showPolicy.value = true
+  emitVisibility()
 }
 
 function closeModal() {
   showSettings.value = false
   showPolicy.value = false
   showBanner.value = !readCookieConsent()
+  emitVisibility()
 }
 
 function onKeydown(event: KeyboardEvent) {
@@ -232,6 +247,8 @@ onMounted(() => {
     applyAnalyticsConsent(false)
   }
 
+  emitVisibility()
+  
   window.addEventListener(COOKIE_SETTINGS_EVENT, openSettings)
   document.addEventListener('keydown', onKeydown)
 })
