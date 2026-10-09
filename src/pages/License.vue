@@ -28,7 +28,7 @@
       <h2>{{ $t('license.full.title') }}</h2>
       <p>{{ $t('license.full.text') }}</p>
       <a
-        href="https://github.com/giorgiopagani17/vexus-docs/blob/main/LICENSE"
+        href="https://github.com/giorgiopagani17/vexus-docs/blob/main/VEXUS-LICENSE.md"
         target="_blank"
         rel="noopener noreferrer"
         class="docs-link"
