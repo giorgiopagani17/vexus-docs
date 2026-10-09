@@ -1,6 +1,6 @@
 export default {
   layout: {
-    menu: { home: 'Home', documentation: 'Documentazione', versions: 'Versioni', reports: 'Segnalazioni', uiComponents: 'Componenti UI', composables: 'Composables' },
+    menu: { home: 'Home', license: 'Licenza', documentation: 'Documentazione', versions: 'Versioni', reports: 'Segnalazioni', uiComponents: 'Componenti UI', composables: 'Composables' },
     language: { select: 'Seleziona lingua', switchTo: 'Passa a {language}' },
     search: {
       open: 'Cerca',
@@ -141,6 +141,28 @@ export default {
     madeWith: 'Creato con',
     by: 'da'
   },
+  license: {
+    title: 'Licenza',
+    subtitle: 'Vexus è gratuita da usare, ma il codice non può essere modificato né ridistribuito.',
+    allowed: {
+      title: 'Cosa puoi fare',
+      use: 'Installare e usare Vexus nei tuoi progetti.',
+      commercial: 'Usarla anche in progetti commerciali, senza costi.',
+      bundle: "Includerla nel build della tua applicazione: non è considerata una modifica.",
+    },
+    forbidden: {
+      title: 'Cosa non puoi fare',
+      modify: 'Modificare, adattare o creare opere derivate dalla libreria.',
+      redistribute: 'Copiarla, rivenderla o ripubblicarla (ad esempio su altri registri di pacchetti).',
+      reverse: 'Decompilarla o fare reverse engineering, salvo dove la legge lo consente.',
+      claim: 'Presentarla come opera propria o rimuovere le note di copyright.',
+    },
+    full: {
+      title: 'Testo completo',
+      text: 'Questa pagina è un riassunto. Fanno fede i termini del file LICENSE, incluso nel pacchetto.',
+      link: 'Leggi la licenza completa',
+    },
+  },
   documentation: {
     title: 'Documentazione',
     subtitle: 'Come aggiungere Vexus al tuo progetto Vue 3 e quali dipendenze richiede.',
@@ -187,25 +209,9 @@ export default {
     title: 'Versioni',
     subtitle: 'Cronologia delle release e delle modifiche principali.',
     release: 'Release',
-    v010: {
+    v017: {
       title: 'Prima release',
       description: 'Prima release della libreria di componenti Vexus, con i primi componenti UI e la relativa documentazione.',
-    },
-    v011: {
-      title: 'Fix import componenti',
-      description: 'Sistemati e ottimizzati gli import dei componenti della libreria, migliorandone la gestione e la compatibilità.',
-    },
-    v012: {
-      title: 'Fix import componenti',
-      description: 'Sistemati e ottimizzati gli import dei componenti della libreria, migliorandone la gestione e la compatibilità.',
-    },
-    v013: {
-      title: 'Fix loading VxNotify',
-      description: 'Sistemata la gestione della notifica di loading di VxNotify, migliorandone la visualizzazione e il comportamento durante il caricamento.'
-    },
-    v014: {
-      title: 'Traduzioni automatiche dei Picker',
-      description: 'I Picker di data, ora e intervallo ora traducono automaticamente le loro etichette, i segnaposto e i testi di accessibilità in base alla prop locale. Sono supportati l\'italiano e l\'inglese, mentre altre localizzazioni ritornano all\'inglese. Ogni etichetta può ancora essere sovrascritta attraverso la prop propria.',
     },
   },
   reports: {

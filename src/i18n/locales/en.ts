@@ -1,6 +1,6 @@
 export default {
   layout: {
-    menu: { home: 'Home', documentation: 'Documentation', versions: 'Versions', reports: 'Reports', uiComponents: 'UI components', composables: 'Composables' },
+    menu: { home: 'Home', license: 'License', documentation: 'Documentation', versions: 'Versions', reports: 'Reports', uiComponents: 'UI components', composables: 'Composables' },
     language: { select: 'Select language', switchTo: 'Switch to {language}' },
     search: {
       open: 'Search',
@@ -141,6 +141,28 @@ export default {
     madeWith: 'Made with',
     by: 'by'
   },
+  license: {
+    title: 'License',
+    subtitle: 'Vexus is free to use, but the code may not be modified or redistributed.',
+    allowed: {
+      title: 'What you can do',
+      use: 'Install and use Vexus in your projects.',
+      commercial: 'Use it in commercial projects, free of charge.',
+      bundle: 'Include it in your application build: this is not considered a modification.',
+    },
+    forbidden: {
+      title: 'What you cannot do',
+      modify: 'Modify, adapt or create derivative works of the library.',
+      redistribute: 'Copy, resell or republish it (for example on other package registries).',
+      reverse: 'Decompile or reverse engineer it, except where the law allows it.',
+      claim: 'Present it as your own work or remove copyright notices.',
+    },
+    full: {
+      title: 'Full text',
+      text: 'This page is a summary. The terms of the LICENSE file, included in the package, prevail.',
+      link: 'Read the full license',
+    },
+  },
   documentation: {
     title: 'Documentation',
     subtitle: 'How to add Vexus to your Vue 3 project and which dependencies it requires.',
@@ -187,25 +209,9 @@ export default {
     title: 'Versions',
     subtitle: 'Release history and main changes.',
     release: 'Release',
-    v010: {
+    v017: {
       title: 'First release',
       description: 'Initial release of the Vexus component library, including the first UI components and their documentation.',
-    },
-    v011: {
-      title: 'Fix import components',
-      description: 'Fixed and optimized the imports of the components in the library, improving their management and compatibility.',
-    },
-    v012: {
-      title: 'Fix import components',
-      description: 'Fixed and optimized the imports of the components in the library, improving their management and compatibility.',
-    },
-    v013: {
-      title: 'Fix loading VxNotify',
-      description: 'Fixed the management of the loading notification in VxNotify, improving its display and behavior during loading.'
-    },
-    v014: {
-      title: 'Automatic picker translations',
-      description: 'Date, time and range pickers now translate their labels, placeholders and accessibility texts automatically based on the locale prop. Italian and English are supported, other locales fall back to English. Every label can still be overridden through its own prop.',
     },
   },
   reports: {

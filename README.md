@@ -29,9 +29,15 @@ Explore the full documentation, available features and examples:
 
 **[Vexus Documentation](https://giorgiopagani17.github.io/vexus-docs/)**
 
+## 🌐 Network access
+
+Vexus performs network requests only through `useVxApi`, which uses the native `fetch` API. No other part of the library accesses the network.
+
 ## 📄 License
 
-MIT © Giorgio Pagani
+Vexus is released under a **proprietary license**. You are free to install and use it, including in commercial projects, but you may not modify, redistribute or republish it. The full terms are available [here](https://github.com/giorgiopagani17/vexus-docs/blob/main/VEXUS-LICENSE.md) and in the `LICENSE` file included in the package.
+
+© 2026 Giorgio Pagani. All rights reserved.
 
 ---
 

@@ -20,7 +20,7 @@
       <h2>{{ $t('documentation.install.title') }}</h2>
       <p>{{ $t('documentation.install.text') }}</p>
 
-      <div class="code-block">
+      <div class="code-block-installation">
         <div class="code-tabs" role="tablist">
           <button
             v-for="pm in packageManagers"
@@ -35,6 +35,10 @@
             {{ pm.id }}
           </button>
         </div>
+        <button class="copy-btn-installation" @click="copy()">
+          <Check v-if="copied" :size="14" />
+          <Copy v-else :size="14" />
+        </button>
         <pre><code>{{ activeCommand }}</code></pre>
       </div>
     </section>
@@ -70,6 +74,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { Copy, Check } from 'lucide-vue-next'
 
 const packageManagers = [
   { id: 'npm', command: 'npm install vexus vue' },
@@ -87,4 +92,13 @@ const dependencies = [
   { name: '@floating-ui/dom', version: '^1.8.0', type: 'documentation.deps.types.auto', purpose: 'documentation.deps.items.floating' },
   { name: 'lucide-vue-next', version: '^1.0.0', type: 'documentation.deps.types.auto', purpose: 'documentation.deps.items.lucide' },
 ]
+
+const copied = ref(false)
+
+const copy = async () => {
+  const code = activeCommand.value
+  await navigator.clipboard.writeText(code)
+  copied.value = true
+  setTimeout(() => (copied.value = false), 1500)
+}
 </script>
