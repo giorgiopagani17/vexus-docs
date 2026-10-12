@@ -211,7 +211,7 @@ export default {
     release: 'Release',
     v017: {
       title: 'First release',
-      description: 'Initial release of the Vexus component library, including the first UI components and their documentation.',
+      description: 'Initial release of the Vexus component library, including the first UI components, composables and their documentation.',
     },
   },
   reports: {
