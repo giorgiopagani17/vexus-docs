@@ -15,6 +15,7 @@ import {
   BookOpen,
   GitBranch,
   IdCard,
+  AppWindow,
 } from 'lucide-vue-next'
 
 export interface SpotlightItem {
@@ -36,6 +37,7 @@ export const getSpotlightItems = (t: ComposerTranslation): SpotlightItem[] => [
   { label: 'VxInput Others', category: t('layout.search.components'), to: '/input/others', icon: Blocks },
   { label: 'VxInput Pickers', category: t('layout.search.components'), to: '/input/pickers', icon: CalendarDays },
   { label: 'VxSelect', category: t('layout.search.components'), to: '/select', icon: SquareMenu },
+  { label: 'VxModal', category: t('layout.search.components'), to: '/modal', icon: AppWindow },
   { label: 'VxNotify', category: t('layout.search.composables'), to: '/notify', icon: Bell },
   { label: 'VxApi', category: t('layout.search.composables'), to: '/use-api', icon: Phone },
   { label: 'VxFiscalCode', category: t('layout.search.composables'), to: '/use-fiscal-code', icon: IdCard },

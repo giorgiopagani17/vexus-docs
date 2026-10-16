@@ -122,6 +122,16 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/modal',
+    children: [
+      {
+        path: '',
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Modal/VxModalDocs.vue') }],
+      }
+    ]
+  },
+  {
     path: '/notify',
     children: [
       {

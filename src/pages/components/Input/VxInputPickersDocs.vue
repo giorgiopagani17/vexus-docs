@@ -55,6 +55,6 @@ const pickers = computed(() => [
   { key: 'dateRange', title: 'inputPickersDocs.sections.dateRange', description: 'inputPickersDocs.dateRangeDescription', component: VxDateRange, code: 'dateRangeCode', props: { locale: pickerLocale.value } },
   { key: 'dateTime', title: 'inputPickersDocs.sections.dateTime', description: 'inputPickersDocs.dateTimeDescription', component: VxDateTime, code: 'dateTimeCode', props: { locale: pickerLocale.value } },
   { key: 'dateTimeRange', title: 'inputPickersDocs.sections.dateTimeRange', description: 'inputPickersDocs.dateTimeRangeDescription', component: VxDateTimeRange, code: 'dateTimeRangeCode', props: { locale: pickerLocale.value } },
-  { key: 'time', title: 'inputPickersDocs.sections.time', description: 'inputPickersDocs.timeSectionDescription', component: VxTime, code: 'timePickerCode', props: {} },
+  { key: 'time', title: 'inputPickersDocs.sections.time', description: 'inputPickersDocs.timeSectionDescription', component: VxTime, code: 'timePickerCode', props: { locale: pickerLocale.value } },
 ])
 </script>
