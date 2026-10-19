@@ -18,6 +18,7 @@ import {
   IdCard,
   Copyright,
   AppWindow,
+  Timer,
 } from 'lucide-vue-next'
 
 export interface MenuLeaf {
@@ -65,6 +66,7 @@ export const getMenu = (t: ComposerTranslation): MenuItem[] => [
     icon: Puzzle,
     children: [
       { id: 'notify', label: 'VxNotify', icon: Bell, to: '/notify' },
+      { id: 'debounce', label: 'VxDebounce', icon: Timer, to: '/debounce' },
       { id: 'api', label: 'VxApi', icon: Phone, to: '/use-api' },
       { id: 'fiscalCode', label: 'VxFiscalCode', icon: IdCard, to: '/use-fiscal-code' },
     ],

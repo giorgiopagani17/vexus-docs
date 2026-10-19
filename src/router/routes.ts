@@ -142,6 +142,16 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/debounce',
+    children: [
+      {
+        path: '',
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Debounce/VxDebounceDocs.vue') }],
+      }
+    ]
+  },
+  {
     path: '/use-api',
     children: [
       {

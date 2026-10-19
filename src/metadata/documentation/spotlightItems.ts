@@ -16,6 +16,7 @@ import {
   GitBranch,
   IdCard,
   AppWindow,
+  Timer,
 } from 'lucide-vue-next'
 
 export interface SpotlightItem {
@@ -39,6 +40,7 @@ export const getSpotlightItems = (t: ComposerTranslation): SpotlightItem[] => [
   { label: 'VxSelect', category: t('layout.search.components'), to: '/select', icon: SquareMenu },
   { label: 'VxModal', category: t('layout.search.components'), to: '/modal', icon: AppWindow },
   { label: 'VxNotify', category: t('layout.search.composables'), to: '/notify', icon: Bell },
+  { label: 'VxDebounce', category: t('layout.search.composables'), to: '/debounce', icon: Timer },
   { label: 'VxApi', category: t('layout.search.composables'), to: '/use-api', icon: Phone },
   { label: 'VxFiscalCode', category: t('layout.search.composables'), to: '/use-fiscal-code', icon: IdCard },
 ]
