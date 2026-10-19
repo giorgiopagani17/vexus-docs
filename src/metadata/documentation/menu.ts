@@ -19,6 +19,7 @@ import {
   Copyright,
   AppWindow,
   Timer,
+  Calculator,
 } from 'lucide-vue-next'
 
 export interface MenuLeaf {
@@ -67,6 +68,7 @@ export const getMenu = (t: ComposerTranslation): MenuItem[] => [
     children: [
       { id: 'notify', label: 'VxNotify', icon: Bell, to: '/notify' },
       { id: 'debounce', label: 'VxDebounce', icon: Timer, to: '/debounce' },
+      { id: 'formatNumber', label: 'VxFormatNumber', icon: Calculator, to: '/format-number' },
       { id: 'api', label: 'VxApi', icon: Phone, to: '/use-api' },
       { id: 'fiscalCode', label: 'VxFiscalCode', icon: IdCard, to: '/use-fiscal-code' },
     ],

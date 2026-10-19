@@ -25,6 +25,12 @@ export const versions: VersionEntry[] = [
     title: 'versions.v019.title',
     description: 'versions.v019.description',
   },
+  {
+    version: '0.1.10',
+    date: '2026-10-20',
+    title: 'versions.v0110.title',
+    description: 'versions.v0110.description',
+  },
 ]
 
 export const latestVersion = versions[0]

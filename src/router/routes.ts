@@ -152,6 +152,16 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/format-number',
+    children: [
+      {
+        path: '',
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/FormatNumber/VxFormatNumberDocs.vue') }],
+      }
+    ]
+  },
+  {
     path: '/use-api',
     children: [
       {
