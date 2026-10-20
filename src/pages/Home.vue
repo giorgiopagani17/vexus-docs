@@ -49,7 +49,18 @@
     </div>
 
     <div class="footer">
-      <p>{{$t('home.madeWith')}} <span class="heart">♥</span> {{$t('home.by')}} <strong>Giorgio Pagani</strong></p>
+      <p>{{$t('home.madeWith')}} <span class="heart">♥</span> {{$t('home.by')}} 
+        <strong>
+          <a
+            href="https://github.com/giorgiopagani17"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="docs-link"
+          >
+            Giorgio Pagani
+          </a>
+        </strong>
+      </p>
     </div>
   </div>
 </template>

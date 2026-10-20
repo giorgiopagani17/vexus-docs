@@ -1,7 +1,7 @@
 <template>
   <div class="docs-page">
     <div class="docs-header">
-      <h1>useVxDebounce</h1>
+      <h1>VxDebounce</h1>
       <p class="subtitle">{{ $t('debounceDocs.intro') }}</p>
     </div>
 

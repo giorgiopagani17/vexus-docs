@@ -75,7 +75,7 @@ export const functionsRows = [
   },
 ]
 
-// ===== VxUseFiscalCodeValidation(options) =====
+// ===== useVxFiscalCodeValidation(options) =====
 export const hookOptionsRows = [
   {
     name: 'checkExistsFn',
@@ -111,10 +111,16 @@ export const validateInputRows = [
     desc: "Se true, restituisce errore ['cf'] (error.value = 'minorUserNotAllowed') quando il CF corrisponde a un minorenne, prima di qualsiasi altra validazione anagrafica",
   },
   {
+    name: 'requireMinor',
+    type: 'boolean',
+    default: 'false',
+    desc: "Se true, restituisce errore ['cf'] (error.value = 'adultUserNotAllowed') quando il CF corrisponde a un maggiorenne, prima di qualsiasi altra validazione anagrafica. Se superato, imposta minor.value = true",
+  },
+  {
     name: 'checkFormatOnly',
     type: 'boolean',
     default: 'false',
-    desc: 'Se true, salta il confronto con nome/cognome/data/luogo: valida solo formato + checksum (+ requireAdult se richiesto)',
+    desc: 'Se true, salta il confronto con nome/cognome/data/luogo: valida solo formato + checksum (+ requireAdult/requireMinor se richiesto)',
   },
 ]
 
@@ -129,7 +135,7 @@ export const validateReturnRows = [
     name: 'error',
     type: 'Ref<string | null>',
     default: 'null',
-    desc: "Messaggio d'errore leggibile (o chiave da tradurre, es. 'minorUserNotAllowed') aggiornato ad ogni validate()",
+    desc: "Messaggio d'errore leggibile (o chiave da tradurre, es. 'minorUserNotAllowed', 'adultUserNotAllowed') aggiornato ad ogni validate()",
   },
   {
     name: 'minor',
@@ -146,10 +152,10 @@ export const getFiscalCodeMetadata = (t : any) => ({
     { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
     { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
-  generateInputRows: generateInputRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
-  decodeOutputRows: decodeOutputRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
-  functionsRows: functionsRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
-  hookOptionsRows: hookOptionsRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
-  validateInputRows: validateInputRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
-  validateReturnRows: validateReturnRows.map(row => ({ ...row, desc: t(`apiDocs.cfDocs.props.${row.name}`, row.desc) })),
+  generateInputRows: generateInputRows.map(row => ({ ...row, desc: t(`cfDocs.props.${row.name}`, row.desc) })),
+  decodeOutputRows: decodeOutputRows.map(row => ({ ...row, desc: t(`cfDocs.props.${row.name}`, row.desc) })),
+  functionsRows: functionsRows.map(row => ({ ...row, desc: t(`cfDocs.props.${row.name}`, row.desc) })),
+  hookOptionsRows: hookOptionsRows.map(row => ({ ...row, desc: t(`cfDocs.props.${row.name}`, row.desc) })),
+  validateInputRows: validateInputRows.map(row => ({ ...row, desc: t(`cfDocs.props.${row.name}`, row.desc) })),
+  validateReturnRows: validateReturnRows.map(row => ({ ...row, desc: t(`cfDocs.props.${row.name}`, row.desc) })),
 })

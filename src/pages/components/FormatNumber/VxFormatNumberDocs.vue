@@ -1,4 +1,3 @@
-
 <template>
   <div class="docs-page">
     <div class="docs-header">
@@ -29,6 +28,13 @@
           v-model="values.numberLocale"
           :label="$t('formatNumberDocs.labels.locale')"
           :options="locales"
+          emitValue
+        />
+
+        <VxSelect
+          v-model="values.numberDecimals"
+          :label="$t('formatNumberDocs.labels.decimals')"
+          :options="decimalsOptions"
           emitValue
         />
 
@@ -84,6 +90,13 @@
           emitValue
         />
 
+        <VxSelect
+          v-model="values.priceDecimals"
+          :label="$t('formatNumberDocs.labels.decimals')"
+          :options="decimalsOptions"
+          emitValue
+        />
+
         <VxCheckbox
           v-model="values.priceCompact"
           :label="$t('formatNumberDocs.labels.compact')"
@@ -92,11 +105,6 @@
         <VxCheckbox
           v-model="values.priceSpace"
           :label="$t('formatNumberDocs.labels.space')"
-        />
-
-        <VxCheckbox
-          v-model="values.forceDecimals"
-          :label="$t('formatNumberDocs.labels.forceDecimals')"
         />
 
         <div class="format-result">
@@ -139,6 +147,9 @@
         <li>
           <strong>{{ $t('formatNumberDocs.limitations.currencyTitle') }}</strong>: {{ $t('formatNumberDocs.limitations.currency') }}
         </li>
+        <li>
+          <strong>{{ $t('formatNumberDocs.limitations.groupingTitle') }}</strong>: {{ $t('formatNumberDocs.limitations.grouping') }}
+        </li>
       </ul>
     </section>
   </div>
@@ -158,9 +169,9 @@ import DesignPropsTable from '@/components/Utils/DesignPropsTable.vue'
 import { getFormatNumberMetadata } from '@/metadata/props/FormatNumber/formatNumberGeneralProps'
 import { getFormatNumberCodeExamples } from '@/metadata/code/FormatNumber/formatNumberCodeExamples'
 
-const { t, tm } = useI18n()
+const { t, tm, te } = useI18n()
 
-const metadata = computed(() => getFormatNumberMetadata(t))
+const metadata = computed(() => getFormatNumberMetadata(t, te))
 const codeExamples = computed(() => getFormatNumberCodeExamples(tm))
 
 const locales = [
@@ -185,25 +196,38 @@ const currencyPositions = computed(() => [
   { label: t('formatNumberDocs.labels.right'), value: 'right' },
 ])
 
+const decimalsOptions = computed(() => [
+  { label: t('formatNumberDocs.labels.decimalsAuto'), value: 'auto' },
+  { label: '0', value: '0' },
+  { label: '1', value: '1' },
+  { label: '2', value: '2' },
+  { label: '3', value: '3' },
+])
+
 const values = reactive({
   number: '1500',
   numberLocale: 'it-IT',
+  numberDecimals: 'auto',
   numberCompact: true,
   numberSpace: false,
 
-  price: '1234.5',
+  price: '12345.5',
   priceLocale: 'it-IT',
+  priceDecimals: 'auto',
   currency: 'EUR',
   currencyDisplayPosition: 'auto',
   priceCompact: false,
   priceSpace: false,
-  forceDecimals: false,
 })
+
+// 'auto' = opzione non passata: vale il default della modalità.
+const toDecimals = (value: string) => (value === 'auto' ? undefined : Number(value))
 
 const formattedNumber = computed(() =>
   VxFormatNumber(values.number, {
     type: 'number',
     locale: values.numberLocale,
+    decimals: toDecimals(values.numberDecimals),
     compact: values.numberCompact,
     space: values.numberSpace,
     fallback: '—',
@@ -219,9 +243,9 @@ const formattedPrice = computed(() =>
       values.currencyDisplayPosition === 'auto'
         ? undefined
         : values.currencyDisplayPosition as 'left' | 'right',
+    decimals: toDecimals(values.priceDecimals),
     compact: values.priceCompact,
     space: values.priceSpace,
-    forceDecimals: values.forceDecimals,
     fallback: '—',
   }),
 )

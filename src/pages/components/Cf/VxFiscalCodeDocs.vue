@@ -2,25 +2,25 @@
   <div class="docs-page">
     <div class="docs-header">
       <h1>VxFiscalCode</h1>
-      <p class="subtitle">{{ $t('apiDocs.cfDocs.intro') }}</p>
+      <p class="subtitle">{{ $t('cfDocs.intro') }}</p>
     </div>
 
     <!-- Setup -->
     <section class="docs-section">
-      <h2>{{ $t('apiDocs.cfDocs.sections.setup') }}</h2>
-      <p>{{ $t('apiDocs.cfDocs.setupDescription') }}</p>
+      <h2>{{ $t('cfDocs.sections.setup') }}</h2>
+      <p>{{ $t('cfDocs.setupDescription') }}</p>
       <DesignCodeBlock :code="codeExamples.setupCode" />
     </section>
 
     <!-- Generate -->
     <section class="docs-section">
-      <h2>{{ $t('apiDocs.cfDocs.sections.generate') }}</h2>
-      <p>{{ $t('apiDocs.cfDocs.generateDescription') }}</p>
+      <h2>{{ $t('cfDocs.sections.generate') }}</h2>
+      <p>{{ $t('cfDocs.generateDescription') }}</p>
 
       <div class="example-col">
         <div class="example-row">
-          <VxInput v-model="generateForm.name" :label="$t('apiDocs.cfDocs.labels.name')" :placeholder="$t('apiDocs.cfDocs.labels.mario')" block />
-          <VxInput v-model="generateForm.surname" :label="$t('apiDocs.cfDocs.labels.surname')" :placeholder="$t('apiDocs.cfDocs.labels.rossi')" block />
+          <VxInput v-model="generateForm.name" :label="$t('cfDocs.labels.name')" :placeholder="$t('cfDocs.labels.mario')" block />
+          <VxInput v-model="generateForm.surname" :label="$t('cfDocs.labels.surname')" :placeholder="$t('cfDocs.labels.rossi')" block />
         </div>
 
         <div class="example-row">
@@ -29,18 +29,18 @@
         </div>
 
         <div class="example-row">
-          <VxDate v-model="generateForm.birthdayDate" :label="$t('apiDocs.cfDocs.labels.birthDate')" block />
+          <VxDate v-model="generateForm.birthdayDate" :label="$t('cfDocs.labels.birthDate')" block />
           <VxInput
             v-model="generateForm.birthplaceCode"
-            :label="$t('apiDocs.cfDocs.labels.birthplaceCode')"
-            :hint="$t('apiDocs.cfDocs.labels.birthplaceHint')"
+            :label="$t('cfDocs.labels.birthplaceCode')"
+            :hint="$t('cfDocs.labels.birthplaceHint')"
             placeholder="H501"
             block
           />
         </div>
 
         <div class="docs-result" :class="{ 'docs-result--error': !generatedCF }">
-          <span class="docs-result-label">{{ $t('apiDocs.cfDocs.labels.generated') }}</span>
+          <span class="docs-result-label">{{ $t('cfDocs.labels.generated') }}</span>
           <span class="docs-result-value">{{ generatedCF || '—' }}</span>
         </div>
       </div>
@@ -57,18 +57,18 @@
 
     <!-- Validate -->
     <section class="docs-section">
-      <h2>{{ $t('apiDocs.cfDocs.sections.validate') }}</h2>
-      <p>{{ $t('apiDocs.cfDocs.validateDescription') }}</p>
+      <h2>{{ $t('cfDocs.sections.validate') }}</h2>
+      <p>{{ $t('cfDocs.validateDescription') }}</p>
 
       <div class="example-col">
-        <VxInput v-model="validateInput" :label="$t('apiDocs.cfDocs.labels.fiscalCode')" placeholder="RSSMRA90D15H501U" block />
+        <VxInput v-model="validateInput" :label="$t('cfDocs.labels.fiscalCode')" placeholder="RSSMRA90D15H501U" block />
 
         <div class="example-row docs-badges">
           <span class="docs-badge" :class="formatValid ? 'docs-badge--ok' : 'docs-badge--ko'">
-            {{ $t('apiDocs.cfDocs.labels.format') }} {{ formatValid ? $t('apiDocs.cfDocs.labels.valid') : $t('apiDocs.cfDocs.labels.invalid') }}
+            {{ $t('cfDocs.labels.format') }} {{ formatValid ? $t('cfDocs.labels.valid') : $t('cfDocs.labels.invalid') }}
           </span>
           <span class="docs-badge" :class="checksumValid ? 'docs-badge--ok' : 'docs-badge--ko'">
-            {{ $t('apiDocs.cfDocs.labels.checksum') }} {{ checksumValid ? $t('apiDocs.cfDocs.labels.valid') : $t('apiDocs.cfDocs.labels.invalid') }}
+            {{ $t('cfDocs.labels.checksum') }} {{ checksumValid ? $t('cfDocs.labels.valid') : $t('cfDocs.labels.invalid') }}
           </span>
         </div>
       </div>
@@ -85,21 +85,21 @@
 
     <!-- Decode -->
     <section class="docs-section">
-      <h2>{{ $t('apiDocs.cfDocs.sections.decode') }}</h2>
-      <p>{{ $t('apiDocs.cfDocs.decodeDescription') }}</p>
+      <h2>{{ $t('cfDocs.sections.decode') }}</h2>
+      <p>{{ $t('cfDocs.decodeDescription') }}</p>
 
       <div class="example-col">
-        <VxInput v-model="decodeInput" :label="$t('apiDocs.cfDocs.labels.fiscalCode')" placeholder="RSSMRA90D15H501U" block />
+        <VxInput v-model="decodeInput" :label="$t('cfDocs.labels.fiscalCode')" placeholder="RSSMRA90D15H501U" block />
 
         <div v-if="decoded" class="docs-result">
-          <span class="docs-result-label">{{ $t('apiDocs.cfDocs.labels.decoded') }}</span>
+          <span class="docs-result-label">{{ $t('cfDocs.labels.decoded') }}</span>
           <span class="docs-result-value">
             {{ decoded.gender }} · {{ String(decoded.day).padStart(2, '0') }}/{{ String(decoded.month).padStart(2, '0') }}/{{ decoded.year }} · {{ decoded.birthplaceCode }}
           </span>
         </div>
         <div v-else class="docs-result docs-result--error">
-          <span class="docs-result-label">{{ $t('apiDocs.cfDocs.labels.decoded') }}</span>
-          <span class="docs-result-value">null ({{ $t('apiDocs.cfDocs.labels.invalidFormat') }})</span>
+          <span class="docs-result-label">{{ $t('cfDocs.labels.decoded') }}</span>
+          <span class="docs-result-value">null ({{ $t('cfDocs.labels.invalidFormat') }})</span>
         </div>
       </div>
 
@@ -115,13 +115,13 @@
 
     <!-- Hook -->
     <section class="docs-section">
-      <h2>{{ $t('apiDocs.cfDocs.sections.hook') }}</h2>
-      <p>{{ $t('apiDocs.cfDocs.hookDescription') }}</p>
+      <h2>{{ $t('cfDocs.sections.hook') }}</h2>
+      <p>{{ $t('cfDocs.hookDescription') }}</p>
 
       <div class="example-col">
         <div class="example-row">
-          <VxInput v-model="hookForm.name" :label="$t('apiDocs.cfDocs.labels.name')" block />
-          <VxInput v-model="hookForm.surname" :label="$t('apiDocs.cfDocs.labels.surname')" block />
+          <VxInput v-model="hookForm.name" :label="$t('cfDocs.labels.name')" block />
+          <VxInput v-model="hookForm.surname" :label="$t('cfDocs.labels.surname')" block />
         </div>
 
         <div class="example-row">
@@ -130,37 +130,43 @@
         </div>
 
         <div class="example-row">
-          <VxDate v-model="hookForm.birthdayDate" :label="$t('apiDocs.cfDocs.labels.birthDate')" block />
-          <VxInput v-model="hookForm.birthplaceCode" :label="$t('apiDocs.cfDocs.labels.birthplaceCode')" block />
+          <VxDate v-model="hookForm.birthdayDate" :label="$t('cfDocs.labels.birthDate')" block />
+          <VxInput v-model="hookForm.birthplaceCode" :label="$t('cfDocs.labels.birthplaceCode')" block />
         </div>
 
-        <VxInput v-model="hookForm.codiceFiscale" :label="$t('apiDocs.cfDocs.labels.fiscalCodeToValidate')" block />
+        <VxInput v-model="hookForm.codiceFiscale" :label="$t('cfDocs.labels.fiscalCodeToValidate')" block />
 
-        <VxCheckbox v-model="hookForm.requireAdult" :label="$t('apiDocs.cfDocs.labels.requireAdult')" />
+        <VxCheckbox v-model="hookForm.requireAdult" :label="$t('cfDocs.labels.requireAdult')" />
+        <VxCheckbox v-model="hookForm.requireMinor" :label="$t('cfDocs.labels.requireMinor')" />
 
         <button type="button" class="docs-button" @click="runHookValidation">
-          {{ $t('apiDocs.cfDocs.labels.validate') }}
+          {{ $t('cfDocs.labels.validate') }}
         </button>
 
         <div v-if="hookResult" class="docs-result" :class="{ 'docs-result--error': hookResult.invalidFields.length }">
-          <span class="docs-result-label">{{ $t('apiDocs.cfDocs.labels.result') }}</span>
+          <span class="docs-result-label">{{ $t('cfDocs.labels.result') }}</span>
           <span class="docs-result-value">
-            {{ $t('apiDocs.cfDocs.labels.invalidFields') }}: [{{ hookResult.invalidFields.join(', ') }}] · {{ $t('apiDocs.cfDocs.labels.error') }}: {{ hookResult.error ?? $t('apiDocs.cfDocs.labels.none') }} · {{ $t('apiDocs.cfDocs.labels.minor') }}: {{ hookResult.minor }}
+            {{ $t('cfDocs.labels.invalidFields') }}: [{{ hookResult.invalidFields.join(', ') }}] · {{ $t('cfDocs.labels.error') }}: {{ hookResult.error ?? $t('cfDocs.labels.none') }} · {{ $t('cfDocs.labels.minor') }}: {{ hookResult.minor }}
           </span>
         </div>
       </div>
 
       <DesignCodeBlock :code="codeExamples.hookBasicCode" />
 
-      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.exists') }}</h3>
-      <p>{{ $t('apiDocs.cfDocs.existsDescription') }}</p>
+      <h3 class="docs-subheading">{{ $t('cfDocs.sections.exists') }}</h3>
+      <p>{{ $t('cfDocs.existsDescription') }}</p>
       <DesignCodeBlock :code="codeExamples.hookExistsCode" />
 
-      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.requireAdult') }}</h3>
-      <p>{{ $t('apiDocs.cfDocs.requireAdultDescription') }}</p>
+      <h3 class="docs-subheading">{{ $t('cfDocs.sections.requireAdult') }}</h3>
+      <p>{{ $t('cfDocs.requireAdultDescription') }}</p>
       <DesignCodeBlock :code="codeExamples.hookRequireAdultCode" />
 
-      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.hookOptions') }}</h3>
+
+      <h3 class="docs-subheading">{{ $t('cfDocs.sections.requireMinor') }}</h3>
+      <p>{{ $t('cfDocs.requireMinorDescription') }}</p>
+      <DesignCodeBlock :code="codeExamples.hookRequireMinorCode" />
+
+      <h3 class="docs-subheading">{{ $t('cfDocs.sections.hookOptions') }}</h3>
       <DesignPropsTable
         class="docs-props-table"
         :columns="propsColumns"
@@ -168,7 +174,7 @@
         :widths="['160px', '260px', '110px', '1fr']"
       />
 
-      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.validateInput') }}</h3>
+      <h3 class="docs-subheading">{{ $t('cfDocs.sections.validateInput') }}</h3>
       <DesignPropsTable
         class="docs-props-table"
         :columns="propsColumns"
@@ -176,7 +182,7 @@
         :widths="['160px', '200px', '110px', '1fr']"
       />
 
-      <h3 class="docs-subheading">{{ $t('apiDocs.cfDocs.sections.output') }}</h3>
+      <h3 class="docs-subheading">{{ $t('cfDocs.sections.output') }}</h3>
       <DesignPropsTable
         class="docs-props-table"
         :columns="propsColumns"
@@ -187,17 +193,17 @@
 
     <!-- Limiti noti -->
     <section class="docs-section">
-      <h2>{{ $t('apiDocs.cfDocs.sections.limitations') }}</h2>
-      <p>{{ $t('apiDocs.cfDocs.limitationsIntro') }}</p>
+      <h2>{{ $t('cfDocs.sections.limitations') }}</h2>
+      <p>{{ $t('cfDocs.limitationsIntro') }}</p>
       <ul class="docs-list">
         <li>
-          <strong>{{ $t('apiDocs.cfDocs.limitations.omocodyTitle') }}</strong>: {{ $t('apiDocs.cfDocs.limitations.omocody') }}
+          <strong>{{ $t('cfDocs.limitations.omocodyTitle') }}</strong>: {{ $t('cfDocs.limitations.omocody') }}
         </li>
         <li>
-          <strong>{{ $t('apiDocs.cfDocs.limitations.databaseTitle') }}</strong>: {{ $t('apiDocs.cfDocs.limitations.database') }}
+          <strong>{{ $t('cfDocs.limitations.databaseTitle') }}</strong>: {{ $t('cfDocs.limitations.database') }}
         </li>
         <li>
-          <strong>{{ $t('apiDocs.cfDocs.limitations.centuryTitle') }}</strong>: {{ $t('apiDocs.cfDocs.limitations.century') }}
+          <strong>{{ $t('cfDocs.limitations.centuryTitle') }}</strong>: {{ $t('cfDocs.limitations.century') }}
         </li>
       </ul>
     </section>
@@ -205,7 +211,7 @@
 </template>
 
 <script setup>
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { VxInput, VxDate, VxCheckbox, VxRadio } from 'vexus'
 import DesignCodeBlock from '@/components/Utils/DesignCodeBlock.vue'
@@ -215,7 +221,7 @@ import {
   VxIsValidFiscalCodeFormat,
   VxIsValidFiscalCodeChecksum,
   VxDecodeFiscalCode,
-  VxUseFiscalCodeValidation
+  useVxFiscalCodeValidation
 } from 'vexus'
 import {
   getFiscalCodeMetadata,
@@ -280,11 +286,12 @@ const hookForm = reactive({
   gender: 'M',
   birthdayDate: '1990-04-15',
   birthplaceCode: 'H501',
-  codiceFiscale: 'RSSMRA90D15H501U',
+  codiceFiscale: 'RSSMRA90D15H501Q',
   requireAdult: false,
+  requireMinor: false,
 })
 
-const { validate, error, minor } = VxUseFiscalCodeValidation()
+const { validate, error, minor } = useVxFiscalCodeValidation()
 const hookResult = ref(null)
 
 async function runHookValidation() {
@@ -297,6 +304,7 @@ async function runHookValidation() {
     codiceFiscale: hookForm.codiceFiscale,
     birthplaceCode: hookForm.birthplaceCode,
     requireAdult: hookForm.requireAdult,
+    requireMinor: hookForm.requireMinor,
   })
 
   hookResult.value = {
@@ -305,4 +313,7 @@ async function runHookValidation() {
     minor: minor.value,
   }
 }
+
+watch(() => hookForm.requireAdult, (v) => { if (v) hookForm.requireMinor = false })
+watch(() => hookForm.requireMinor, (v) => { if (v) hookForm.requireAdult = false })
 </script>

@@ -1,4 +1,4 @@
-export const setupCode = `import { VxGenerateFiscalCode, VxIsValidFiscalCode, VxUseFiscalCodeValidation } from '@vexus'`
+export const setupCode = `import { VxGenerateFiscalCode, VxIsValidFiscalCode, useVxFiscalCodeValidation } from '@vexus'`
 
 export const generateCode = `import { VxGenerateFiscalCode } from '@vexus'
 
@@ -37,9 +37,9 @@ const decoded = VxDecodeFiscalCode('RSSMRA90D15H501U')
 // Su un CF con formato non valido, ritorna null
 VxDecodeFiscalCode('non-un-cf') // null`
 
-export const hookBasicCode = `import { VxUseFiscalCodeValidation } from '@vexus'
+export const hookBasicCode = `import { useVxFiscalCodeValidation } from '@vexus'
 
-const { validate, error, minor } = VxUseFiscalCodeValidation()
+const { validate, error, minor } = useVxFiscalCodeValidation()
 
 const invalidFields = await validate({
   name: 'Mario',
@@ -54,11 +54,11 @@ const invalidFields = await validate({
 // error.value === null
 // minor.value === false`
 
-export const hookExistsCode = `import { VxUseFiscalCodeValidation } from '@vexus'
+export const hookExistsCode = `import { useVxFiscalCodeValidation } from '@vexus'
 
 // L'hook non fa ipotesi sul networking del progetto: la verifica di
 // esistenza è iniettata da chi lo usa.
-const { validate, error } = VxUseFiscalCodeValidation({
+const { validate, error } = useVxFiscalCodeValidation({
   checkExistsFn: async (cf) => {
     const res = await fetch(\`/api/customers/\${cf}/check\`)
     return res.ok
@@ -87,8 +87,22 @@ export const hookRequireAdultCode = `const invalidFields = await validate({
 // error.value === 'minorUserNotAllowed'
 // minor.value === true`
 
+export const hookRequireMinorCode = `const invalidFields = await validate({
+  name: 'Mario',
+  surname: 'Rossi',
+  gender: 'M',
+  birthdayDate: new Date(1990, 3, 15), // maggiorenne
+  codiceFiscale: 'RSSMRA90D15H501U',
+  birthplaceCode: 'H501',
+  requireMinor: true,
+})
+
+// invalidFields === ['cf']
+// error.value === 'adultUserNotAllowed'
+// minor.value === false`
+
 export const getFiscalCodeCodeExamples = (tm : any) => {
-  const labels = tm('apiDocs.cfDocs.codeLabels')
+  const labels = tm('cfDocs.codeLabels')
   const source = { setupCode, generateCode, validateFormatCode, decodeCode, hookBasicCode, hookExistsCode, hookRequireAdultCode }
   const replacements = {
     'caratteri': labels.characters, 'pattern corretto': labels.pattern,
@@ -97,6 +111,7 @@ export const getFiscalCodeCodeExamples = (tm : any) => {
     'nessun errore': labels.noError, 'L’hook non fa ipotesi sul networking del progetto: la verifica di': labels.hookComment,
     'esistenza è iniettata da chi lo usa.': labels.existsComment,
     'minorenne': labels.minor, 'se il CF risulta già registrato': labels.existsResult,
+    'maggiorenne': labels.adult,
   }
   return Object.fromEntries(Object.entries(source).map(([key, value]) => {
     let localized = value

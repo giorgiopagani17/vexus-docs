@@ -1,4 +1,3 @@
-
 const rows = [
   {
     key: 'type',
@@ -26,71 +25,54 @@ const rows = [
     name: 'compact',
     type: 'boolean',
     default: 'number: true / price: false',
-    desc: 'Abbrevia i valori da 1.000 in poi usando k/M.',
+    desc: 'Abbrevia i valori da 1.000 in poi usando k/M/B.',
   },
-  {
+    {
     key: 'decimals',
     name: 'decimals',
     type: 'number',
-    default: '1',
-    desc: 'Numero massimo di decimali nella notazione compatta, da 0 a 20.',
-  },
-  {
-    key: 'space',
-    name: 'space',
-    type: 'boolean',
-    default: 'false',
-    desc: 'Aggiunge uno spazio prima del suffisso compatto.',
+    default: 'compact: 1 / price: 2',
+    desc: 'Numero esatto di cifre decimali da visualizzare, intero da 0 a 20. Se specificato, gli zeri finali vengono mantenuti anche in notazione compatta (es. 1.50k). Se omesso, vengono applicati i valori predefiniti della modalità. Un valore non valido restituisce il fallback.',
   },
   {
     key: 'locale',
     name: 'locale',
     type: 'string',
-    default: 'Runtime / it-IT per price',
-    desc: 'Locale utilizzato da Intl.NumberFormat.',
-  },
-  {
-    key: 'forceDecimals',
-    name: 'forceDecimals',
-    type: 'boolean',
-    default: 'false',
-    desc: 'Mostra sempre due decimali in modalità price.',
+    default: "'en-US'",
+    desc: 'Locale utilizzato da Intl.NumberFormat. Il default è esplicito per avere lo stesso output su server e client (SSR).',
   },
   {
     key: 'fallback',
     name: 'fallback',
     type: 'string',
     default: "number: '0' / price: ''",
-    desc: 'Valore restituito per input vuoti o non validi.',
+    desc: 'Valore restituito per input vuoti o non validi e per opzioni non valide: la funzione non lancia mai eccezioni.',
+  },
+  {
+    key: 'space',
+    name: 'space',
+    type: 'boolean',
+    default: 'false',
+    desc: 'Aggiunge uno spazio non separabile prima del suffisso compatto.',
   },
 ]
 
-export const getFormatNumberMetadata = (t: (key: string) => string) => ({
+export const getFormatNumberMetadata = (
+  t: (key: string) => string,
+  te: (key: string) => boolean,
+) => ({
   columns: [
-    {
-      key: 'name',
-      label: t('common.propsColumns.name'),
-      class: 'prop-name',
-    },
-    {
-      key: 'type',
-      label: t('common.propsColumns.type'),
-      class: 'prop-type',
-    },
-    {
-      key: 'default',
-      label: t('common.propsColumns.default'),
-      class: 'prop-default',
-    },
-    {
-      key: 'desc',
-      label: t('common.propsColumns.description'),
-      class: 'prop-desc',
-    },
+    { key: 'name', label: t('common.propsColumns.name'), class: 'prop-name' },
+    { key: 'type', label: t('common.propsColumns.type'), class: 'prop-type' },
+    { key: 'default', label: t('common.propsColumns.default'), class: 'prop-default' },
+    { key: 'desc', label: t('common.propsColumns.description'), class: 'prop-desc' },
   ],
 
   rows: rows.map(({ key, desc, ...row }) => ({
     ...row,
-    desc: t(`formatNumberDocs.options.${key}`) || desc,
+    // t() restituisce la chiave stessa se manca la traduzione: si usa te() per il vero fallback.
+    desc: te(`formatNumberDocs.options.${key}`)
+      ? t(`formatNumberDocs.options.${key}`)
+      : desc,
   })),
 })
