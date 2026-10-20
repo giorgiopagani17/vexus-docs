@@ -43,6 +43,6 @@ export const getSpotlightItems = (t: ComposerTranslation): SpotlightItem[] => [
   { label: 'VxNotify', category: t('layout.search.composables'), to: '/notify', icon: Bell },
   { label: 'VxDebounce', category: t('layout.search.composables'), to: '/debounce', icon: Timer },
   { label: 'VxFormatNumber', category: t('layout.search.composables'), to: '/format-number', icon: Calculator },
-  { label: 'VxApi', category: t('layout.search.composables'), to: '/use-api', icon: Phone },
   { label: 'VxFiscalCode', category: t('layout.search.composables'), to: '/use-fiscal-code', icon: IdCard },
+  { label: 'VxApi', category: t('layout.search.composables'), to: '/use-api', icon: Phone },
 ]
