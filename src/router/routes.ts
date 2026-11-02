@@ -132,6 +132,16 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/breadcrumb',
+    children: [
+      {
+        path: '',
+        component: () => import('@/layouts/MainLayout.vue'),
+        children: [{ path: '', component: () => import('@/pages/components/Breadcrumb/VxBreadcrumbDocs.vue') }],
+      }
+    ]
+  },
+  {
     path: '/notify',
     children: [
       {

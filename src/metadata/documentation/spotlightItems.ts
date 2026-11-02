@@ -18,6 +18,7 @@ import {
   AppWindow,
   Timer,
   Calculator,
+  Waypoints,
 } from 'lucide-vue-next'
 
 export interface SpotlightItem {
@@ -40,6 +41,7 @@ export const getSpotlightItems = (t: ComposerTranslation): SpotlightItem[] => [
   { label: 'VxInput Pickers', category: t('layout.search.components'), to: '/input/pickers', icon: CalendarDays },
   { label: 'VxSelect', category: t('layout.search.components'), to: '/select', icon: SquareMenu },
   { label: 'VxModal', category: t('layout.search.components'), to: '/modal', icon: AppWindow },
+  { label: 'VxBreadcrumb', category: t('layout.search.components'), to: '/breadcrumb', icon: Waypoints },
   { label: 'VxNotify', category: t('layout.search.composables'), to: '/notify', icon: Bell },
   { label: 'VxDebounce', category: t('layout.search.composables'), to: '/debounce', icon: Timer },
   { label: 'VxFormatNumber', category: t('layout.search.composables'), to: '/format-number', icon: Calculator },

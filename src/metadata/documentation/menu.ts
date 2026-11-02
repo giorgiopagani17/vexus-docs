@@ -20,6 +20,7 @@ import {
   AppWindow,
   Timer,
   Calculator,
+  Waypoints,
 } from 'lucide-vue-next'
 
 export interface MenuLeaf {
@@ -59,6 +60,7 @@ export const getMenu = (t: ComposerTranslation): MenuItem[] => [
       { id: 'inputPickers', label: 'VxInput Pickers', icon: CalendarDays, to: '/input/pickers' },
       { id: 'select', label: 'VxSelect', icon: SquareMenu, to: '/select' },
       { id: 'modal', label: 'VxModal', icon: AppWindow, to: '/modal' },
+      { id: 'breadcrumb', label: 'VxBreadcrumb', icon: Waypoints, to: '/breadcrumb' },
     ],
   },
   {
